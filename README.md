@@ -1,15 +1,18 @@
-# Bones
+# Temperance
 __A Lightweight Wordpress Development Theme__
 
-Bones is designed to make the life of developers easier. It's built
-using HTML5 & has a strong semantic foundation. It was updated recently
-using some of the HTML5 Boilerplate's recommended markup and setup.
-It's constantly growing so be sure to check back often if you are a
-frequent user. I'm always open to contribution. :)
+Temperance was forked recently from Bones It's still built using HTML5 & has a 
+strong semantic foundation. However, I'm planning to add some accessibility 
+features so that you can have an accessible WordPress starter theme. The name 
+Temperance was chosen as homage to Machado's Bones project as well as TV's 
+forensic anthropologist Temperance Brennan. It's important to me that this 
+provides enough to help you, without getting in your way. It's constantly 
+growing so be sure to check back often if you are a frequent user. I'm always 
+open to contribution. :)
 
-Designed by **Eddie Machado**: http://themble.com/bones
 
 Special Thanks to:
+* Originally Designed by **Eddie Machado**: http://themble.com/bones
 * Paul Irish & the HTML5 Boilerplate
 * Yoast for some WP functions & optimization ideas
 * Andrew Rogers for code optimization
@@ -17,7 +20,7 @@ Special Thanks to:
 * and several other developers. :)
 
 Submit Bugs & or Fixes:
-https://github.com/eddiemachado/bones/issues
+https://github.com/andrewwoods/temperance/issues
 
 
 ## License
