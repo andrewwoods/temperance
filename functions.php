@@ -1,8 +1,5 @@
 <?php
 /*
-Author: Eddie Machado
-URL: htp://themble.com/bones/
-
 This is where you can drop your custom functions or
 just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
@@ -10,20 +7,7 @@ sidebars, comments, ect.
 
 /************* INCLUDE NEEDED FILES ***************/
 
-/*
-1. library/bones.php
-	- head cleanup (remove rsd, uri links, junk css, ect)
-	- enqueueing scripts & styles
-	- theme support functions
-	- custom menu output & fallbacks
-	- related post function
-	- page-navi function
-	- removing <p> from around images
-	- customizing the post excerpt
-	- custom google+ integration
-	- adding custom fields to user profiles
-*/
-require_once( 'library/bones.php' ); // if you remove this, bones will break
+require_once( 'library/temperance.php' ); // if you remove this, temperance will break
 /*
 2. library/custom-post-type.php
 	- an example custom post type
@@ -48,8 +32,8 @@ require_once( 'library/custom-post-type.php' ); // you can disable this if you l
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'bones-thumb-600', 600, 150, true );
-add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'temperance-thumb-600', 600, 150, true );
+add_image_size( 'temperance-thumb-300', 300, 100, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -63,20 +47,20 @@ inside the thumbnail function.
 
 For example, to call the 300 x 300 sized image,
 we would use the function:
-<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
+<?php the_post_thumbnail( 'temperance-thumb-300' ); ?>
 for the 600 x 100 image:
-<?php the_post_thumbnail( 'bones-thumb-600' ); ?>
+<?php the_post_thumbnail( 'temperance-thumb-600' ); ?>
 
 You can change the names and dimensions to whatever
 you like. Enjoy!
 */
 
-add_filter( 'image_size_names_choose', 'bones_custom_image_sizes' );
+add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
 
-function bones_custom_image_sizes( $sizes ) {
+function temperance_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'bones-thumb-600' => __('600px by 150px'),
-        'bones-thumb-300' => __('300px by 100px'),
+        'temperance-thumb-600' => __('600px by 150px'),
+        'temperance-thumb-300' => __('300px by 100px'),
     ) );
 }
 
@@ -91,11 +75,11 @@ new image size.
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
-function bones_register_sidebars() {
+function temperance_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'bonestheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
+		'name' => __( 'Sidebar 1', 'temperancetheme' ),
+		'description' => __( 'The first (primary) sidebar.', 'temperancetheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -112,8 +96,8 @@ function bones_register_sidebars() {
 
 	register_sidebar(array(
 		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'bonestheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
+		'name' => __( 'Sidebar 2', 'temperancetheme' ),
+		'description' => __( 'The second (secondary) sidebar.', 'temperancetheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -131,7 +115,7 @@ function bones_register_sidebars() {
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function bones_comments( $comment, $args, $depth ) {
+function temperance_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
@@ -149,13 +133,13 @@ function bones_comments( $comment, $args, $depth ) {
 				?>
 				<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
 				<?php // end custom gravatar call ?>
-				<?php printf(__( '<cite class="fn">%s</cite>', 'bonestheme' ), get_comment_author_link()) ?>
-				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
-				<?php edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ?>
+				<?php printf(__( '<cite class="fn">%s</cite>', 'temperancetheme' ), get_comment_author_link()) ?>
+				<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'temperancetheme' )); ?> </a></time>
+				<?php edit_comment_link(__( '(Edit)', 'temperancetheme' ),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
 				<div class="alert alert-info">
-					<p><?php _e( 'Your comment is awaiting moderation.', 'bonestheme' ) ?></p>
+					<p><?php _e( 'Your comment is awaiting moderation.', 'temperancetheme' ) ?></p>
 				</div>
 			<?php endif; ?>
 			<section class="comment_content clearfix">
@@ -170,14 +154,13 @@ function bones_comments( $comment, $args, $depth ) {
 /************* SEARCH FORM LAYOUT *****************/
 
 // Search Form
-function bones_wpsearch($form) {
+function temperance_wpsearch($form) {
 	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'bonestheme' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'bonestheme' ) . '" />
+	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'temperancetheme' ) . '</label>
+	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'temperancetheme' ) . '" />
 	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
 	</form>';
 	return $form;
 } // don't remove this bracket!
 
 
-?>

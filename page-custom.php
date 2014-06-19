@@ -20,7 +20,7 @@ Template Name: Custom Page Example
 
 									<h1 class="page-title"><?php the_title(); ?></h1>
 									<p class="byline vcard"><?php
-										printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'bonestheme' ) ), bones_get_the_author_posts_link() );
+										printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span>.', 'temperancetheme' ), get_the_time( 'Y-m-j' ), get_the_time( __( 'F jS, Y', 'temperancetheme' ) ), temperance_get_the_author_posts_link() );
 									?></p>
 
 
@@ -31,7 +31,7 @@ Template Name: Custom Page Example
 								</section>
 
 								<footer class="article-footer">
-									<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '' ); ?></p>
+									<p class="clearfix"><?php the_tags( '<span class="tags">' . __( 'Tags:', 'temperancetheme' ) . '</span> ', ', ', '' ); ?></p>
 
 								</footer>
 
@@ -43,13 +43,13 @@ Template Name: Custom Page Example
 
 									<article id="post-not-found" class="hentry clearfix">
 											<header class="article-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+												<h1><?php _e( 'Oops, Post Not Found!', 'temperancetheme' ); ?></h1>
 										</header>
 											<section class="entry-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'temperancetheme' ); ?></p>
 										</section>
 										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the page-custom.php template.', 'bonestheme' ); ?></p>
+												<p><?php _e( 'This is the error message in the page-custom.php template.', 'temperancetheme' ); ?></p>
 										</footer>
 									</article>
 
