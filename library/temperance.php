@@ -62,31 +62,49 @@ function temperance_ahoy() {
 
 } /* end temperance ahoy */
 
-/*********************
-WP_HEAD GOODNESS
-The default wordpress head is a mess. Let's clean it up by
-removing all the junk we don't need.
-*********************/
+/*
+	WP_HEAD GOODNESS
 
-add_filter( 'wp_title', 'temperance_wp_title' );
+	The default wordpress head is a mess. Let's clean it up by
+	removing all the junk we don't need.
+*/
+
+/*
+* @param string $title the title of the page
+* @param string $sep a separator. one of more characters to distinguish the page title
+* @param string $seplocation can be 'left' or 'right'. default: left. 
+*
+* @see wp_title filter
+*/
 function temperance_wp_title( $title, $sep, $seplocation ) {
-	if( empty( $title ) && ( is_home() || is_front_page() ) ) {
-		return __( 'Home', 'temperance' ) . ' | ' . get_bloginfo( 'description' );
-	}
 
-   // Add the blog name
+	// Add the blog name
+	// The Site Title under "Settings > General"
     $site_name = get_bloginfo( 'name' );
 
-    // Add the blog description for the home/front page.
+	// The Tagline under "Settings > General"
     $site_description = get_bloginfo( 'description', 'display' );
-    if ( $site_description && ( is_home() || is_front_page() ) ) {
+
+    // Add the blog description for the home/front page, if available.
+    if ( is_home() || is_front_page() ) {
+		if ( $site_description ) {
         	$title = "$site_name $sep $site_description";
+		} else {
+        	$title = $site_name;
+		}
+		return $title;
 	}	
 	
+	if ( $seplocation == 'right' ) {
+		$title = $title . $site_name;
+	} else {
+		$title = $site_name . $title;
+	}
 
 
 	return $title;
 }
+add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
 function temperance_head_cleanup() {
 	// category feeds
