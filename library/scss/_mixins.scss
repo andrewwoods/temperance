@@ -1,6 +1,4 @@
 /******************************************************************
-Site Name:
-Author:
 
 Stylesheet: Mixins & Constants Stylesheet
 
@@ -52,18 +50,42 @@ http://0to255.com/
 *********************/
 
 $alert-yellow:      #ebe16f;
-$alert-red:         #fbe3e4;
-$alert-green:       #e6efc2;
-$alert-blue:        #d5edf8;
+$alert-red:         #b41a20;
+$alert-green:       #1ab420;
+$alert-blue:        #1a20b4;
 
-$black:             #000;
-$white:             #fff;
+$black:             #000000;
+$white:             #ffffff;
 
-$temperance-pink:        #f01d4f;
-$temperance-blue:        #1990db;
+$temperance-orange:     #f16c00;
+$temperance-peach:      #ff9947;
+$temperance-navy:       #003366;
+$temperance-sky:        #3399FF;
 
-$link-color:        $temperance-pink;
-$link-hover:        darken($link-color, 9%);
+$link-color: $temperance-peach;
+$link-hover: $temperance-orange;
+
+
+$gray90: #e5e5e5;
+$grey90: $gray90;
+$gray80: #cccccc;
+$grey80: $gray80;
+$gray70: #b2b2b2;
+$grey70: $gray70;
+$gray60: #999999;
+$grey60: $gray60;
+$gray50: #7f7f7f;
+$grey50: $gray50;
+$gray40: #666666;
+$grey40: $gray40;
+$gray30: #4c4c4c;
+$grey30: $gray30;
+$gray20: #333333;
+$grey20: $gray20;
+$gray10: #191919;
+$grey10: $gray10;
+
+
 
 /*
 Here's a great tutorial on how to
@@ -150,22 +172,6 @@ span.amp {
 TRANSITION
 *********************/
 
-/*
-I totally rewrote this to be cleaner and easier to use.
-You'll need to be using Sass 3.2+ for these to work.
-Thanks to @anthonyshort for the inspiration on these.
-USAGE: @include transition(all 0.2s ease-in-out);
-*/
-
-@mixin transition($transition...) {
-	// defining prefixes so we can use them in mixins below
-	$prefixes:      ("-webkit",  "");
-  @each $prefix in $prefixes {
-    #{$prefix}-transition: $transition;
-  }
-
-  transition: $transition;
-}
 
 /*********************
 CSS3 GRADIENTS
@@ -235,16 +241,16 @@ BUTTONS
 }
 
 .blue-button, .blue-button:visited {
-	border-color: darken($temperance-blue, 10%);
-	text-shadow: 0 1px 1px darken($temperance-blue, 10%);
-	@include css-gradient( $temperance-blue, darken($temperance-blue, 5%) );
-	box-shadow: inset 0 0 3px lighten($temperance-blue, 16%);
+	border-color: darken($temperance-sky, 10%);
+	text-shadow: 0 1px 1px darken($temperance-sky, 10%);
+	@include css-gradient( $temperance-sky, darken($temperance-sky, 5%) );
+	box-shadow: inset 0 0 3px $temperance-navy;
 
 	&:hover, &:focus {
-		border-color: darken($temperance-blue, 15%);
-		@include css-gradient( darken($temperance-blue, 4%), darken($temperance-blue, 10%) );
+		border-color: darken($temperance-sky, 15%);
+		@include css-gradient( darken($temperance-sky, 4%), darken($temperance-sky, 10%) );
 	}
 	&:active {
-		@include css-gradient( darken($temperance-blue, 5%), $temperance-blue );
+		@include css-gradient( darken($temperance-sky, 5%), $temperance-sky );
 	}
 }

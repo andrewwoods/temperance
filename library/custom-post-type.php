@@ -76,7 +76,7 @@ function custom_post_example() {
 	
 	// now let's add custom categories (these act like categories)
 	register_taxonomy( 'custom_cat', 
-		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('custom_type'), /* if you change the name of register_post_type 'custom_type', then you have to change this */
 		array('hierarchical' => true,     /* if this is true, it acts like categories */
 			'labels' => array(
 				'name' => __( 'Custom Categories', 'temperancetheme' ), /* name of the custom taxonomy */
@@ -99,7 +99,7 @@ function custom_post_example() {
 	
 	// now let's add custom tags (these act like categories)
 	register_taxonomy( 'custom_tag', 
-		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('custom_type'), /* if you change the name of register_post_type 'custom_type', then you have to change this */
 		array('hierarchical' => false,    /* if this is false, it acts like tags */
 			'labels' => array(
 				'name' => __( 'Custom Tags', 'temperancetheme' ), /* name of the custom taxonomy */

@@ -25,22 +25,20 @@
 			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		<![endif]-->
 		<?php // or, set /favicon.ico for IE10 win ?>
-		<meta name="msapplication-TileColor" content="#f01d4f">
+		<meta name="msapplication-TileColor" content="#f16c00">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
-		<link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>" type="text/css" media="screen" title="Hard Coded" />
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
-		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
-		<?php // end of wordpress head ?>
-
-		<?php // drop Google Analytics Here ?>
-		<?php // end analytics ?>
 
 	</head>
 
 	<body <?php body_class(); ?>>
-
+		<div id="skip-nav" class="skip-nav">
+			<a href="#main">Skip to content</a>
+			<a href="#sidebar1">Skip to sidebar</a>
+			<a href="#footer">Skip to footer</a>
+		</div>
 		<div id="container">
 
 			<header class="header" role="banner">

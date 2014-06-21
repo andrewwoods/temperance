@@ -5,7 +5,7 @@ This is the core Temperance file where most of the main functions & features
 reside. If you have any custom functions, it's best to put them in the 
 functions.php file.
 
-- head cleanup (remove rsd, uri links, junk css, ect)
+- head cleanup (remove rsd, uri links, junk css, etc)
 - enqueueing scripts & styles
 - theme support functions
 - custom menu output & fallbacks
