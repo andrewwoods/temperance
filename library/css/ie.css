@@ -155,10 +155,28 @@ span.amp {
 /*********************
 TRANSITION
 *********************/
+/* line 175, ../scss/_mixins.scss */
+.box {
+  border-color: #c0c0c0;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 183, ../scss/_mixins.scss */
+.box.medium {
+  border-width: 3px;
+}
+/* line 187, ../scss/_mixins.scss */
+.box.thick {
+  border-width: 5px;
+}
+
 /*********************
 CSS3 GRADIENTS
-Be careful with these since they can
-really slow down your CSS. Don't overdo it.
+
+Be careful with these since they can really slow down your CSS. Don't overdo it.
 *********************/
 /* @include css-gradient(#dfdfdf,#f8f8f8); */
 /*********************
@@ -170,7 +188,7 @@ probably best not to use it. I mean, were you going to anyway? */
 /*********************
 BUTTONS
 *********************/
-/* line 211, ../scss/_mixins.scss */
+/* line 228, ../scss/_mixins.scss */
 .button, .button:visited {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 1px solid #ff7405;
@@ -194,7 +212,7 @@ BUTTONS
   background-image: -o-linear-gradient(top, #ff9947, #ff8b2d);
   background-image: linear-gradient(to bottom, #ff9947, #ff8b2d);
 }
-/* line 230, ../scss/_mixins.scss */
+/* line 247, ../scss/_mixins.scss */
 .button:hover, .button:focus, .button:visited:hover, .button:visited:focus {
   color: white;
   border: 1px solid #ff7405;
@@ -207,7 +225,7 @@ BUTTONS
   background-image: -o-linear-gradient(top, #ff8b2d, #ff7d14);
   background-image: linear-gradient(to bottom, #ff8b2d, #ff7d14);
 }
-/* line 238, ../scss/_mixins.scss */
+/* line 255, ../scss/_mixins.scss */
 .button:active, .button:visited:active {
   background-color: #ff9947;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ff8b2d), to(#ff9947));
@@ -217,7 +235,7 @@ BUTTONS
   background-image: linear-gradient(to bottom, #ff8b2d, #ff9947);
 }
 
-/* line 243, ../scss/_mixins.scss */
+/* line 260, ../scss/_mixins.scss */
 .blue-button, .blue-button:visited {
   border-color: #007fff;
   text-shadow: 0 1px 1px #007fff;
@@ -229,7 +247,7 @@ BUTTONS
   background-image: linear-gradient(to bottom, #3399ff, #1a8cff);
   box-shadow: inset 0 0 3px #003366;
 }
-/* line 249, ../scss/_mixins.scss */
+/* line 266, ../scss/_mixins.scss */
 .blue-button:hover, .blue-button:focus, .blue-button:visited:hover, .blue-button:visited:focus {
   border-color: #0073e6;
   background-color: #007fff;
@@ -239,7 +257,7 @@ BUTTONS
   background-image: -o-linear-gradient(top, #1f8fff, #007fff);
   background-image: linear-gradient(to bottom, #1f8fff, #007fff);
 }
-/* line 253, ../scss/_mixins.scss */
+/* line 270, ../scss/_mixins.scss */
 .blue-button:active, .blue-button:visited:active {
   background-color: #3399ff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1a8cff), to(#3399ff));
