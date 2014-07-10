@@ -477,10 +477,7 @@ dd {
 Stylesheet: Mixins & Constants Stylesheet
 
 This is where you can take advantage of Sass' great features:
-Mixins & Constants. I won't go in-depth on how they work exactly,
-there are a few articles below that will help do that. What I will
-tell you is that this will help speed up simple changes like
-changing a color or adding CSS3 techniques gradients.
+Mixins & Constants. 
 
 A WORD OF WARNING: It's very easy to overdo it here. Be careful and
 remember less is more.
@@ -489,16 +486,16 @@ remember less is more.
 /*********************
 CLEARFIXIN'
 *********************/
-/* line 21, ../scss/_mixins.scss */
+/* line 18, ../scss/_mixins.scss */
 .clearfix {
   zoom: 1;
 }
-/* line 23, ../scss/_mixins.scss */
+/* line 20, ../scss/_mixins.scss */
 .clearfix:before, .clearfix:after {
   content: "";
   display: table;
 }
-/* line 24, ../scss/_mixins.scss */
+/* line 21, ../scss/_mixins.scss */
 .clearfix:after {
   clear: both;
 }
@@ -506,20 +503,23 @@ CLEARFIXIN'
 /*********************
 TOOLS
 *********************/
-/* line 32, ../scss/_mixins.scss */
+/* line 29, ../scss/_mixins.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 39, ../scss/_mixins.scss */
+/* line 36, ../scss/_mixins.scss */
 .image-replacement {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
 
+/*********************
+SPACING
+*********************/
 /*********************
 COLORS
 Need help w/ choosing your colors? Try this site out:
@@ -555,75 +555,75 @@ TYPOGRAPHY
 use the best ampersand
 http://simplebits.com/notebook/2008/08/14/ampersands-2/
 */
-/* line 129, ../scss/_mixins.scss */
+/* line 152, ../scss/_mixins.scss */
 span.amp {
   font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
   font-style: italic;
 }
 
-/* line 135, ../scss/_mixins.scss */
+/* line 158, ../scss/_mixins.scss */
 .text-left {
   text-align: left;
 }
 
-/* line 136, ../scss/_mixins.scss */
+/* line 159, ../scss/_mixins.scss */
 .text-center {
   text-align: center;
 }
 
-/* line 137, ../scss/_mixins.scss */
+/* line 160, ../scss/_mixins.scss */
 .text-right {
   text-align: right;
 }
 
-/* line 141, ../scss/_mixins.scss */
+/* line 164, ../scss/_mixins.scss */
 .alert-help, .alert-info, .alert-error, .alert-success {
-  margin: 10px;
-  padding: 5px 18px;
+  margin: 1em;
+  padding: 0.5em 1em;
   border: 1px solid;
 }
 
-/* line 147, ../scss/_mixins.scss */
+/* line 170, ../scss/_mixins.scss */
 .alert-help {
-  border-color: #e8dc59;
-  background: #ebe16f;
+  border-color: #f2d520;
+  background: #fcf999;
 }
 
-/* line 153, ../scss/_mixins.scss */
+/* line 176, ../scss/_mixins.scss */
 .alert-info {
-  border-color: #171c9e;
-  background: #1a20b4;
+  border-color: #1a20b4;
+  background: #00b2ff;
 }
 
-/* line 159, ../scss/_mixins.scss */
+/* line 182, ../scss/_mixins.scss */
 .alert-error {
-  border-color: #9e171c;
-  background: #b41a20;
+  border-color: #b41a20;
+  background: #f4979b;
 }
 
-/* line 165, ../scss/_mixins.scss */
+/* line 188, ../scss/_mixins.scss */
 .alert-success {
-  border-color: #179e1c;
-  background: #1ab420;
+  border-color: #1ab420;
+  background: #9ef1a0;
 }
 
 /*********************
 TRANSITION
 *********************/
-/* line 175, ../scss/_mixins.scss */
+/* line 198, ../scss/_mixins.scss */
 .box {
   border-color: #c0c0c0;
   border-width: 1px;
   border-style: solid;
-  padding: 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
-/* line 183, ../scss/_mixins.scss */
+/* line 206, ../scss/_mixins.scss */
 .box.medium {
   border-width: 3px;
 }
-/* line 187, ../scss/_mixins.scss */
+/* line 210, ../scss/_mixins.scss */
 .box.thick {
   border-width: 5px;
 }
@@ -643,13 +643,13 @@ probably best not to use it. I mean, were you going to anyway? */
 /*********************
 BUTTONS
 *********************/
-/* line 228, ../scss/_mixins.scss */
-.button, .button:visited {
+/* line 251, ../scss/_mixins.scss */
+button, button:visited, .btn, .btn:visited {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 1px solid #ff7405;
   border-top-color: #ff8523;
   border-left-color: #ff8523;
-  padding: 4px 12px;
+  padding: 0.25em 1em;
   color: white;
   display: inline-block;
   font-size: 11px;
@@ -667,8 +667,8 @@ BUTTONS
   background-image: -o-linear-gradient(top, #ff9947, #ff8b2d);
   background-image: linear-gradient(to bottom, #ff9947, #ff8b2d);
 }
-/* line 247, ../scss/_mixins.scss */
-.button:hover, .button:focus, .button:visited:hover, .button:visited:focus {
+/* line 270, ../scss/_mixins.scss */
+button:hover, button:focus, button:visited:hover, button:visited:focus, .btn:hover, .btn:focus, .btn:visited:hover, .btn:visited:focus {
   color: white;
   border: 1px solid #ff7405;
   border-top-color: #e06400;
@@ -680,46 +680,14 @@ BUTTONS
   background-image: -o-linear-gradient(top, #ff8b2d, #ff7d14);
   background-image: linear-gradient(to bottom, #ff8b2d, #ff7d14);
 }
-/* line 255, ../scss/_mixins.scss */
-.button:active, .button:visited:active {
+/* line 278, ../scss/_mixins.scss */
+button:active, button:visited:active, .btn:active, .btn:visited:active {
   background-color: #ff9947;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ff8b2d), to(#ff9947));
   background-image: -webkit-linear-gradient(top, #ff8b2d, #ff9947);
   background-image: -moz-linear-gradient(top, #ff8b2d, #ff9947);
   background-image: -o-linear-gradient(top, #ff8b2d, #ff9947);
   background-image: linear-gradient(to bottom, #ff8b2d, #ff9947);
-}
-
-/* line 260, ../scss/_mixins.scss */
-.blue-button, .blue-button:visited {
-  border-color: #007fff;
-  text-shadow: 0 1px 1px #007fff;
-  background-color: #1a8cff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#3399ff), to(#1a8cff));
-  background-image: -webkit-linear-gradient(top, #3399ff, #1a8cff);
-  background-image: -moz-linear-gradient(top, #3399ff, #1a8cff);
-  background-image: -o-linear-gradient(top, #3399ff, #1a8cff);
-  background-image: linear-gradient(to bottom, #3399ff, #1a8cff);
-  box-shadow: inset 0 0 3px #003366;
-}
-/* line 266, ../scss/_mixins.scss */
-.blue-button:hover, .blue-button:focus, .blue-button:visited:hover, .blue-button:visited:focus {
-  border-color: #0073e6;
-  background-color: #007fff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1f8fff), to(#007fff));
-  background-image: -webkit-linear-gradient(top, #1f8fff, #007fff);
-  background-image: -moz-linear-gradient(top, #1f8fff, #007fff);
-  background-image: -o-linear-gradient(top, #1f8fff, #007fff);
-  background-image: linear-gradient(to bottom, #1f8fff, #007fff);
-}
-/* line 270, ../scss/_mixins.scss */
-.blue-button:active, .blue-button:visited:active {
-  background-color: #3399ff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#1a8cff), to(#3399ff));
-  background-image: -webkit-linear-gradient(top, #1a8cff, #3399ff);
-  background-image: -moz-linear-gradient(top, #1a8cff, #3399ff);
-  background-image: -o-linear-gradient(top, #1a8cff, #3399ff);
-  background-image: linear-gradient(to bottom, #1a8cff, #3399ff);
 }
 
 /*

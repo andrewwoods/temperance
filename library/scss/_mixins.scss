@@ -3,10 +3,7 @@
 Stylesheet: Mixins & Constants Stylesheet
 
 This is where you can take advantage of Sass' great features:
-Mixins & Constants. I won't go in-depth on how they work exactly,
-there are a few articles below that will help do that. What I will
-tell you is that this will help speed up simple changes like
-changing a color or adding CSS3 techniques gradients.
+Mixins & Constants. 
 
 A WORD OF WARNING: It's very easy to overdo it here. Be careful and
 remember less is more.
@@ -42,6 +39,26 @@ TOOLS
 	overflow: hidden;
 }
 
+/*********************
+SPACING
+*********************/
+$spacing-small: 0.5em;
+$spacing-medium: 1em;
+$spacing-large: 2em;
+
+
+$margin-tiny:   $spacing-small/2;
+$margin-small:  $spacing-small;
+$margin-medium: $spacing-medium;
+$margin-large:  $spacing-large;
+
+$padding-tiny:   $spacing-small/2;
+$padding-small:  $spacing-small;
+$padding-medium: $spacing-medium;
+$padding-large:  $spacing-large;
+
+
+
 
 /*********************
 COLORS
@@ -49,10 +66,14 @@ Need help w/ choosing your colors? Try this site out:
 http://0to255.com/
 *********************/
 
-$alert-yellow:      #ebe16f;
-$alert-red:         #b41a20;
-$alert-green:       #1ab420;
-$alert-blue:        #1a20b4;
+$alert-yellow-bg:      #fcf999;
+$alert-yellow-border:  #f2d520;
+$alert-red-bg:         #f4979b;
+$alert-red-border:     #b41a20;
+$alert-green-bg:       #9ef1a0;
+$alert-green-border:   #1ab420;
+$alert-blue-bg:        #00b2ff;
+$alert-blue-border:    #1a20b4;
 
 $black:             #000000;
 $white:             #ffffff;
@@ -62,8 +83,6 @@ $temperance-peach:      #ff9947;
 $temperance-navy:       #003366;
 $temperance-sky:        #3399FF;
 
-$link-color: $temperance-peach;
-$link-hover: $temperance-orange;
 
 
 $gray90: #e5e5e5;
@@ -85,6 +104,10 @@ $grey20: $gray20;
 $gray10: #191919;
 $grey10: $gray10;
 
+
+$link-color: $temperance-peach;
+$link-hover: $temperance-orange;
+$text-color: $grey10;
 
 
 /*
@@ -139,33 +162,33 @@ span.amp {
 
 // alerts and notices
 %alert {
-	margin: 10px;
-	padding: 5px 18px;
+	margin: $margin-medium;
+	padding: $margin-small $margin-medium;
 	border: 1px solid;
 }
 
 .alert-help {
 	@extend %alert;
-	border-color: darken($alert-yellow, 5%);
-	background: $alert-yellow;
+	border-color: $alert-yellow-border;
+	background: $alert-yellow-bg;
 }
 
 .alert-info {
 	@extend %alert;
-	border-color: darken($alert-blue, 5%);
-	background: $alert-blue;
+	border-color: $alert-blue-border;
+	background: $alert-blue-bg;
 }
 
 .alert-error {
 	@extend %alert;
-	border-color: darken($alert-red, 5%);
-	background: $alert-red;
+	border-color: $alert-red-border;
+	background: $alert-red-bg;
 }
 
 .alert-success {
 	@extend %alert;
-	border-color: darken($alert-green, 5%);
-	background: $alert-green;
+	border-color: $alert-green-border;
+	background: $alert-green-bg;
 }
 
 /*********************
@@ -176,9 +199,9 @@ TRANSITION
 	border-color: #c0c0c0;
 	border-width: 1px;
 	border-style: solid;
-	padding: 0.5em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	padding: $padding-medium;
+	margin-top: $margin-medium;
+	margin-bottom: $margin-medium;
 
 	&.medium {
 		border-width: 3px;
@@ -225,12 +248,12 @@ probably best not to use it. I mean, were you going to anyway? */
 BUTTONS
 *********************/
 
-.button, .button:visited {
+button, button:visited, .btn, .btn:visited {
 	font-family: $sans-serif;
 	border: 1px solid darken($link-color, 13%);
 	border-top-color: darken($link-color, 7%);
 	border-left-color: darken($link-color, 7%);
-	padding: 4px 12px;
+	padding: $padding-tiny $padding-medium;
 	color: $white;
 	display: inline-block;
 	font-size: 11px;
@@ -257,17 +280,5 @@ BUTTONS
 	}
 }
 
-.blue-button, .blue-button:visited {
-	border-color: darken($temperance-sky, 10%);
-	text-shadow: 0 1px 1px darken($temperance-sky, 10%);
-	@include css-gradient( $temperance-sky, darken($temperance-sky, 5%) );
-	box-shadow: inset 0 0 3px $temperance-navy;
 
-	&:hover, &:focus {
-		border-color: darken($temperance-sky, 15%);
-		@include css-gradient( darken($temperance-sky, 4%), darken($temperance-sky, 10%) );
-	}
-	&:active {
-		@include css-gradient( darken($temperance-sky, 5%), $temperance-sky );
-	}
-}
+
