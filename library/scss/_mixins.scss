@@ -39,6 +39,8 @@ TOOLS
 	overflow: hidden;
 }
 
+
+
 /*********************
 SPACING
 *********************/
@@ -144,6 +146,16 @@ $serif:             "Georgia", Cambria, Times New Roman, Times, serif;
     	font-style: normal;
 	}
 */
+
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+	font-size: $size; //Fallback in px
+	font-size: calculateRem($size);
+}
 
 /*
 use the best ampersand

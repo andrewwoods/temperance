@@ -57,7 +57,8 @@ function temperance_ahoy() {
 
 	// cleaning up random code around images
 	add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
-	// cleaning up excerpt
+
+	// Improves the excerpt more link
 	add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
 } /* end temperance ahoy */
@@ -388,11 +389,28 @@ function temperance_filter_ptags_on_images($content){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
-// This removes the annoying […] to a Read More link
+/**
+* Changes the text of the 'Read More' link
+*
+* Makes the link text more useful to search engines and screen readers.
+*
+* @param string $more
+* @return string
+*/
 function temperance_excerpt_more($more) {
 	global $post;
-	// edit here if you like
-	return '...  <a class="excerpt-read-more" href="'. get_permalink($post->ID) . '" title="'. __( 'Read', 'temperancetheme' ) . get_the_title($post->ID).'">'. __( 'Read more &raquo;', 'temperancetheme' ) .'</a>';
+
+	$url = get_permalink($post->ID);
+	$title = get_the_title($post->ID) ;
+	$span = ' <span class="visually-hidden">' . $title . '</span> ';
+	$a_text = _x( 'Read more &raquo;', ' use &laquo; for RTL languages like arabic ', 'temperancetheme' );
+	if ( is_rtl() ){
+		$more = ' <a class="excerpt-read-more" href="'. $url . '" title="'. $title .'">'. $span . $a_text  .'</a> ... ';
+	} else {
+		$more = ' ... <a class="excerpt-read-more" href="'. $url . '" title="'. $title .'">'. $a_text . $span  .'</a> ';
+	}
+
+	return $more;
 }
 
 /*
@@ -402,8 +420,11 @@ function temperance_excerpt_more($more) {
  */
 function temperance_get_the_author_posts_link() {
 	global $authordata;
-	if ( !is_object( $authordata ) )
+
+	if ( !is_object( $authordata ) ) {
 		return false;
+	}
+
 	$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
 		get_author_posts_url( $authordata->ID, $authordata->user_nicename ),
