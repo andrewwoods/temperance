@@ -1,4 +1,4 @@
-			<footer id"footer" class="footer" role="contentinfo">
+			<footer id="footer" class="footer" role="contentinfo">
 				<div id="inner-footer" class="wrap clearfix">
 
 					<nav role="navigation">
