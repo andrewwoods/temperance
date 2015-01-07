@@ -10,8 +10,6 @@ keep it organized. I find it easier to edit
 and change things if they are concentrated
 in their own file.
 
-Developed by: Eddie Machado
-URL: http://themble.com/temperance/
 */
 
 // Flush rewrite rules for custom post types
