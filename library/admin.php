@@ -1,21 +1,27 @@
 <?php
-/*
-This file handles the admin area and functions.
-You can use this file to make changes to the
-dashboard. Updates to this page are coming soon.
-It's turned off by default, but you can call it
-via the functions file.
+/**
+ * This file handles the admin area and functions.  You can use this file to
+ * make changes to the dashboard. Updates to this page are coming soon. It's
+ * turned off by default, but you can call it via the functions file.
+ *
+ * @package Temperance
+ * @subpackage Admin
+ *
+ * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
+ *
+ */
 
 
-Special Thanks for code & inspiration to:
-@jackmcconnell - http://www.voltronik.co.uk/
-Digging into WP - http://digwp.com/2010/10/customize-wordpress-dashboard/
+//~~~~~~~~~~~~ DASHBOARD WIDGETS ~~~~~~~~~~~~~~~~~~
 
-*/
-
-/************* DASHBOARD WIDGETS *****************/
-
-// disable default dashboard widgets
+/**
+ * disable default dashboard widgets
+ *
+ *
+ * @since 1.0
+ *
+ * @return void
+ */
 function disable_default_dashboard_widgets() {
 
 	// Right Now Widget
@@ -41,25 +47,18 @@ function disable_default_dashboard_widgets() {
 	// Yoast's SEO Plugin Widget
 	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );
 
-	/*
-	have more plugin widgets you'd like to remove?
-	share them with us so we can get a list of
-	the most commonly used. :D
-	*/
 }
 
-/*
-Now let's talk about adding your own custom Dashboard widget.
-Sometimes you want to show clients feeds relative to their
-site's content. For example, the NBA.com feed for a sports
-site. Here is an example Dashboard Widget that displays recent
-entries from an RSS Feed.
-
-For more information on creating Dashboard Widgets, view:
-http://digwp.com/2010/10/customize-wordpress-dashboard/
-*/
-
-// RSS Dashboard Widget
+/**
+ * Now let's talk about adding your own custom Dashboard widget. Sometimes you
+ * want to show clients feeds relative to their site's content. For example, the
+ * NBA.com feed for a sports site. Here is an example Dashboard Widget that
+ * displays recent entries from an RSS Feed.
+ *
+ * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
+ *
+ * @return void
+ */
 function temperance_rss_dashboard_widget() {
 	if ( function_exists( 'fetch_feed' ) ) {
 		// include the required file
@@ -93,38 +92,68 @@ function temperance_rss_dashboard_widget() {
 	}
 }
 
-// calling all custom dashboard widgets
+
+/**
+ * add all custom dashboard widgets
+ *
+ * @since version
+ *
+ * @param  type $name it does something
+ * @return type it does something
+ */
 function temperance_custom_dashboard_widgets() {
 	wp_add_dashboard_widget( 'temperance_rss_dashboard_widget', __( 'Recently on Themble (Customize on admin.php)', 'temperancetheme' ), 'temperance_rss_dashboard_widget' );
 	/*
-	Be sure to drop any other created Dashboard Widgets
-	in this function and they will all load.
-	*/
+	 * Be sure to drop any other created Dashboard Widgets
+	 * in this function and they will all load.
+	 */
 }
 
 
 // removing the dashboard widgets
 add_action( 'admin_menu', 'disable_default_dashboard_widgets' );
+
 // adding any custom widgets
 add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
 
 
-/************* CUSTOM LOGIN PAGE *****************/
+//~~~~~~~~~~~~ CUSTOM LOGIN PAGE ~~~~~~~~~~~~~~~~~~
 
-// calling your own login css so you can style it
 
-//Updated to proper 'enqueue' method
-//http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+/**
+ * enqueue your custom login page css
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
 function temperance_login_css() {
 	wp_enqueue_style( 'temperance_login_css', get_template_directory_uri() . '/library/css/login.css', false );
 }
 
-// changing the logo link from wordpress.org to your site
+
+/**
+ * changing the logo link from wordpress.org to your site
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
 function temperance_login_url() {
 	return home_url();
 }
 
-// changing the alt text on the logo to show your site name
+
+/**
+ * changing the alt text on the logo to show your site name
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
 function temperance_login_title() {
 	return get_option( 'blogname' );
 }
@@ -135,14 +164,13 @@ add_filter( 'login_headerurl', 'temperance_login_url' );
 add_filter( 'login_headertitle', 'temperance_login_title' );
 
 
-/************* CUSTOMIZE ADMIN *******************/
+//~~~~~~~~~~~~ CUSTOMIZE ADMIN ~~~~~~~~~~~~~~~~~~~~
 
 /*
-I don't really recommend editing the admin too much
-as things may get funky if WordPress updates. Here
-are a few funtions which you can choose to use if
-you like.
-*/
+ * I don't really recommend editing the admin too much as things may get funky
+ * if WordPress updates. Here are a few funtions which you can choose to use if
+ * you like.
+ */
 
 // Custom Backend Footer
 function temperance_custom_admin_footer() {
