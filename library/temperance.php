@@ -34,24 +34,28 @@ function temperance_ahoy() {
 
 	// launching operation cleanup
 	add_action( 'init', 'temperance_head_cleanup' );
+
 	// remove WP version from RSS
 	add_filter( 'the_generator', __return_null );
+
 	// remove pesky injected css for recent comments widget
 	add_filter( 'wp_head', 'temperance_remove_wp_widget_recent_comments_style', 1 );
+
 	// clean up comment styles in the head
 	add_action( 'wp_head', 'temperance_remove_recent_comments_style', 1 );
+
 	// clean up gallery output in wp
 	add_filter( 'gallery_style', 'temperance_gallery_style' );
 
 	// enqueue base scripts and styles
 	add_action( 'wp_enqueue_scripts', 'temperance_scripts_and_styles', 999 );
-	// ie conditional wrapper
 
 	// launching this stuff after theme setup
 	temperance_theme_support();
 
 	// adding sidebars to Wordpress (these are created in functions.php)
 	add_action( 'widgets_init', 'temperance_register_sidebars' );
+
 	// adding the temperance search form (created in functions.php)
 	add_filter( 'get_search_form', 'temperance_wpsearch' );
 
@@ -61,7 +65,7 @@ function temperance_ahoy() {
 	// Improves the excerpt more link
 	add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
-} /* end temperance ahoy */
+}
 
 /*
 	WP_HEAD GOODNESS
@@ -81,21 +85,21 @@ function temperance_wp_title( $title, $sep, $seplocation ) {
 
 	// Add the blog name
 	// The Site Title under "Settings > General"
-    $site_name = get_bloginfo( 'name' );
+	$site_name = get_bloginfo( 'name' );
 
 	// The Tagline under "Settings > General"
-    $site_description = get_bloginfo( 'description', 'display' );
+	$site_description = get_bloginfo( 'description', 'display' );
 
-    // Add the blog description for the home/front page, if available.
-    if ( is_home() || is_front_page() ) {
+	// Add the blog description for the home/front page, if available.
+	if ( is_home() || is_front_page() ) {
 		if ( $site_description ) {
-        	$title = "$site_name $sep $site_description";
+			$title = "$site_name $sep $site_description";
 		} else {
-        	$title = $site_name;
+			$title = $site_name;
 		}
 		return $title;
-	}	
-	
+	}
+
 	if ( $seplocation == 'right' ) {
 		$title = $title . $site_name;
 	} else {
@@ -110,28 +114,39 @@ add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 function temperance_head_cleanup() {
 	// category feeds
 	// remove_action( 'wp_head', 'feed_links_extra', 3 );
+
 	// post and comment feeds
 	// remove_action( 'wp_head', 'feed_links', 2 );
+
 	// EditURI link
 	remove_action( 'wp_head', 'rsd_link' );
+
 	// windows live writer
 	remove_action( 'wp_head', 'wlwmanifest_link' );
+
 	// index link
 	remove_action( 'wp_head', 'index_rel_link' );
+
 	// previous link
 	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
+
 	// start link
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
+
 	// links for adjacent posts
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
+
 	// WP version
 	remove_action( 'wp_head', 'wp_generator' );
+
 	// remove WP version from css
 	add_filter( 'style_loader_src', 'temperance_remove_wp_ver_css_js', 9999 );
+
 	// remove Wp version from scripts
 	add_filter( 'script_loader_src', 'temperance_remove_wp_ver_css_js', 9999 );
 
-} /* end temperance head cleanup */
+}
+
 
 
 // remove WP version from scripts
@@ -260,7 +275,7 @@ function temperance_theme_support() {
 			'footer-links' => __( 'Footer Links', 'temperancetheme' ) // secondary nav in footer
 		)
 	);
-} /* end temperance theme support */
+}
 
 
 /*********************
@@ -331,7 +346,7 @@ function temperance_related_posts() {
 	global $post;
 	$tags = wp_get_post_tags( $post->ID );
 	if($tags) {
-		foreach( $tags as $tag ) { 
+		foreach( $tags as $tag ) {
 			$tag_arr .= $tag->slug . ',';
 		}
 		$args = array(
@@ -365,18 +380,18 @@ function temperance_page_navi() {
 	
 	echo '<nav class="pagination">';
 	
-		echo paginate_links( array(
-			'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
-			'format' 		=> '',
-			'current' 		=> max( 1, get_query_var('paged') ),
-			'total' 		=> $wp_query->max_num_pages,
-			'prev_text' 	=> '&larr;',
-			'next_text' 	=> '&rarr;',
-			'type'			=> 'list',
-			'end_size'		=> 3,
-			'mid_size'		=> 3
-		) );
-	
+	echo paginate_links( array(
+		'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
+		'format' 		=> '',
+		'current' 		=> max( 1, get_query_var('paged') ),
+		'total' 		=> $wp_query->max_num_pages,
+		'prev_text' 	=> '&larr;',
+		'next_text' 	=> '&rarr;',
+		'type'			=> 'list',
+		'end_size'		=> 3,
+		'mid_size'		=> 3
+	) );
+
 	echo '</nav>';
 } /* end page navi */
 

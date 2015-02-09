@@ -61,17 +61,17 @@ function custom_post_example() {
 	register_taxonomy_for_object_type( 'category', 'custom_type' );
 	/* this adds your post tags to your custom post type */
 	register_taxonomy_for_object_type( 'post_tag', 'custom_type' );
-	
+
 }
 
 	// adding the function to the Wordpress init
 	add_action( 'init', 'custom_post_example');
-	
+
 	/*
 	for more information on taxonomies, go here:
 	http://codex.wordpress.org/Function_Reference/register_taxonomy
 	*/
-	
+
 	// now let's add custom categories (these act like categories)
 	register_taxonomy( 'custom_cat', 
 		array('custom_type'), /* if you change the name of register_post_type 'custom_type', then you have to change this */
@@ -94,7 +94,7 @@ function custom_post_example() {
 			'rewrite' => array( 'slug' => 'custom-slug' ),
 		)
 	);
-	
+
 	// now let's add custom tags (these act like categories)
 	register_taxonomy( 'custom_tag', 
 		array('custom_type'), /* if you change the name of register_post_type 'custom_type', then you have to change this */
@@ -116,11 +116,11 @@ function custom_post_example() {
 			'query_var' => true,
 		)
 	);
-	
+
 	/*
 		looking for custom meta boxes?
 		check out this fantastic tool:
 		https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
 	*/
-	
+
 
