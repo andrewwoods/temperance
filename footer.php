@@ -2,13 +2,12 @@
 				<div id="inner-footer" class="wrap clearfix">
 
 					<nav role="navigation">
-							<?php temperance_footer_links(); ?>
+						<?php temperance_footer_links(); ?>
 					</nav>
 
 					<p class="source-org copyright">&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.</p>
 
 				</div>
-
 			</footer>
 
 		</div>

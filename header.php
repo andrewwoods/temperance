@@ -37,10 +37,9 @@
 			<a href="#sidebar1">Skip to sidebar</a>
 			<a href="#footer">Skip to footer</a>
 		</div>
+
 		<div id="container">
-
 			<header class="header" role="banner">
-
 				<div id="inner-header" class="wrap clearfix">
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
@@ -49,11 +48,9 @@
 					<?php // if you'd like to use the site description you can un-comment it below ?>
 					<?php // bloginfo('description'); ?>
 
-
 					<nav role="navigation">
 						<?php temperance_main_nav(); ?>
 					</nav>
 
 				</div>
-
 			</header>

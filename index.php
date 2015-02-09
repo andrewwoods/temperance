@@ -1,72 +1,69 @@
 <?php get_header(); ?>
 
-			<div id="content">
+<div id="content">
+	<div id="inner-content" class="wrap clearfix">
+		<div id="main" class="eightcol first clearfix" role="main">
 
-				<div id="inner-content" class="wrap clearfix">
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-						<div id="main" class="eightcol first clearfix" role="main">
+			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
 
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+				<header class="article-header">
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
+					<h1 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+						<p class="byline vcard"><?php
+							printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'temperancetheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), temperance_get_the_author_posts_link(), get_the_category_list(', '));
+					?></p>
 
-								<header class="article-header">
+				</header>
 
-									<h1 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-									<p class="byline vcard"><?php
-										printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'temperancetheme' ), get_the_time('Y-m-j'), get_the_time(get_option('date_format')), temperance_get_the_author_posts_link(), get_the_category_list(', '));
-									?></p>
+				<section class="entry-content clearfix">
+					<?php the_content(); ?>
+				</section>
 
-								</header>
+				<footer class="article-footer">
+					<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'temperancetheme' ) . '</span> ', ', ', '' ); ?></p>
 
-								<section class="entry-content clearfix">
-									<?php the_content(); ?>
-								</section>
+				</footer>
 
-								<footer class="article-footer">
-									<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'temperancetheme' ) . '</span> ', ', ', '' ); ?></p>
+				<?php // comments_template(); // uncomment if you want to use them ?>
+			</article>
 
-								</footer>
+			<?php endwhile; ?>
 
-								<?php // comments_template(); // uncomment if you want to use them ?>
+				<?php if ( function_exists( 'temperance_page_navi' ) ) { ?>
+					<?php temperance_page_navi(); ?>
+				<?php } else { ?>
+					<nav class="wp-prev-next">
+						<ul class="clearfix">
+							<li class="prev-link"><?php next_posts_link( __( '&laquo; Older Entries', 'temperancetheme' )) ?></li>
+							<li class="next-link"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'temperancetheme' )) ?></li>
+						</ul>
+					</nav>
+				<?php } ?>
 
-							</article>
+			<?php else : ?>
 
-							<?php endwhile; ?>
+				<article id="post-not-found" class="hentry clearfix">
+					<header class="article-header">
+						<h1><?php _e( 'Oops, Post Not Found!', 'temperancetheme' ); ?></h1>
+					</header>
 
-									<?php if ( function_exists( 'temperance_page_navi' ) ) { ?>
-											<?php temperance_page_navi(); ?>
-									<?php } else { ?>
-											<nav class="wp-prev-next">
-													<ul class="clearfix">
-														<li class="prev-link"><?php next_posts_link( __( '&laquo; Older Entries', 'temperancetheme' )) ?></li>
-														<li class="next-link"><?php previous_posts_link( __( 'Newer Entries &raquo;', 'temperancetheme' )) ?></li>
-													</ul>
-											</nav>
-									<?php } ?>
+					<section class="entry-content">
+						<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'temperancetheme' ); ?></p>
+					</section>
 
-							<?php else : ?>
+					<footer class="article-footer">
+						<p><?php _e( 'This is the error message in the index.php template.', 'temperancetheme' ); ?></p>
+					</footer>
+				</article>
 
-									<article id="post-not-found" class="hentry clearfix">
-											<header class="article-header">
-												<h1><?php _e( 'Oops, Post Not Found!', 'temperancetheme' ); ?></h1>
-										</header>
-											<section class="entry-content">
-												<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'temperancetheme' ); ?></p>
-										</section>
-										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the index.php template.', 'temperancetheme' ); ?></p>
-										</footer>
-									</article>
+			<?php endif; ?>
 
-							<?php endif; ?>
+		</div>
 
-						</div>
-
-						<?php get_sidebar(); ?>
-
-				</div>
-
-			</div>
+		<?php get_sidebar(); ?>
+	</div>
+</div>
 
 <?php get_footer(); ?>
