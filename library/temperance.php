@@ -1,35 +1,38 @@
 <?php
+/**
+ * This is the core Temperance file where most of the main functions & features 
+ * reside. If you have any custom functions, it's best to put them in the 
+ * functions.php file.
+ * 
+ * - head cleanup (remove rsd, uri links, junk css, etc)
+ * - enqueueing scripts & styles
+ * - theme support functions
+ * - custom menu output & fallbacks
+ * - related post function
+ * - page-navi function
+ * - removing <p> from around images
+ * - customizing the post excerpt
+ * - custom google+ integration
+ * - adding custom fields to user profiles
+ * 
+ * @package Temperance
+ * @subpackage Subpackage name
+ * @author firstname lastname <user@host.com>
+ */
+
+
+add_action( 'after_setup_theme', 'temperance_ahoy', 16 );
+add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
+
+
 /*
-
-This is the core Temperance file where most of the main functions & features 
-reside. If you have any custom functions, it's best to put them in the 
-functions.php file.
-
-- head cleanup (remove rsd, uri links, junk css, etc)
-- enqueueing scripts & styles
-- theme support functions
-- custom menu output & fallbacks
-- related post function
-- page-navi function
-- removing <p> from around images
-- customizing the post excerpt
-- custom google+ integration
-- adding custom fields to user profiles
-
-*/
-
-
-/*
-	LAUNCH TEMPERANCE
-
-Let's fire off all the functions and tools. 
-I put it up here so it's right up top and clean.
-
-*/
-
-// we're firing all out initial functions at the start
- add_action( 'after_setup_theme', 'temperance_ahoy', 16 );
-
+ * LAUNCH TEMPERANCE
+ *	 
+ * Let's fire off all the functions and tools. 
+ * I put it up here so it's right up top and clean.
+ *	 
+ * @return void 
+ */
 function temperance_ahoy() {
 
 	// launching operation cleanup
@@ -67,20 +70,22 @@ function temperance_ahoy() {
 
 }
 
-/*
-	WP_HEAD GOODNESS
 
-	The default wordpress head is a mess. Let's clean it up by
-	removing all the junk we don't need.
-*/
-
-/*
-* @param string $title the title of the page
-* @param string $sep a separator. one of more characters to distinguish the page title
-* @param string $seplocation can be 'left' or 'right'. default: left. 
-*
-* @see wp_title filter
-*/
+/**
+ * Improve on the default wordpress title 
+ *
+ * The default wordpress title isn't sufficient. On the homepage, it add the 
+ * site description to the site name. On other pages, it add the site name to the 
+ * standard page title
+ *
+ * @since 1.0
+ * @uses wp_title filter
+ *
+ * @param string $title the title of the page
+ * @param string $sep a separator. one or more characters to divide the page title
+ * @param string $seplocation can be 'left' or 'right'. default: left. 
+ * @return string
+ */
 function temperance_wp_title( $title, $sep, $seplocation ) {
 
 	// Add the blog name
@@ -106,11 +111,21 @@ function temperance_wp_title( $title, $sep, $seplocation ) {
 		$title = $site_name . $title;
 	}
 
-
 	return $title;
 }
-add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
+
+/**
+ * Remove unwanted items
+ *
+ * Clean up the output of wp_head() by removing undesired functions
+ *
+ * @since 1.0
+ * @uses {remove_action()}
+ *
+ * @param  type $name it does something
+ * @return void
+ */
 function temperance_head_cleanup() {
 	// category feeds
 	// remove_action( 'wp_head', 'feed_links_extra', 3 );
@@ -225,7 +240,20 @@ function temperance_scripts_and_styles() {
 THEME SUPPORT
 *********************/
 
-// Adding WP 3+ Functions & Theme Support
+
+/**
+ * Adding Theme Support
+ *
+ * There are many options for theme support availale. Thumbnails, feed links, 
+ * post formats, and color options are just a few options available. To add header 
+ * image support visit the header background image link in this comment
+ *
+ * @since 1.0
+ * @uses add_theme_support()
+ * @link http://themble.com/support/adding-header-background-image-support/
+ *
+ * @return void
+ */
 function temperance_theme_support() {
 
 	// wp thumbnails (sizes handled in functions.php)
@@ -248,8 +276,6 @@ function temperance_theme_support() {
 	// rss thingy
 	add_theme_support('automatic-feed-links');
 
-	// to add header image support go here: http://themble.com/support/adding-header-background-image-support/
-
 	// adding post format support
 	add_theme_support( 'post-formats',
 		array(
@@ -268,79 +294,123 @@ function temperance_theme_support() {
 	// wp menus
 	add_theme_support( 'menus' );
 
-	// registering wp3+ menus
+	// registering menu locations
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'temperancetheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'temperancetheme' ) // secondary nav in footer
+			'main-nav' => __( 'The Main Menu', 'temperancetheme' ),
+			'footer-links' => __( 'Footer Links', 'temperancetheme' )
 		)
 	);
 }
 
 
-/*********************
-MENUS & NAVIGATION
-*********************/
+//
+// MENUS & NAVIGATION
+//
 
-// the main menu
+/**
+ * Main navigation menu for Temperance
+ *
+ * Registers a main menu
+ *
+ * @since 1.0
+ * @uses wp_nav_menu()
+ *
+ * @return voide
+ */
 function temperance_main_nav() {
-	// display the wp3 menu if available
-	wp_nav_menu(array(
-		'container' => false,                           // remove nav container
-		'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-		'menu' => __( 'The Main Menu', 'temperancetheme' ),  // nav name
-		'menu_class' => 'nav top-nav clearfix',         // adding custom nav class
-		'theme_location' => 'main-nav',                 // where it's located in the theme
-		'before' => '',                                 // before the menu
-		'after' => '',                                  // after the menu
-		'link_before' => '',                            // before each link
-		'link_after' => '',                             // after each link
-		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'temperance_main_nav_fallback'      // fallback function
-	));
-} /* end temperance main nav */
 
-// the footer menu (should you choose to use one)
+	wp_nav_menu(array(
+		'container' => false,
+		'container_class' => 'menu clearfix',
+		'menu' => __( 'The Main Menu', 'temperancetheme' ),
+		'menu_class' => 'nav top-nav clearfix',
+		'theme_location' => 'main-nav',
+		'before' => '',
+		'after' => '',
+		'link_before' => '',
+		'link_after' => '',
+		'depth' => 0,
+		'fallback_cb' => 'temperance_main_nav_fallback'
+	));
+}
+
+
+/**
+ * the footer menu (should you choose to use one)
+ *
+ * Registers a footer menu.
+ *
+ * @since 1.0
+ * @uses wp_nav_menu()
+ *
+ * @return void
+ */
 function temperance_footer_links() {
-	// display the wp3 menu if available
+ 
 	wp_nav_menu(array(
-		'container' => '',                              // remove nav container
-		'container_class' => 'footer-links clearfix',   // class of container (should you choose to use it)
-		'menu' => __( 'Footer Links', 'temperancetheme' ),   // nav name
-		'menu_class' => 'nav footer-nav clearfix',      // adding custom nav class
-		'theme_location' => 'footer-links',             // where it's located in the theme
-		'before' => '',                                 // before the menu
-		'after' => '',                                  // after the menu
-		'link_before' => '',                            // before each link
-		'link_after' => '',                             // after each link
-		'depth' => 0,                                   // limit the depth of the nav
-		'fallback_cb' => 'temperance_footer_links_fallback'  // fallback function
+		'container' => '',
+		'container_class' => 'footer-links clearfix',
+		'menu' => __( 'Footer Links', 'temperancetheme' ),
+		'menu_class' => 'nav footer-nav clearfix',
+		'theme_location' => 'footer-links',
+		'before' => '',
+		'after' => '',
+		'link_before' => '',
+		'link_after' => '',
+		'depth' => 0,
+		'fallback_cb' => 'temperance_footer_links_fallback'
 	));
-} /* end temperance footer link */
+}
 
-// this is the fallback for header menu
+
+/**
+ * this is the fallback for header menu
+ *
+ * @since 1.0
+ * @uses {wp_page_menu()}
+ *
+ * @return void
+ */
 function temperance_main_nav_fallback() {
 	wp_page_menu( array(
 		'show_home' => true,
-		'menu_class' => 'nav top-nav clearfix',      // adding custom nav class
+		'menu_class' => 'nav top-nav clearfix',
 		'include'     => '',
 		'exclude'     => '',
 		'echo'        => true,
-		'link_before' => '',                            // before each link
-		'link_after' => ''                             // after each link
+		'link_before' => '',
+		'link_after' => ''
 	) );
 }
 
-// this is the fallback for footer menu
+/**
+ * this is the fallback for footer menu
+ *
+ * This is intentionally blank. it's a placeholder. add what you like.
+ *
+ * @since 1.0
+ * @uses {wp_page_menu()}
+ *
+ * @return void
+ */
 function temperance_footer_links_fallback() {
 	/* you can put a default here if you like */
 }
 
-/*********************
-RELATED POSTS FUNCTION
-*********************/
+//
+// RELATED POSTS FUNCTION
+//
 
-// Related Posts Function (call using temperance_related_posts(); )
+/**
+ * Related Posts Function (call using temperance_related_posts(); )
+ *
+ * @since 1.0
+ *
+ * @global WP_Post $post it does something
+ *
+ * @return void
+ */
 function temperance_related_posts() {
 	echo '<ul id="temperance-related-posts">';
 	global $post;
@@ -365,13 +435,23 @@ function temperance_related_posts() {
 	}
 	wp_reset_query();
 	echo '</ul>';
-} /* end temperance related posts function */
+}
 
-/*********************
-PAGE NAVI
-*********************/
+//
+// PAGE NAVIGATION
+//
 
-// Numeric Page Navi (built into the theme by default)
+/**
+ * Display multi-page navigation 
+ *
+ * Use the WP_Query object to determine the number of items in page results
+ * and create page navigation if necessary
+ *
+ * @since 1.0
+ *
+ * @global WP_Query $query 
+ * @return void
+ */
 function temperance_page_navi() {
 	global $wp_query;
 	$bignum = 999999999;
@@ -393,25 +473,38 @@ function temperance_page_navi() {
 	) );
 
 	echo '</nav>';
-} /* end page navi */
+}
 
-/*********************
-RANDOM CLEANUP ITEMS
-*********************/
+//
+// RANDOM CLEANUP ITEMS
+//
 
-// remove the p from around imgs (http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/)
+/**
+ * remove the p tag from around images
+ *
+ * Content filter - examines the content for images wrapped in paragraph "p" 
+ * tags and removes the p tags. 
+ *
+ * @since 1.0
+ * @see http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/
+ *
+ * @param  string $content 
+ * @return type it does something
+ */
 function temperance_filter_ptags_on_images($content){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
 /**
-* Changes the text of the 'Read More' link
-*
-* Makes the link text more useful to search engines and screen readers.
-*
-* @param string $more
-* @return string
-*/
+ * Changes the text of the 'Read More' link to include title of content
+ *
+ * Makes the link text more useful to search engines and screen readers.
+ *
+ * @global object $post
+ *
+ * @param string $more
+ * @return string
+ */
 function temperance_excerpt_more($more) {
 	global $post;
 
@@ -428,10 +521,14 @@ function temperance_excerpt_more($more) {
 	return $more;
 }
 
-/*
+/**
  * This is a modified the_author_posts_link() which just returns the link.
  *
  * This is necessary to allow usage of the usual l10n process with printf().
+ *
+ * @global object $authordata
+ *
+ * @return string $link a formatted html anchor
  */
 function temperance_get_the_author_posts_link() {
 	global $authordata;
@@ -446,6 +543,7 @@ function temperance_get_the_author_posts_link() {
 		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ), // No further l10n needed, core will take care of this one
 		get_the_author()
 	);
+
 	return $link;
 }
 
