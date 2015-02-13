@@ -11,7 +11,7 @@
 				</header>
 
 				<section class="entry-content">
-					<p><?php _e( 'The article you were looking for was not found, but maybe try looking again!', 'temperancetheme' ); ?></p>
+					<p><?php _e( 'The content you were looking for was not found, but maybe try looking again!', 'temperancetheme' ); ?></p>
 				</section>
 
 				<section class="search">

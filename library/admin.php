@@ -74,11 +74,11 @@ function temperance_rss_dashboard_widget() {
 		$items = $feed->get_items(0, $limit);
 	}
 
-	if ($limit == 0) {
+	if ( 0 == $limit ) {
 		// fallback message
 		echo '<div>The RSS Feed is either empty or unavailable.</div>';
 	} else {
-		foreach ($items as $item) { ?>
+		foreach ( $items as $item ) { ?>
 			<h4 style="margin-bottom: 0;">
 				<a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
 					<?php echo $item->get_title(); ?>

@@ -123,7 +123,6 @@ function temperance_wp_title( $title, $sep, $seplocation ) {
  * @since 1.0
  * @uses {remove_action()}
  *
- * @param  type $name it does something
  * @return void
  */
 function temperance_head_cleanup() {
@@ -166,8 +165,9 @@ function temperance_head_cleanup() {
 
 // remove WP version from scripts
 function temperance_remove_wp_ver_css_js( $src ) {
-	if ( strpos( $src, 'ver=' ) )
+	if ( strpos( $src, 'ver=' ) ){
 		$src = remove_query_arg( 'ver', $src );
+	}
 	return $src;
 }
 
@@ -181,13 +181,13 @@ function temperance_remove_wp_widget_recent_comments_style() {
 // remove injected CSS from recent comments widget
 function temperance_remove_recent_comments_style() {
 	global $wp_widget_factory;
-	if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
+	if ( isset( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'] ) ) {
 		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
 	}
 }
 
 // remove injected CSS from gallery
-function temperance_gallery_style($css) {
+function temperance_gallery_style( $css ) {
 	return preg_replace( "!<style type='text/css'>(.*?)</style>!s", '', $css );
 }
 
@@ -199,7 +199,7 @@ SCRIPTS & ENQUEUEING
 // loading modernizr and jquery, and reply script
 function temperance_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
-	if (!is_admin()) {
+	if ( ! is_admin() ) {
 
 		// modernizr (without media query polyfill)
 		wp_register_script( 'temperance-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
@@ -211,7 +211,7 @@ function temperance_scripts_and_styles() {
 		wp_register_style( 'temperance-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
 		// comment reply script for threaded comments
-		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+		if ( is_singular() AND comments_open() AND ( get_option('thread_comments') == 1 ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
 
@@ -260,7 +260,7 @@ function temperance_theme_support() {
 	add_theme_support( 'post-thumbnails' );
 
 	// default thumb size
-	set_post_thumbnail_size(125, 125, true);
+	set_post_thumbnail_size( 125, 125, true );
 
 	// wp custom background (thx to @bransonwerner for update)
 	add_theme_support( 'custom-background',
@@ -320,7 +320,7 @@ function temperance_theme_support() {
  */
 function temperance_main_nav() {
 
-	wp_nav_menu(array(
+	wp_nav_menu( array(
 		'container' => false,
 		'container_class' => 'menu clearfix',
 		'menu' => __( 'The Main Menu', 'temperancetheme' ),
@@ -332,7 +332,7 @@ function temperance_main_nav() {
 		'link_after' => '',
 		'depth' => 0,
 		'fallback_cb' => 'temperance_main_nav_fallback'
-	));
+	) );
 }
 
 
@@ -348,7 +348,7 @@ function temperance_main_nav() {
  */
 function temperance_footer_links() {
  
-	wp_nav_menu(array(
+	wp_nav_menu( array(
 		'container' => '',
 		'container_class' => 'footer-links clearfix',
 		'menu' => __( 'Footer Links', 'temperancetheme' ),
@@ -360,7 +360,7 @@ function temperance_footer_links() {
 		'link_after' => '',
 		'depth' => 0,
 		'fallback_cb' => 'temperance_footer_links_fallback'
-	));
+	) );
 }
 
 
@@ -412,13 +412,16 @@ function temperance_footer_links_fallback() {
  * @return void
  */
 function temperance_related_posts() {
-	echo '<ul id="temperance-related-posts">';
 	global $post;
+
+	echo '<ul id="temperance-related-posts">';
+
 	$tags = wp_get_post_tags( $post->ID );
-	if($tags) {
+	if( $tags ) {
 		foreach( $tags as $tag ) {
 			$tag_arr .= $tag->slug . ',';
 		}
+
 		$args = array(
 			'tag' => $tag_arr,
 			'numberposts' => 5, /* you can change this to show more */
@@ -428,12 +431,14 @@ function temperance_related_posts() {
 		if($related_posts) {
 			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
 				<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
-			<?php endforeach; }
+			<?php endforeach; 
+		}
 		else { ?>
 			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'temperancetheme' ) . '</li>'; ?>
 		<?php }
 	}
 	wp_reset_query();
+
 	echo '</ul>';
 }
 
@@ -455,8 +460,9 @@ function temperance_related_posts() {
 function temperance_page_navi() {
 	global $wp_query;
 	$bignum = 999999999;
-	if ( $wp_query->max_num_pages <= 1 )
+	if ( $wp_query->max_num_pages <= 1 ){
 		return;
+	}
 	
 	echo '<nav class="pagination">';
 	
@@ -491,7 +497,7 @@ function temperance_page_navi() {
  * @param  string $content 
  * @return type it does something
  */
-function temperance_filter_ptags_on_images($content){
+function temperance_filter_ptags_on_images( $content ){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
@@ -505,11 +511,11 @@ function temperance_filter_ptags_on_images($content){
  * @param string $more
  * @return string
  */
-function temperance_excerpt_more($more) {
+function temperance_excerpt_more( $more ) {
 	global $post;
 
-	$url = get_permalink($post->ID);
-	$title = get_the_title($post->ID) ;
+	$url = get_permalink( $post->ID );
+	$title = get_the_title( $post->ID );
 	$span = ' <span class="visually-hidden">' . $title . '</span> ';
 	$a_text = _x( 'Read more &raquo;', ' use &laquo; for RTL languages like arabic ', 'temperancetheme' );
 	if ( is_rtl() ){
@@ -533,7 +539,7 @@ function temperance_excerpt_more($more) {
 function temperance_get_the_author_posts_link() {
 	global $authordata;
 
-	if ( !is_object( $authordata ) ) {
+	if ( ! is_object( $authordata ) ) {
 		return false;
 	}
 

@@ -19,7 +19,7 @@ if ( post_password_required() ) { ?>
 <?php // You can start editing here. ?>
 
 <?php if ( have_comments() ) : ?>
-	<h3 id="comments" class="h2"><?php comments_number( __( '<span>No</span> Responses', 'temperancetheme' ), __( '<span>One</span> Response', 'temperancetheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'temperancetheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
+	<h3 id="comments"><?php comments_number( __( '<span>No</span> Responses', 'temperancetheme' ), __( '<span>One</span> Response', 'temperancetheme' ), _n( '<span>%</span> Response', '<span>%</span> Responses', get_comments_number(), 'temperancetheme' ) );?> to &#8220;<?php the_title(); ?>&#8221;</h3>
 
 	<nav id="comment-nav">
 		<ul class="clearfix">
@@ -55,7 +55,7 @@ if ( post_password_required() ) { ?>
 
 	<section id="respond" class="respond-form">
 
-		<h3 id="comment-form-title" class="h2"><?php comment_form_title( __( 'Leave a Reply', 'temperancetheme' ), __( 'Leave a Reply to %s', 'temperancetheme' )); ?></h3>
+		<h3 id="comment-form-title"><?php comment_form_title( __( 'Leave a Reply', 'temperancetheme' ), __( 'Leave a Reply to %s', 'temperancetheme' )); ?></h3>
 
 		<div id="cancel-comment-reply">
 			<p class="small"><?php cancel_comment_reply_link(); ?></p>

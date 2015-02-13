@@ -12,6 +12,9 @@
 // if you remove this, temperance will break
 require_once( 'library/temperance.php' );
 
+// if you remove this, temperance will break
+require_once( 'library/classes/class-temperance-customizer.php' );
+
 /*
  * 2. library/custom-post-type.php
  * - an example custom post type
