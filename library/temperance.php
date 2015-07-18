@@ -39,7 +39,7 @@ function temperance_ahoy() {
 	add_action( 'init', 'temperance_head_cleanup' );
 
 	// remove WP version from RSS
-	add_filter( 'the_generator', __return_null );
+	add_filter( 'the_generator', '__return_null' );
 
 	// remove pesky injected css for recent comments widget
 	add_filter( 'wp_head', 'temperance_remove_wp_widget_recent_comments_style', 1 );
