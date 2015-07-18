@@ -126,6 +126,31 @@ a, a:visited {
 	}
 }
 
+a[href$=".pdf"]:after {
+    content: " (PDF)";
+}
+
+a[href$=".doc"]:after {
+    content: " (DOC)";
+}
+
+a[href$=".xls"]:after {
+    content: " (XLS)";
+}
+
+a[href$=".pdf"][data-size]:after {
+    content: " (PDF, " attr(data-size) ")";
+}
+
+a[href$=".doc"][data-size]:after {
+    content: " (DOC, " attr(data-size) ")";
+}
+
+a[href$=".xls"][data-size]:after {
+    content: " (XLS, " attr(data-size) ")";
+}
+
+
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
