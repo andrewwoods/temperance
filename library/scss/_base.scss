@@ -83,13 +83,16 @@ LAYOUT & GRID STYLES
 	width: 1px;
 }
 
+
+
+
 .hidden {
 	display: none;
 }
 
 .off-screen {
-	position:absolute; 
-	margin-left:-10000px; 
+	position:absolute;
+	margin-left:-10000px;
 	overflow:hidden;
 }
 
@@ -127,27 +130,27 @@ a, a:visited {
 }
 
 a[href$=".pdf"]:after {
-    content: " (PDF)";
+	content: " (PDF)";
 }
 
 a[href$=".doc"]:after {
-    content: " (DOC)";
+	content: " (DOC)";
 }
 
 a[href$=".xls"]:after {
-    content: " (XLS)";
+	content: " (XLS)";
 }
 
 a[href$=".pdf"][data-size]:after {
-    content: " (PDF, " attr(data-size) ")";
+	content: " (PDF, " attr(data-size) ")";
 }
 
 a[href$=".doc"][data-size]:after {
-    content: " (DOC, " attr(data-size) ")";
+	content: " (DOC, " attr(data-size) ")";
 }
 
 a[href$=".xls"][data-size]:after {
-    content: " (XLS, " attr(data-size) ")";
+	content: " (XLS, " attr(data-size) ")";
 }
 
 
@@ -485,39 +488,39 @@ PAGE NAVI STYLES
 	margin: 1.1em 0 2.2em;
 }
 	.pagination{
-        text-align: center;
-        ul {
-            display: inline-block;
-            white-space: nowrap;
-            padding:0;
-            clear: both;
-            margin: 1px;
-            li {
-                padding: 0;
-                margin: 0;
-                float: left;
-                display: inline;
-                overflow: hidden;
-                a, span {
-                    margin: 0;
-                    text-decoration: none;
-                    padding: 0;
-                    line-height: 1em;
-                    font-size: 1em;
-                    font-weight: normal;
-                    padding: .5em;
-                    min-width: 1em;
-                    display: block;
-                }
-                span.current{
-                	font-weight: bold;
-                }
-                a:hover, a:focus {
-                    
-                }
-            }
-        }
-    } /* end .bones_page_navi */
+		text-align: center;
+		ul {
+			display: inline-block;
+			white-space: nowrap;
+			padding:0;
+			clear: both;
+			margin: 1px;
+			li {
+				padding: 0;
+				margin: 0;
+				float: left;
+				display: inline;
+				overflow: hidden;
+				a, span {
+					margin: 0;
+					text-decoration: none;
+					padding: 0;
+					line-height: 1em;
+					font-size: 1em;
+					font-weight: normal;
+					padding: .5em;
+					min-width: 1em;
+					display: block;
+				}
+				span.current{
+					font-weight: bold;
+				}
+				a:hover, a:focus {
+
+				}
+			}
+		}
+	} /* end .bones_page_navi */
 
 	/* fallback previous & next links */
 	.wp-prev-next {
