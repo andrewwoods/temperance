@@ -40,92 +40,9 @@ TOOLS
 }
 
 
-
-/*********************
-SPACING
-*********************/
-$spacing-small: 0.5em;
-$spacing-medium: 1em;
-$spacing-large: 2em;
-
-
-$margin-tiny:   $spacing-small/2;
-$margin-small:  $spacing-small;
-$margin-medium: $spacing-medium;
-$margin-large:  $spacing-large;
-
-$padding-tiny:   $spacing-small/2;
-$padding-small:  $spacing-small;
-$padding-medium: $spacing-medium;
-$padding-large:  $spacing-large;
-
-
-
-
-/*********************
-COLORS
-Need help w/ choosing your colors? Try this site out:
-http://0to255.com/
-*********************/
-
-$alert-yellow-bg:      #fcf999;
-$alert-yellow-border:  #f2d520;
-$alert-red-bg:         #f4979b;
-$alert-red-border:     #b41a20;
-$alert-green-bg:       #9ef1a0;
-$alert-green-border:   #1ab420;
-$alert-blue-bg:        #00b2ff;
-$alert-blue-border:    #1a20b4;
-
-$black:             #000000;
-$white:             #ffffff;
-
-$temperance-orange:     #f16c00;
-$temperance-peach:      #ff9947;
-$temperance-navy:       #003366;
-$temperance-sky:        #3399FF;
-
-
-
-$gray90: #e5e5e5;
-$grey90: $gray90;
-$gray80: #cccccc;
-$grey80: $gray80;
-$gray70: #b2b2b2;
-$grey70: $gray70;
-$gray60: #999999;
-$grey60: $gray60;
-$gray50: #7f7f7f;
-$grey50: $gray50;
-$gray40: #666666;
-$grey40: $gray40;
-$gray30: #4c4c4c;
-$grey30: $gray30;
-$gray20: #333333;
-$grey20: $gray20;
-$gray10: #191919;
-$grey10: $gray10;
-
-
-$link-color: $temperance-peach;
-$link-hover: $temperance-orange;
-$text-color: $grey10;
-
-
-/*
-Here's a great tutorial on how to
-use color variables properly:
-http://sachagreif.com/sass-color-variables/
-*/
-
-
 /*********************
 TYPOGRAPHY
 *********************/
-
-$sans-serif:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serif:             "Georgia", Cambria, Times New Roman, Times, serif;
-
 
 /* 	To embed your own fonts, use this syntax
 	and place your fonts inside the
