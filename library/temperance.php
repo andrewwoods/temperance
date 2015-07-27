@@ -14,12 +14,14 @@
  * - customizing the post excerpt
  * - custom google+ integration
  * - adding custom fields to user profiles
- * 
+ *
  * @package Temperance
  * @subpackage Subpackage name
  * @author firstname lastname <user@host.com>
  */
 
+require_once "admin/admin.php";
+require_once "admin/dashboard-widgets.php";
 
 add_action( 'after_setup_theme', 'temperance_ahoy', 16 );
 add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
