@@ -11,6 +11,16 @@
  */
 
 
+//~~~~~~~~~~~~ ACTIONS AND FILTERS ~~~~~~~~~~~~~~~~~~
+
+
+// calling it only on the login page
+add_action( 'login_enqueue_scripts', 'temperance_login_css', 10 );
+add_filter( 'login_headerurl', 'temperance_login_url' );
+add_filter( 'login_headertitle', 'temperance_login_title' );
+
+// adding it to the admin area
+add_filter( 'admin_footer_text', 'temperance_custom_admin_footer' );
 
 //~~~~~~~~~~~~ CUSTOM LOGIN PAGE ~~~~~~~~~~~~~~~~~~
 
@@ -53,11 +63,6 @@ function temperance_login_title() {
 	return get_option( 'blogname' );
 }
 
-// calling it only on the login page
-add_action( 'login_enqueue_scripts', 'temperance_login_css', 10 );
-add_filter( 'login_headerurl', 'temperance_login_url' );
-add_filter( 'login_headertitle', 'temperance_login_title' );
-
 
 //~~~~~~~~~~~~ CUSTOMIZE ADMIN ~~~~~~~~~~~~~~~~~~~~
 
@@ -72,6 +77,5 @@ function temperance_custom_admin_footer() {
 	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>.', 'temperancetheme' );
 }
 
-// adding it to the admin area
-add_filter( 'admin_footer_text', 'temperance_custom_admin_footer' );
+
 

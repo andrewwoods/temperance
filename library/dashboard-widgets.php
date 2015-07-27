@@ -11,6 +11,13 @@
 
 
 
+// removing the dashboard widgets
+add_action( 'admin_menu', 'disable_default_dashboard_widgets' );
+
+// adding any custom widgets
+add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
+
+
 
 /**
  * disable default dashboard widgets
@@ -110,11 +117,4 @@ function temperance_rss_dashboard_widget() {
 		}
 	}
 }
-
-
-// removing the dashboard widgets
-add_action( 'admin_menu', 'disable_default_dashboard_widgets' );
-
-// adding any custom widgets
-add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
 
