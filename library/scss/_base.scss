@@ -11,6 +11,10 @@ and will be used across all viewports.
 
 ******************************************************************/
 
+$link-color: #0000ff;
+$link-hover: #ff0000;
+
+
 /*********************
 GENERAL STYLES
 *********************/
@@ -67,10 +71,6 @@ style a page via class
 LAYOUT & GRID STYLES
 *********************/
 
-.wrap {
-	width: 96%;
-	margin: 0 auto;
-}
 
 .visually-hidden {
 	border: 0;

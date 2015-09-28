@@ -1,6 +1,6 @@
 /******************************************************************
-Site Name: 
-Author: 
+Site Name:
+Author:
 
 Stylesheet: IE Stylesheet
 
@@ -13,21 +13,15 @@ without the media queries. No need to worry about editing anything!
 
 /*
 Remember, all the BASE styles are called already since IE can
-read those. Below, we need to import only the stuff IE can't 
+read those. Below, we need to import only the stuff IE can't
 understand (what's inside the media queries). We also need to
 import the mixins file so SASS can understand the variables.
 */
 
-/* import mixins */
-@import "mixins";
 
-@import "grid";
-@import "481up";
-@import "768up";
-@import "1030up";
 
-/* 
-you can call the larger styles if you want, but there's really no need 
+/*
+you can call the larger styles if you want, but there's really no need
 */
 
 

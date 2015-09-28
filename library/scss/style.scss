@@ -4,62 +4,73 @@
 //
 // Stylesheet: Main Stylesheet
 //
-// Here's where the magic happens. Here, you'll see we are calling in
-// the separate media queries. The base mobile goes outside any query
-// and is called at the beginning, after that we call the rest
-// of the styles inside media queries.
-//------------------------------------------------------------------------------
-
-
+// Here's where the magic happens. We decide what gets used and what doesn't.
 //
-// IMPORTING STYLES
-//
-@import "normalize";
 @import "settings"; // Colors, Spacing, Fonts
 @import "mixins";
+@import "normalize";
 
 
+//------------------------------------------------------------------------------
 //
-// BASE (MOBILE) SIZE
+// BASE (UNIVERSAL) STYLES
 //
-// This are the mobile styles. It's what people see on their phones. If
-// you set a great foundation, you won't need to add too many styles in
-// the other stylesheets. Remember, keep it light: Speed is Important.
+// This are the universal styles. These are shared across all clients and browsers.
+// If you set define a solid foundation, you won't need to add too many styles
+// in the other stylesheets. Remember, keep it light: Speed is Important.
 //
 @import "base";
 
 
+//------------------------------------------------------------------------------
 //
-// RETINA (2x RESOLUTION DEVICES)
+// STATE MANAGEMENT
 //
-// This applies to the retina iPhone (4s) and iPad (2,3) along with
-// other displays with a 2x resolution. You can also create a media
-// query for retina AND a certain size if you want. Go Nuts.
+// State refers to changing the condition of information on the page.
 //
-//@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-//	only screen and (min--moz-device-pixel-ratio: 1.5),
-//	only screen and (min-device-pixel-ratio: 1.5) {
-//
-	// Import a new  stylesheet
-//}
+@import "state";
 
-//
-// iPHONE 5 MEDIA QUERY
-//
-// Want to get fancy for no good reason? Knock yourself out.
-//
-//@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
-	// iPhone 5 or iPod Touch 5th generation styles
-	// (you can include your own file if you want)
-//}
 
-/*
-PRINT STYLESHEET
+//------------------------------------------------------------------------------
+//
+// MODULES
+//
+// There can be multiple modules. These are the type of things that would be
+// Molecules or Organisms in Brad Frost's Atomic Design methodology.
+// To keep things simple, create one file per module. Here are some ideas that
+// you might want to make a module for:
+//
+// * Animations
+// * Dialogs
+// * Icons
+// * Navigation
+// * Overlays
+// * Sidebars
+// * Typography
+// * Widgets
+//
+@import "module-buttons";
+@import "module-forms";
 
-Feel free to customize this. Remember to add things that won't make
-sense to print at the bottom. Things like nav, ads, and forms should
-be set to display none.
-*/
+
+//------------------------------------------------------------------------------
+//
+// THEME
+//
+// This is where you a define your layout grid, media queries, and all your
+// progressively enhanced goodness.
+//
+@import "theme";
+
+
+//------------------------------------------------------------------------------
+//
+// PRINT STYLESHEET
+//
+// Feel free to customize this. Remember to add things that won't make
+// sense to print at the bottom. Things like nav, ads, and forms should
+// be set to display none.
+//
 @media print {
 	@import "print";
 }
