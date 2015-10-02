@@ -31,41 +31,41 @@ WORDPRESS BODY CLASSES
 style a page via class
 ********************/
 
-.rtl {}                           /* for sites that are read right to left (i.e. hebrew) */
-.home {}                          /* home page */
-.blog {}                          /* blog template page */
-.archive {}                       /* archive page */
-.date {}                          /* date archive page */
-	.date-paged-1 {}                /* replace the number to the corresponding page number */
-.search {}                        /* search page */
-	.search-results {}              /* search result page */
-	.search-no-results {}           /* no results search page */
-	.search-paged-1 {}              /* individual paged search (i.e. body.search-paged-3) */
-.error404 {}                      /* 404 page */
-.single {}                        /* single post page */
-	.postid-1 {}                    /* individual post page by id (i.e. body.postid-73) */
-	.single-paged-1 {}              /* individual paged single (i.e. body.single-paged-3) */
-.attachment {}                    /* attatchment page */
-	.attachmentid-1 {}              /* individual attatchment page (i.e. body.attachmentid-763) */
-	.attachment-mime-type {}        /* style mime type pages */
-.author {}                        /* author page */
-	.author-nicename {}             /* user nicename (i.e. body.author-samueladams) */
-	.author-paged-1 {}              /* paged author archives (i.e. body.author-paged-4) for page 4 */
-.category {}                      /* category page */
-	.category-1 {}                  /* individual category page (i.e. body.category-6) */
-	.category-paged-1 {}            /* replace the number to the corresponding page number */
-.tag {}                           /* tag page */
-	.tag-slug {}                    /* individual tag page (i.e. body.tag-news) */
-	.tag-paged-1 {}                 /* replace the number to the corresponding page number */
-.page-template {}                 /* custom page template page */
-	.page-template-page-php {}      /* individual page template (i.e. body.page-template-contact-php */
-	.page-paged-1 {}                /* replace the number to the corresponding page number */
-	.page-parent {}                 /* parent page template */
-	.page-child {}                  /* child page template */
-	.parent-pageid-1 {}             /* replace the number to the corresponding page number */
-.logged-in {}                     /* if user is logged in */
-.paged {}                         /* paged items like search results or archives */
-	.paged-1 {}                     /* individual paged (i.e. body.paged-3) */
+.rtl {}                      // for sites that are read right to left (i.e. hebrew)
+.home {}                     // home page
+.blog {}                     // blog template page
+.archive {}                  // archive page
+.date {}                     // date archive page
+.date-paged-1 {}             // replace the number to the corresponding page number
+.search {}                   // search page
+.search-results {}           // search result page
+.search-no-results {}        // no results search page
+.search-paged-1 {}           // individual paged search (i.e. body.search-paged-3)
+.error404 {}                 // 404 page
+.single {}                   // single post page
+.postid-1 {}                 // individual post page by id (i.e. body.postid-73)
+.single-paged-1 {}           // individual paged single (i.e. body.single-paged-3)
+.attachment {}               // attatchment page
+.attachmentid-1 {}           // individual attatchment page (i.e. body.attachmentid-763)
+.attachment-mime-type {}     // style mime type pages
+.author {}                   // author page
+.author-nicename {}          // user nicename (i.e. body.author-samueladams)
+.author-paged-1 {}           // paged author archives (i.e. body.author-paged-4) for page 4
+.category {}                 // category page
+.category-1 {}               // individual category page (i.e. body.category-6)
+.category-paged-1 {}         // replace the number to the corresponding page number 
+.tag {}                      // tag page
+.tag-slug {}                 // individual tag page (i.e. body.tag-news) */
+.tag-paged-1 {}              // replace the number to the corresponding page number
+.page-template {}            // custom page template page
+.page-template-page-php {}   // individual page template (i.e. body.page-template-contact-php
+.page-paged-1 {}             // replace the number to the corresponding page number
+.page-parent {}              // parent page template
+.page-child {}               // child page template
+.parent-pageid-1 {}          // replace the number to the corresponding page number
+.logged-in {}                // if user is logged in
+.paged {}                    // paged items like search results or archives
+.paged-1 {}                  // individual paged (i.e. body.paged-3)
 
 /*********************
 LAYOUT & GRID STYLES
@@ -206,7 +206,7 @@ HEADER STYLES
 
 .header {}
 
-	#logo {}
+#logo {}
 
 /*********************
 NAVIGATION STYLES
@@ -328,156 +328,156 @@ POSTS & CONTENT STYLES
 	margin-top: 2.2em;
 }
 
-		.hentry {
+.hentry {
 
-			header {}
+	header {}
 
-			footer {}
+	footer {}
 
-		} /* end .hentry */
+} /* end .hentry */
 
-		.single-title,
-		.page-title {}
+.single-title,
+.page-title {}
 
-		.single-title {}
+.single-title {}
 
-		.page-title {}
+.page-title {}
 
-		.archive-title { }
+.archive-title { }
 
-		/* want to style individual post classes? Booya! */
-		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
-		.page {}            /* general article on a page style */
-		.attachment {}      /* general style on an attatchment */
-		.sticky {}          /* sticky post style */
-		.hentry {}          /* hentry class */
-		.category-slug {}   /* style by category (i.e. category-videos) */
-		.tag-slug {}        /* style by tag (i.e. tag-news) */
+// want to style individual post classes? Booya!
+.post-id {}         // post by id (i.e. post-3)
+.post {}            // general post style
+.page {}            // general article on a page style
+.attachment {}      // general style on an attatchment
+.sticky {}          // sticky post style
+.hentry {}          // hentry class
+.category-slug {}   // style by category (i.e. category-videos)
+.tag-slug {}        // style by tag (i.e. tag-news)
 
-		/* post meta */
-		.byline {
-			color: #999;
+/* post meta */
+.byline {
+	color: #999;
 
-			time {}
-		}
+	time {}
+}
 
-		/* entry content */
-		.entry-content {
+/* entry content */
+.entry-content {
 
-			p {}
+	p {}
 
 
-			ul, ol, table, dl {}
+	ul, ol, table, dl {}
 
-			ul, ol {
+	ul, ol {
 
-				li {}
+		li {}
 
-			}
+	}
 
-			ul {
+	ul {
 
-				li {}
+		li {}
 
-			}
+	}
 
-			ol {
+	ol {
 
-				li {}
+		li {}
 
-			}
+	}
 
-			blockquote {
+	blockquote {
 
-				&:before {}
+		&:before {}
 
-			}
+	}
 
-			dl {}
+	dl {}
 
-			dt {}
+	dt {}
 
-			dd {
-				margin-left: 0;
-				font-size: 0.9em;
-				color: #787878;
-				margin-bottom: 1.5em;
-			}
+	dd {
+		margin-left: 0;
+		font-size: 0.9em;
+		color: #787878;
+		margin-bottom: 1.5em;
+	}
 
-			img {
-				margin: 0 0 1.5em 0;
-				max-width: 100%;
-				height: auto;
-			}
+	img {
+		margin: 0 0 1.5em 0;
+		max-width: 100%;
+		height: auto;
+	}
 
-			/*
-			image alignment on a screen this size may be
-			a bit difficult. It's set to start aligning
-			and floating images at the next breakpoint,
-			but it's up to you. Feel free to change it up.
-			*/
-			.alignleft, img.alignleft {}
-			.alignright, img.alignright {}
-			.aligncenter, img.aligncenter {}
+	//
+	// image alignment on a screen this size may be
+	// a bit difficult. It's set to start aligning
+	// and floating images at the next breakpoint,
+	// but it's up to you. Feel free to change it up.
+	//
+	.alignleft, img.alignleft {}
+	.alignright, img.alignright {}
+	.aligncenter, img.aligncenter {}
 
-			video, object {
-				max-width: 100%;
-				height: auto;
-			}
+	video, object {
+		max-width: 100%;
+		height: auto;
+	}
 
-			pre {
-				background: #eee;
-				border: 1px solid #cecece;
-				padding: 10px;
-			}
+	pre {
+		background: #eee;
+		border: 1px solid #cecece;
+		padding: 10px;
+	}
 
-		} /* end .entry-content */
+}
 
-		.wp-caption {
-			max-width: 100%;
-			background: #eee;
-			padding: 5px;
+.wp-caption {
+	max-width: 100%;
+	background: #eee;
+	padding: 5px;
 
-			/* images inside wp-caption */
-			img {
-				max-width: 100%;
-				margin-bottom: 0;
-				width: 100%;
-			}
+	/* images inside wp-caption */
+	img {
+		max-width: 100%;
+		margin-bottom: 0;
+		width: 100%;
+	}
 
-			p.wp-caption-text {
-				font-size: 0.85em;
-				margin: 4px 0 7px;
-				text-align: center;
-			}
+	p.wp-caption-text {
+		font-size: 0.85em;
+		margin: 4px 0 7px;
+		text-align: center;
+	}
 
-		} /* end .wp-caption */
+}
 
-		/* image gallery styles */
-		.gallery {
+/* image gallery styles */
+.gallery {
 
-			dl {
+	dl {
 
-				a {}
+		a {}
 
-				img {}
+		img {}
 
-			}
+	}
 
-			dt {}
+	dt {}
 
-			dd {}
+	dd {}
 
-		} /* end .gallery */
+}
 
-		/* gallery caption styles */
-		.gallery-caption {}
+/* gallery caption styles */
+.gallery-caption {}
 
-		.size-full {}
-		.size-large {}
-		.size-medium {}
-		.size-thumbnail {}
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
 
 /******************************************************************
 PAGE NAVI STYLES
@@ -487,64 +487,70 @@ PAGE NAVI STYLES
 .wp-prev-next {
 	margin: 1.1em 0 2.2em;
 }
-	.pagination{
-		text-align: center;
-		ul {
-			display: inline-block;
-			white-space: nowrap;
-			padding:0;
-			clear: both;
-			margin: 1px;
-			li {
-				padding: 0;
-				margin: 0;
-				float: left;
-				display: inline;
-				overflow: hidden;
-				a, span {
-					margin: 0;
-					text-decoration: none;
-					padding: 0;
-					line-height: 1em;
-					font-size: 1em;
-					font-weight: normal;
-					padding: .5em;
-					min-width: 1em;
-					display: block;
-				}
-				span.current{
-					font-weight: bold;
-				}
-				a:hover, a:focus {
 
-				}
-			}
-		}
-	} /* end .bones_page_navi */
+.pagination{
+	text-align: center;
 
-	/* fallback previous & next links */
-	.wp-prev-next {
+	ul {
+		display: inline-block;
+		white-space: nowrap;
+		padding:0;
+		clear: both;
+		margin: 1px;
+	}
 
-		ul {}
+	li {
+		padding: 0;
+		margin: 0;
+		float: left;
+		display: inline;
+		overflow: hidden;
+	}
 
-		.prev-link {
-			float: left;
-		}
+	a, span {
+		margin: 0;
+		text-decoration: none;
+		padding: 0;
+		line-height: 1em;
+		font-size: 1em;
+		font-weight: normal;
+		padding: .5em;
+		min-width: 1em;
+		display: block;
+	}
 
-		.next-link {
-			float: right;
-		}
+	span.current{
+		font-weight: bold;
+	}
 
-	} /* end .wp-prev-next */
+	a:hover, a:focus {
+
+	}
+
+}
+
+/* fallback previous & next links */
+.wp-prev-next {
+
+	ul {}
+
+	.prev-link {
+		float: left;
+	}
+
+	.next-link {
+		float: right;
+	}
+
+}
 
 /******************************************************************
 COMMENT STYLES
 ******************************************************************/
 
-/* h3 comment title */
+
 #comments {
 
-	/* number of comments span */
 	span {}
 
 }
@@ -583,12 +589,12 @@ COMMENT STYLES
 			.alt {}
 			.odd {}
 			.even {}
-			.depth-1 {}           /* change number for different depth */
+			.depth-1 {}           // change number for different depth
 			.byuser {}
 			.bypostauthor {}
 			.comment-author-admin {}
 
-		} /* end .commentlist li ul.children */
+		}
 	}
 
 	li[class*=depth-] {
@@ -668,7 +674,7 @@ COMMENT STYLES
 			background: #fff;
 		}
 
-	} /* end .commentlist .vcard */
+	}
 
 
 	/* comment meta */
@@ -694,7 +700,7 @@ COMMENT STYLES
 			line-height: 1.5em;
 		}
 
-	} /* end .commentlist .comment_content */
+	}
 
 	/* comment reply link */
 	.comment-reply-link {
@@ -713,9 +719,9 @@ COMMENT STYLES
 			opacity: 1;
 		}
 
-	} /* end .commentlist .comment-reply-link */
+	}
 
-} /* end .commentlist */
+}
 
 /******************************************************************
 COMMENT FORM STYLES
@@ -728,79 +734,80 @@ COMMENT FORM STYLES
 	form {
 		margin: 0.75em 0;
 
-		li {
-			list-style-type: none;
-			clear: both;
-			margin-bottom: 0.7335em;
+	}
 
-		}
-
-		input[type=text],
-		input[type=email],
-		input[type=url],
-		textarea {
-			padding: 3px 6px;
-			background: #efefef;
-			border: 2px solid #cecece;
-			line-height: 1.5em;
-
-			&:focus {
-				background: #fff;
-			}
-
-			/* form validation */
-			&:invalid {
-				outline: none;
-				border-color: #fbc2c4;
-				background-color: #f6e7eb;
-				-webkit-box-shadow: none;
-				   -moz-box-shadow: none;
-				    -ms-box-shadow: none;
-						box-shadow: none;
-			}
-		}
-
-		input[type=text],
-		input[type=email],
-		input[type=url] {
-			max-width: 400px;
-			min-width: 250px;
-		}
-
-		textarea {
-			resize: none;
-			width: 97.3%;
-			height: 150px;
-		}
+	li {
+		list-style-type: none;
+		clear: both;
+		margin-bottom: 0.7335em;
 
 	}
+
+	input[type=text],
+	input[type=email],
+	input[type=url],
+	textarea {
+		padding: 3px 6px;
+		background: #efefef;
+		border: 2px solid #cecece;
+		line-height: 1.5em;
+
+		&:focus {
+			background: #fff;
+		}
+
+		/* form validation */
+		&:invalid {
+			outline: none;
+			border-color: #fbc2c4;
+			background-color: #f6e7eb;
+			-webkit-box-shadow: none;
+			   -moz-box-shadow: none;
+				-ms-box-shadow: none;
+					box-shadow: none;
+		}
+	}
+
+	input[type=text],
+	input[type=email],
+	input[type=url] {
+		max-width: 400px;
+		min-width: 250px;
+	}
+
+	textarea {
+		resize: none;
+		width: 97.3%;
+		height: 150px;
+	}
+
 }
 
-	/* comment submit button */
-	#submit {}
+/* comment submit button */
+#submit {}
 
-	/* comment form title */
-	#comment-form-title {
-		margin: 0 0 1.1em;
-	}
+/* comment form title */
+#comment-form-title {
+	margin: 0 0 1.1em;
+}
 
-	/* cancel comment reply link */
-	#cancel-comment-reply {
-		a {}
-	}
+/* cancel comment reply link */
+#cancel-comment-reply {
+	a {}
+}
 
-	/* logged in comments */
-	.comments-logged-in-as {}
+/* logged in comments */
+.comments-logged-in-as {}
 
-	/* allowed tags */
-	#allowed_tags {
-		margin: 1.5em 10px 0.7335em 0;
-	}
+/* allowed tags */
+#allowed_tags {
+	margin: 1.5em 10px 0.7335em 0;
+}
 
-	/* no comments */
-	.nocomments {
-		margin: 0 20px 1.1em;
-	}
+/* no comments */
+.nocomments {
+	margin: 0 20px 1.1em;
+}
 
 /*********************
 SIDEBARS & ASIDES
@@ -808,28 +815,24 @@ SIDEBARS & ASIDES
 
 .sidebar {}
 
-	.widgettitle {}
+.widgettitle {}
 
-	.widget {
+.widget {
 
-		ul {
+	ul {}
 
-			li {
+	li {
 
-				&:first-child {}
+		&:first-child {}
 
-				&:last-child {}
+		&:last-child {}
 
-				a {}
-
-				/* deep nesting */
-				ul {}
-
-			}
-
-		}
-
+		/* deep nesting */
+		ul {}
 	}
+
+	a {}
+}
 
 /*********************
 FOOTER STYLES
@@ -839,25 +842,23 @@ FOOTER STYLES
 	clear: both;
 }
 
-	/*
-	if you checked out the link above:
-	http://www.alistapart.com/articles/organizing-mobile/
-	you'll want to style the footer nav
-	a bit more in-depth. Remember to keep
-	it simple because you'll have to
-	override these styles for the desktop
-	view.
-	*/
-	.footer-links {
+//
+// if you checked out the link above:
+// http://www.alistapart.com/articles/organizing-mobile/
+// you'll want to style the footer nav
+// a bit more in-depth. Remember to keep
+// it simple because you'll have to
+// override these styles for the desktop
+// view.
+//
+.footer-links {
 
-		ul {
+	ul {}
 
-			li {}
+	li {}
 
-		}
-
-	} /* end .footer-links */
+}
 
 
-	.copyright {}
+.copyright {}
 

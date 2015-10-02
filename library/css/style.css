@@ -541,41 +541,6 @@ body {
 WORDPRESS BODY CLASSES
 style a page via class
 ********************/
-/* for sites that are read right to left (i.e. hebrew) */
-/* home page */
-/* blog template page */
-/* archive page */
-/* date archive page */
-/* replace the number to the corresponding page number */
-/* search page */
-/* search result page */
-/* no results search page */
-/* individual paged search (i.e. body.search-paged-3) */
-/* 404 page */
-/* single post page */
-/* individual post page by id (i.e. body.postid-73) */
-/* individual paged single (i.e. body.single-paged-3) */
-/* attatchment page */
-/* individual attatchment page (i.e. body.attachmentid-763) */
-/* style mime type pages */
-/* author page */
-/* user nicename (i.e. body.author-samueladams) */
-/* paged author archives (i.e. body.author-paged-4) for page 4 */
-/* category page */
-/* individual category page (i.e. body.category-6) */
-/* replace the number to the corresponding page number */
-/* tag page */
-/* individual tag page (i.e. body.tag-news) */
-/* replace the number to the corresponding page number */
-/* custom page template page */
-/* individual page template (i.e. body.page-template-contact-php */
-/* replace the number to the corresponding page number */
-/* parent page template */
-/* child page template */
-/* replace the number to the corresponding page number */
-/* if user is logged in */
-/* paged items like search results or archives */
-/* individual paged (i.e. body.paged-3) */
 /*********************
 LAYOUT & GRID STYLES
 *********************/
@@ -797,15 +762,6 @@ POSTS & CONTENT STYLES
 }
 
 /* end .hentry */
-/* want to style individual post classes? Booya! */
-/* post by id (i.e. post-3) */
-/* general post style */
-/* general article on a page style */
-/* general style on an attatchment */
-/* sticky post style */
-/* hentry class */
-/* style by category (i.e. category-videos) */
-/* style by tag (i.e. tag-news) */
 /* post meta */
 /* line 359, ../scss/_base.scss */
 .byline {
@@ -813,15 +769,6 @@ POSTS & CONTENT STYLES
 }
 
 /* entry content */
-/* line 366, ../scss/_base.scss */
-.entry-content {
-  /*
-  image alignment on a screen this size may be
-  a bit difficult. It's set to start aligning
-  and floating images at the next breakpoint,
-  but it's up to you. Feel free to change it up.
-  */
-}
 /* line 401, ../scss/_base.scss */
 .entry-content dd {
   margin-left: 0;
@@ -847,7 +794,6 @@ POSTS & CONTENT STYLES
   padding: 10px;
 }
 
-/* end .entry-content */
 /* line 437, ../scss/_base.scss */
 .wp-caption {
   max-width: 100%;
@@ -868,9 +814,7 @@ POSTS & CONTENT STYLES
   text-align: center;
 }
 
-/* end .wp-caption */
 /* image gallery styles */
-/* end .gallery */
 /* gallery caption styles */
 /******************************************************************
 PAGE NAVI STYLES
@@ -881,11 +825,11 @@ PAGE NAVI STYLES
   margin: 1.1em 0 2.2em;
 }
 
-/* line 490, ../scss/_base.scss */
+/* line 491, ../scss/_base.scss */
 .pagination {
   text-align: center;
 }
-/* line 492, ../scss/_base.scss */
+/* line 494, ../scss/_base.scss */
 .pagination ul {
   display: inline-block;
   white-space: nowrap;
@@ -893,16 +837,16 @@ PAGE NAVI STYLES
   clear: both;
   margin: 1px;
 }
-/* line 498, ../scss/_base.scss */
-.pagination ul li {
+/* line 502, ../scss/_base.scss */
+.pagination li {
   padding: 0;
   margin: 0;
   float: left;
   display: inline;
   overflow: hidden;
 }
-/* line 504, ../scss/_base.scss */
-.pagination ul li a, .pagination ul li span {
+/* line 510, ../scss/_base.scss */
+.pagination a, .pagination span {
   margin: 0;
   text-decoration: none;
   padding: 0;
@@ -913,44 +857,33 @@ PAGE NAVI STYLES
   min-width: 1em;
   display: block;
 }
-/* line 515, ../scss/_base.scss */
-.pagination ul li span.current {
+/* line 522, ../scss/_base.scss */
+.pagination span.current {
   font-weight: bold;
 }
 
-/* end .bones_page_navi */
 /* fallback previous & next links */
-/* line 530, ../scss/_base.scss */
+/* line 537, ../scss/_base.scss */
 .wp-prev-next .prev-link {
   float: left;
 }
-/* line 534, ../scss/_base.scss */
+/* line 541, ../scss/_base.scss */
 .wp-prev-next .next-link {
   float: right;
 }
 
-/* end .wp-prev-next */
 /******************************************************************
 COMMENT STYLES
 ******************************************************************/
-/* h3 comment title */
-/* line 545, ../scss/_base.scss */
-#comments {
-  /* number of comments span */
-}
-
-/* line 562, ../scss/_base.scss */
+/* line 568, ../scss/_base.scss */
 .commentlist {
   /* general comment classes */
   /* vcard */
-  /* end .commentlist .vcard */
   /* comment meta */
   /* comment content */
-  /* end .commentlist .comment_content */
   /* comment reply link */
-  /* end .commentlist .comment-reply-link */
 }
-/* line 564, ../scss/_base.scss */
+/* line 570, ../scss/_base.scss */
 .commentlist li {
   position: relative;
   clear: both;
@@ -958,65 +891,63 @@ COMMENT STYLES
   list-style-type: none;
   margin-bottom: 1.5em;
   padding: 0.7335em 10px;
-  /* end .commentlist li ul.children */
 }
-/* line 572, ../scss/_base.scss */
+/* line 578, ../scss/_base.scss */
 .commentlist li:last-child {
   margin-bottom: 0;
 }
-/* line 576, ../scss/_base.scss */
+/* line 582, ../scss/_base.scss */
 .commentlist li ul.children {
   margin: 0;
   /* variations */
-  /* change number for different depth */
 }
-/* line 594, ../scss/_base.scss */
+/* line 600, ../scss/_base.scss */
 .commentlist li[class*=depth-] {
   margin-top: 1.1em;
 }
-/* line 598, ../scss/_base.scss */
+/* line 604, ../scss/_base.scss */
 .commentlist li.depth-1 {
   margin-left: 0;
   margin-top: 0;
 }
-/* line 603, ../scss/_base.scss */
+/* line 609, ../scss/_base.scss */
 .commentlist li:not(.depth-1) {
   margin-right: -10px;
   margin-left: -10px;
   margin-top: 0;
   padding-bottom: 0;
 }
-/* line 617, ../scss/_base.scss */
+/* line 623, ../scss/_base.scss */
 .commentlist .odd {
   background: #eee;
 }
-/* line 620, ../scss/_base.scss */
+/* line 626, ../scss/_base.scss */
 .commentlist .even {
   background: #fefefe;
 }
-/* line 635, ../scss/_base.scss */
+/* line 641, ../scss/_base.scss */
 .commentlist .vcard {
   margin-left: 50px;
 }
-/* line 638, ../scss/_base.scss */
+/* line 644, ../scss/_base.scss */
 .commentlist .vcard cite.fn {
   font-weight: 700;
   font-style: normal;
 }
-/* line 646, ../scss/_base.scss */
+/* line 652, ../scss/_base.scss */
 .commentlist .vcard time {
   float: right;
 }
-/* line 649, ../scss/_base.scss */
+/* line 655, ../scss/_base.scss */
 .commentlist .vcard time a {
   color: #999;
   text-decoration: none;
 }
-/* line 653, ../scss/_base.scss */
+/* line 659, ../scss/_base.scss */
 .commentlist .vcard time a:hover {
   text-decoration: underline;
 }
-/* line 663, ../scss/_base.scss */
+/* line 669, ../scss/_base.scss */
 .commentlist .vcard img.avatar {
   position: absolute;
   left: 10px;
@@ -1024,17 +955,17 @@ COMMENT STYLES
   border: 1px solid #cecece;
   background: #fff;
 }
-/* line 688, ../scss/_base.scss */
+/* line 694, ../scss/_base.scss */
 .commentlist .comment_content {
   margin-left: 50px;
 }
-/* line 691, ../scss/_base.scss */
+/* line 697, ../scss/_base.scss */
 .commentlist .comment_content p {
   margin: 0.7335em 0 1.5em;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 700, ../scss/_base.scss */
+/* line 706, ../scss/_base.scss */
 .commentlist .comment-reply-link {
   text-decoration: none;
   float: right;
@@ -1046,53 +977,52 @@ COMMENT STYLES
   font-weight: 700;
   font-size: 0.9em;
 }
-/* line 711, ../scss/_base.scss */
+/* line 717, ../scss/_base.scss */
 .commentlist .comment-reply-link:hover, .commentlist .comment-reply-link:focus {
   opacity: 1;
 }
 
-/* end .commentlist */
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
-/* line 724, ../scss/_base.scss */
+/* line 730, ../scss/_base.scss */
 .respond-form {
   margin: 1.5em 10px;
   padding-bottom: 2.2em;
 }
-/* line 728, ../scss/_base.scss */
+/* line 734, ../scss/_base.scss */
 .respond-form form {
   margin: 0.75em 0;
 }
-/* line 731, ../scss/_base.scss */
-.respond-form form li {
+/* line 739, ../scss/_base.scss */
+.respond-form li {
   list-style-type: none;
   clear: both;
   margin-bottom: 0.7335em;
 }
-/* line 738, ../scss/_base.scss */
-.respond-form form input[type=text],
-.respond-form form input[type=email],
-.respond-form form input[type=url],
-.respond-form form textarea {
+/* line 746, ../scss/_base.scss */
+.respond-form input[type=text],
+.respond-form input[type=email],
+.respond-form input[type=url],
+.respond-form textarea {
   padding: 3px 6px;
   background: #efefef;
   border: 2px solid #cecece;
   line-height: 1.5em;
   /* form validation */
 }
-/* line 747, ../scss/_base.scss */
-.respond-form form input[type=text]:focus,
-.respond-form form input[type=email]:focus,
-.respond-form form input[type=url]:focus,
-.respond-form form textarea:focus {
+/* line 755, ../scss/_base.scss */
+.respond-form input[type=text]:focus,
+.respond-form input[type=email]:focus,
+.respond-form input[type=url]:focus,
+.respond-form textarea:focus {
   background: #fff;
 }
-/* line 752, ../scss/_base.scss */
-.respond-form form input[type=text]:invalid,
-.respond-form form input[type=email]:invalid,
-.respond-form form input[type=url]:invalid,
-.respond-form form textarea:invalid {
+/* line 760, ../scss/_base.scss */
+.respond-form input[type=text]:invalid,
+.respond-form input[type=email]:invalid,
+.respond-form input[type=url]:invalid,
+.respond-form textarea:invalid {
   outline: none;
   border-color: #fbc2c4;
   background-color: #f6e7eb;
@@ -1101,15 +1031,15 @@ COMMENT FORM STYLES
   -ms-box-shadow: none;
   box-shadow: none;
 }
-/* line 763, ../scss/_base.scss */
-.respond-form form input[type=text],
-.respond-form form input[type=email],
-.respond-form form input[type=url] {
+/* line 771, ../scss/_base.scss */
+.respond-form input[type=text],
+.respond-form input[type=email],
+.respond-form input[type=url] {
   max-width: 400px;
   min-width: 250px;
 }
-/* line 770, ../scss/_base.scss */
-.respond-form form textarea {
+/* line 778, ../scss/_base.scss */
+.respond-form textarea {
   resize: none;
   width: 97.3%;
   height: 150px;
@@ -1117,7 +1047,7 @@ COMMENT FORM STYLES
 
 /* comment submit button */
 /* comment form title */
-/* line 783, ../scss/_base.scss */
+/* line 790, ../scss/_base.scss */
 #comment-form-title {
   margin: 0 0 1.1em;
 }
@@ -1125,13 +1055,13 @@ COMMENT FORM STYLES
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
-/* line 796, ../scss/_base.scss */
+/* line 803, ../scss/_base.scss */
 #allowed_tags {
   margin: 1.5em 10px 0.7335em 0;
 }
 
 /* no comments */
-/* line 801, ../scss/_base.scss */
+/* line 808, ../scss/_base.scss */
 .nocomments {
   margin: 0 20px 1.1em;
 }
@@ -1139,29 +1069,19 @@ COMMENT FORM STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 817, ../scss/_base.scss */
-.widget ul li {
+/* line 824, ../scss/_base.scss */
+.widget li {
   /* deep nesting */
 }
 
 /*********************
 FOOTER STYLES
 *********************/
-/* line 838, ../scss/_base.scss */
+/* line 841, ../scss/_base.scss */
 .footer {
   clear: both;
 }
 
-/*
-if you checked out the link above:
-http://www.alistapart.com/articles/organizing-mobile/
-you'll want to style the footer nav
-a bit more in-depth. Remember to keep
-it simple because you'll have to
-override these styles for the desktop
-view.
-*/
-/* end .footer-links */
 /* line 7, ../scss/_module-buttons.scss */
 button, button:visited, .btn, .btn:visited {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
