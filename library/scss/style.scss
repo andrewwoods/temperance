@@ -22,14 +22,6 @@
 @import "base";
 
 
-//------------------------------------------------------------------------------
-//
-// STATE MANAGEMENT
-//
-// State refers to changing the condition of information on the page.
-//
-@import "state";
-
 
 //------------------------------------------------------------------------------
 //
@@ -51,6 +43,7 @@
 //
 @import "module-buttons";
 @import "module-forms";
+@import "module-state";
 
 
 //------------------------------------------------------------------------------
