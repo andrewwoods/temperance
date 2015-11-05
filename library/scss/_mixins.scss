@@ -16,7 +16,7 @@ remember less is more.
 
 // Contain floats: nicolasgallagher.com/micro-clearfix-hack/
 .clearfix {
-  zoom: 1;
+	zoom: 1;
 	&:before, &:after { content: ""; display: table; }
 	&:after { clear: both; }
 }
@@ -50,14 +50,20 @@ remember less is more.
 }
 
 
+//------------------------------------------------------------------------------
+// BOXES
+//
+
+@mixin box($margin, $padding, $border-width: 1px, $border-color: #c0c0c0) {
+	border: $border-width solid $border-color;
+	margin: $margin 0;
+	padding: $padding;
+
+}
+
 
 .box {
-	border-color: #c0c0c0;
-	border-width: 1px;
-	border-style: solid;
-	padding: $padding-medium;
-	margin-top: $margin-medium;
-	margin-bottom: $margin-medium;
+	@include box($margin-medium, $padding-medium);
 
 	&.medium {
 		border-width: 3px;
