@@ -72,30 +72,6 @@ LAYOUT & GRID STYLES
 *********************/
 
 
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-
-
-
-
-.hidden {
-	display: none;
-}
-
-.off-screen {
-	position:absolute;
-	margin-left:-10000px;
-	overflow:hidden;
-}
-
 
 /*********************
 LINK STYLES
