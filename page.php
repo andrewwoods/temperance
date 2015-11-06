@@ -7,9 +7,9 @@
 		<div id="main" class="eightcol first clearfix" role="main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post();
-				get_template_part( 'page', 'content' );
+				get_template_part( 'content/page', 'content' );
 			?>
-			<?php endwhile; else : ?>
+				<?php endwhile; else : ?>
 
 				<article id="post-not-found" class="hentry clearfix">
 					<header class="article-header">
