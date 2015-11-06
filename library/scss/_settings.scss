@@ -73,5 +73,26 @@ $grey-10: $gray-10;
 
 $sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $serif: "Georgia", Cambria, Times New Roman, Times, serif;
+$monospace: "Hack", monospace;
 
+
+//------------------------------------------------------------------------------
+//      LEGEND
+//------------------------------------------------------------------------------
+
+$main-text-color: $grey-10;
+$main-text-font: $sans-serif;
+$main-text-size: 100%;
+
+$link-main-color: #0000ff;
+$link-main-bgcolor: transparent;
+
+$link-visited-color: darken($link-main-color, 20%);
+$link-visited-bgcolor: transparent;
+
+$link-hover-color:  $white;
+$link-hover-bgcolor:  #6f006f;
+
+$link-active-color:  $white;
+$link-active-bgcolor:  #ff9f00;
 
