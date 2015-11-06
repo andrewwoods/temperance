@@ -6,7 +6,6 @@
 //
 
 form {
-	background-color: $white;
 	border: 1px solid $grey-80;
 	margin: $margin-small;
 	padding: $padding-small;
@@ -16,7 +15,8 @@ input[type=text],
 input[type=tel],
 input[type=email],
 input[type=number] {
-	padding: $padding-tiny;
+	width: 80%;
+	margin: $margin-medium auto;
 
 	&:focus {
 		background-color: $form-highlight;
@@ -28,7 +28,17 @@ input[type=submit] {
 	padding: $padding-tiny;
 }
 
+textarea {
+	width: 80%;
+	height: 10em;
+	margin: $margin-medium auto;
+}
+
 label {
+	display: block;
+	text-align: left;
+	padding: $padding-tiny 0;
+
 	&.align-right {
 		text-align: right;
 	}
@@ -38,8 +48,6 @@ label {
 	}
 
 	&.top {
-		display: block;
-		text-align: left;
 	}
 }
 
