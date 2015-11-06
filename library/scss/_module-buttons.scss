@@ -1,37 +1,29 @@
 //
 // Stylesheet: Button Module
 //
-// This is for the button module.
-//
+//------------------------------------------------------------------------------
+
 
 button, button:visited, .btn, .btn:visited {
-	font-family: $sans-serif;
-	border: 1px solid darken($link-color, 13%);
-	border-top-color: darken($link-color, 7%);
-	border-left-color: darken($link-color, 7%);
-	padding: $padding-tiny $padding-medium;
-	color: $white;
-	display: inline-block;
-	font-size: 11px;
-	font-weight: bold;
-	text-decoration: none;
-	text-shadow: 0 1px rgba(0,0,0, .75);
+	border: 1px solid $grey-60;
+	background-color: $grey-80;
+	color: black;
 	cursor: pointer;
-	margin-bottom: 20px;
+	display: inline-block;
+	font-size: 1em;
+	font-weight: bold;
 	line-height: 21px;
-	border-radius: 4px;
-	@include css-gradient($link-color, darken($link-color, 5%));
-
+	margin-bottom: 20px;
+	padding: $padding-tiny $padding-medium;
+	text-decoration: none;
 
 	&:hover, &:focus {
-		color: $white;
-	  	border: 1px solid darken($link-color, 13%);
-	  	border-top-color: darken($link-color, 20%);
-	 	border-left-color: darken($link-color, 20%);
-		@include css-gradient(darken($link-color, 5%), darken($link-color, 10%));
+		background-color: $link-main-bgcolor;
+		color: $link-main-color;
 	}
 
 	&:active {
-		@include css-gradient(darken($link-color, 5%), $link-color);
+		background-color: $link-active-bgcolor;
+		color: $link-active-color;
 	}
 }
