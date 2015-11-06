@@ -11,8 +11,6 @@ and will be used across all viewports.
 
 ******************************************************************/
 
-$link-color: #0000ff;
-$link-hover: #ff0000;
 
 
 /*********************
@@ -23,7 +21,7 @@ body {
 	font-family: $sans-serif;
 	font-size: 100%;
 	line-height: 1.5;
-	color: $gray20;
+	color: $gray-20;
 }
 
 /********************
@@ -67,42 +65,44 @@ style a page via class
 .paged {}                    // paged items like search results or archives
 .paged-1 {}                  // individual paged (i.e. body.paged-3)
 
-/*********************
-LAYOUT & GRID STYLES
-*********************/
-
 
 
 /*********************
 LINK STYLES
 *********************/
 
-a, a:visited {
-	color: $link-color;
+a {
+	color: $link-main-color;
 	background-color: inherit;
+
+	/* mobile tap color */
+	&:link {
+		//
+		// this highlights links on iPhones/iPads.
+		// so it basically works like the :hover selector
+		// for mobile devices.
+		//
+		-webkit-tap-highlight-color : $link-main-bgcolor;
+	}
+
+	// show where you've been
+	&:visited {
+		color: $link-visited-color;
+	}
 
 	/* on hover */
 	&:hover, &:focus {
-		color: $white;
-		background-color: $link-hover;
+		color: $link-hover-color;
+		background-color: $link-hover-bgcolor;
 	}
 
 	/* on click */
 	&:active {
-		color: $white;
-		background-color: $link-hover;
+		color: $link-active-color;
+		background-color: $link-active-bgcolor;
 		font-weight: bold;
 	}
 
-	/* mobile tap color */
-	&:link {
-		/*
-		this highlights links on iPhones/iPads.
-		so it basically works like the :hover selector
-		for mobile devices.
-		*/
-		-webkit-tap-highlight-color : rgba( 0, 0, 0, 0.3 );
-	}
 }
 
 a[href$=".pdf"]:after {
