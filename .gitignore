@@ -1,10 +1,23 @@
 # folders and files to be ignored by git
 
-############
-## Bones
-############
 
-Bones.esproj/
+############
+## SASS 
+############
+*.sass-cache*
+*.map
+
+############
+## Packages
+############
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.tgz
+*.zip
+
 
 ############
 ## IDEs
@@ -33,6 +46,8 @@ nbproject/
 [Dd]esktop.ini
 *.DS_store
 .DS_store?
+.Trashes
+*.dmg
 
 ############
 ## Misc
@@ -50,6 +65,5 @@ tmp/
 .idea/
 temp/
 ._*
-.Trashes
 
 .svn
