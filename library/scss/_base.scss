@@ -1,21 +1,20 @@
-/******************************************************************
-Site Name:
-Author:
-
-Stylesheet: Base Mobile Stylesheet
-
-Be light and don't over style since everything here will be
-loaded by mobile devices. You want to keep it as minimal as
-possible. This is called at the top of the main stylsheet
-and will be used across all viewports.
-
-******************************************************************/
+//------------------------------------------------------------------------------
+//
+// Stylesheet: Base Mobile Stylesheet
+//
+// Be light and don't over style since everything here will be
+// loaded by mobile devices. You want to keep it as minimal as
+// possible. This is called at the top of the main stylsheet
+// and will be used across all viewports.
+//
+//------------------------------------------------------------------------------
 
 
 
-/*********************
-GENERAL STYLES
-*********************/
+//
+// GENERAL STYLES
+//------------------------------------------------------------------------------
+
 
 body {
 	font-family: $sans-serif;
@@ -26,15 +25,15 @@ body {
 
 
 
-/*********************
-LINK STYLES
-*********************/
+//
+// LINK STYLES
+//------------------------------------------------------------------------------
 
 a {
 	color: $link-main-color;
 	background-color: inherit;
 
-	/* mobile tap color */
+	// mobile tap color
 	&:link {
 		//
 		// this highlights links on iPhones/iPads.
@@ -49,13 +48,13 @@ a {
 		color: $link-visited-color;
 	}
 
-	/* on hover */
+	// on hover
 	&:hover, &:focus {
 		color: $link-hover-color;
 		background-color: $link-hover-bgcolor;
 	}
 
-	/* on click */
+	// on click
 	&:active {
 		color: $link-active-color;
 		background-color: $link-active-bgcolor;
@@ -89,20 +88,23 @@ a[href$=".xls"][data-size]:after {
 }
 
 
-/******************************************************************
-H1, H2, H3, H4, H5 STYLES
-******************************************************************/
+//
+// H1, H2, H3, H4, H5 STYLES
+//------------------------------------------------------------------------------
+
+
+
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
 	font-family: $serif;
 	text-rendering: optimizelegibility;
 	font-weight: 500;
-	/*
-	if you are going to use webfonts, be sure to check your weights
-	http://css-tricks.com/watch-your-font-weight/
-	*/
+	//
+	// if you are going to use webfonts, be sure to check your weights
+	// http://css-tricks.com/watch-your-font-weight/
+	//
 
-	/* removing text decoration from all headline links */
+	// removing text decoration from all headline links 
 	a {
 		text-decoration: none;
 	}
@@ -135,25 +137,25 @@ h5, .h5 {
 	letter-spacing: 2px;
 }
 
-/*********************
-HEADER STYLES
-*********************/
+//
+// HEADER STYLES
+//------------------------------------------------------------------------------
 
 .header {}
 
 #logo {}
 
 
-/*********************
-POSTS & CONTENT STYLES
-*********************/
+//
+// POSTS & CONTENT STYLES
+//------------------------------------------------------------------------------
 
 .wp-caption {
 	max-width: 100%;
 	background: #eee;
 	padding: 5px;
 
-	/* images inside wp-caption */
+	// images inside wp-caption
 	img {
 		max-width: 100%;
 		margin-bottom: 0;
@@ -168,7 +170,7 @@ POSTS & CONTENT STYLES
 
 }
 
-/* image gallery styles */
+// image gallery styles
 .gallery {
 
 	dl {
@@ -185,7 +187,7 @@ POSTS & CONTENT STYLES
 
 }
 
-/* gallery caption styles */
+// gallery caption styles
 .gallery-caption {}
 
 .size-full {}
@@ -193,9 +195,10 @@ POSTS & CONTENT STYLES
 .size-medium {}
 .size-thumbnail {}
 
-/*********************
-SIDEBARS & ASIDES
-*********************/
+//
+// SIDEBARS & ASIDES
+//------------------------------------------------------------------------------
+
 
 .sidebar {}
 
@@ -211,16 +214,16 @@ SIDEBARS & ASIDES
 
 		&:last-child {}
 
-		/* deep nesting */
+		// deep nesting
 		ul {}
 	}
 
 	a {}
 }
 
-/*********************
-FOOTER STYLES
-*********************/
+//
+// FOOTER STYLES
+//------------------------------------------------------------------------------
 
 .footer {
 	clear: both;
