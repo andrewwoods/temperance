@@ -1,7 +1,7 @@
 <?php
 /**
- * This is where you can drop your custom functions or just edit things like 
- * thumbnail sizes, header images, sidebars, comments, ect.
+ * This is where you can drop your custom functions or just edit things like
+ * thumbnail sizes, header images, sidebars, comments, etc.
  *
  * @package Temperance
  */
@@ -9,7 +9,7 @@
 
 //~~~~~~~~~~~~ INCLUDE NEEDED FILES ~~~~~~~~~~~~~~~~
 
-// if you remove this, temperance will break
+// if you remove this, Temperance will break
 require_once( 'library/temperance.php' );
 
 // if you remove this, temperance will break
@@ -87,7 +87,7 @@ function temperance_custom_image_sizes( $sizes ) {
  * The function above adds the ability to use the dropdown menu to select
  * the new images sizes you have just created from within the media manager
  * when you add media to your content blocks. If you add more image sizes,
- * duplicate one of the lines in the array and name it according to your 
+ * duplicate one of the lines in the array and name it according to your
  * new image size.
  */
 

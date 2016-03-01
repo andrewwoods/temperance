@@ -1,12 +1,12 @@
 # Temperance
-__A Lightweight Wordpress Starter Theme__
+__A Lightweight WordPress Starter Theme__
 
 Temperance is a virtue. It's about doing enough without doing too much. In a
 word - moderation. Temperance provides a solid, modern foundation, without
 getting in your way. Temperance is a WordPress starter theme.  Temperance is
 built using HTML5, with strong semantic markup, and progressive enhancement in
 mind. Because accessibility is essential for a modern, open web, Temperance
-strives to be accessibile by design. It's best to use Temperance when creating
+strives to be accessible by design. It's best to use Temperance when creating
 a new WordPress theme.
 
 

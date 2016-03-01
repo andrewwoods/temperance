@@ -1,6 +1,6 @@
 ## Temperance Change Log & History
 
-This is the changelog for the Temperance wordpress starter theme. It highlights the significant changes for each version of Temperance. For more information, please visit the GitHub repo:
+This is the changelog for the Temperance WordPress starter theme. It highlights the significant changes for each version of Temperance. For more information, please visit the GitHub repo:
 
 https://github.com/andrewwoods/temperance/
 
