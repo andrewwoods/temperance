@@ -234,6 +234,9 @@ function temperance_theme_support() {
 	// wp thumbnails (sizes handled in functions.php)
 	add_theme_support( 'post-thumbnails' );
 
+	// You don't need to add call to wp_title in your header.php
+	add_theme_support( "title-tag" );
+
 	// default thumb size
 	set_post_thumbnail_size( 125, 125, true );
 

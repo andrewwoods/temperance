@@ -8,8 +8,16 @@
 
 		<?php // Google Chrome Frame for IE ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-		<title><?php wp_title( ' | ', true, 'right' ); ?></title>
+		<?php
+		if ( ! function_exists( '_wp_render_title_tag' ) ) {
+			function theme_slug_render_title() {
+		?>
+				<title><?php wp_title( ' | ', true, 'right' ); ?></title>
+			<?php
+			}
+			add_action( 'wp_head', 'theme_slug_render_title' );
+		}
+		?>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
