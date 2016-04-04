@@ -9,8 +9,8 @@
 
 //~~~~~~~~~~~~ INCLUDE NEEDED FILES ~~~~~~~~~~~~~~~~
 
-// if you remove this, Temperance will break
-require_once( 'library/temperance.php' );
+// if you remove this, The theme will break
+require_once( 'library/main.php' );
 
 // if you remove this, temperance will break
 require_once( 'library/classes/class-temperance-customizer.php' );
