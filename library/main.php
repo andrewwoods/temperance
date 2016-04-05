@@ -1,86 +1,86 @@
 <?php
 /**
- * This is the core Temperance file where most of the main functions & features 
- * reside. If you have any custom functions, it's best to put them in the 
+ * This is the core Temperance file where most of the main functions & features
+ * reside. If you have any custom functions, it's best to put them in the
  * functions.php file.
- * 
- * - head cleanup (remove rsd, uri links, junk css, etc)
- * - enqueueing scripts & styles
- * - theme support functions
- * - custom menu output & fallbacks
- * - related post function
- * - page-navi function
- * - removing <p> from around images
- * - customizing the post excerpt
- * - custom google+ integration
- * - adding custom fields to user profiles
+ *
  *
  * @package Temperance
  * @subpackage Subpackage name
  * @author firstname lastname <user@host.com>
  */
 
+
+
+/*------------------------------------------------------------------------------
+ *   WORDPRESS ADMINISTRATION
+ *
+ */
 require_once "admin/admin.php";
 require_once "admin/dashboard-widgets.php";
 
-add_action( 'after_setup_theme', 'temperance_ahoy', 16 );
+
+/*------------------------------------------------------------------------------
+ *   MULTI-LANGUAGE SUPPORT
+ *
+ * - add support for other languages
+ */
+// require_once( 'translation/translation.php' );
+
+
+
+/*------------------------------------------------------------------------------
+ *   CUSTOMIZER
+ *
+ * - Provide an improved user experience for your client
+ */
+// require_once( 'classes/class-temperance-customizer.php' );
+
+
+
+/*------------------------------------------------------------------------------
+ *   GENERAL
+ *
+ */
+add_action( 'after_setup_theme', 'temperance_theme_support', 16 );
+add_action( 'init', 'temperance_head_cleanup' );
+add_action( 'wp_enqueue_scripts', 'temperance_scripts_and_styles', 999 );
+add_action( 'widgets_init', 'temperance_register_sidebars' );
+
+
+// Improve browser title for the sites without theme_support
 add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
+// adding the temperance search form (created in functions.php)
+add_filter( 'get_search_form', 'temperance_wpsearch' );
 
-/*
- * LAUNCH TEMPERANCE
- *
- * Let's fire off all the functions and tools.
- * I put it up here so it's right up top and clean.
- *
- * @return void
- */
-function temperance_ahoy() {
+// cleaning up random code around images
+add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
 
-	// launching operation cleanup
-	add_action( 'init', 'temperance_head_cleanup' );
+// Improves the excerpt more link
+add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
 
-
-	// enqueue base scripts and styles
-	add_action( 'wp_enqueue_scripts', 'temperance_scripts_and_styles', 999 );
-
-	// launching this stuff after theme setup
-	temperance_theme_support();
-
-	// adding sidebars to Wordpress (these are created in functions.php)
-	add_action( 'widgets_init', 'temperance_register_sidebars' );
-
-	// adding the temperance search form (created in functions.php)
-	add_filter( 'get_search_form', 'temperance_wpsearch' );
-
-	// cleaning up random code around images
-	add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
-
-	// Improves the excerpt more link
-	add_filter( 'excerpt_more', 'temperance_excerpt_more' );
-
-}
 
 
 /**
- * Improve on the default wordpress title 
+ * Improve on the default wordpress title
  *
- * The default wordpress title isn't sufficient. On the homepage, it add the 
- * site description to the site name. On other pages, it add the site name to the 
+ * The default wordpress title isn't sufficient. On the homepage, it add the
+ * site description to the site name. On other pages, it add the site name to the
  * standard page title
  *
- * @since 1.0
+ * @since 1.0.0
  * @uses wp_title filter
  *
  * @param string $title the title of the page
  * @param string $sep a separator. one or more characters to divide the page title
- * @param string $seplocation can be 'left' or 'right'. default: left. 
+ * @param string $seplocation can be 'left' or 'right'. default: left.
  * @return string
  */
 function temperance_wp_title( $title, $sep, $seplocation ) {
 
-	// Add the blog name
+
 	// The Site Title under "Settings > General"
 	$site_name = get_bloginfo( 'name' );
 
@@ -107,12 +107,13 @@ function temperance_wp_title( $title, $sep, $seplocation ) {
 }
 
 
+
 /**
  * Remove unwanted items
  *
  * Clean up the output of wp_head() by removing undesired functions
  *
- * @since 1.0
+ * @since 1.0.0
  * @uses {remove_action()}
  *
  * @return void
@@ -127,19 +128,19 @@ function temperance_head_cleanup() {
 	// EditURI link
 	remove_action( 'wp_head', 'rsd_link' );
 
-	// windows live writer
+	// Windows Live Writer
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 
-	// index link
+	// Index link
 	remove_action( 'wp_head', 'index_rel_link' );
 
-	// previous link
+	// Previous link
 	remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 );
 
-	// start link
+	// Start link
 	remove_action( 'wp_head', 'start_post_rel_link', 10, 0 );
 
-	// links for adjacent posts
+	// Links for adjacent posts
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
 	// WP version
@@ -147,83 +148,86 @@ function temperance_head_cleanup() {
 	remove_action( 'rss_head', 'wp_generator' );
 	remove_action( 'rss2_head', 'wp_generator' );
 
-	// remove WP version from css
+	// Remove WP version from css
 	add_filter( 'style_loader_src', 'temperance_remove_wp_ver_css_js', 9999 );
 
-	// remove Wp version from scripts
+	// Remove Wp version from scripts
 	add_filter( 'script_loader_src', 'temperance_remove_wp_ver_css_js', 9999 );
-
 }
 
 
 
-// remove WP version from scripts
+/**
+ * Remove WP version from script
+ *
+ * @since 1.0.0
+ *
+ * @param String $src
+ * @return void
+ */
 function temperance_remove_wp_ver_css_js( $src ) {
 	if ( strpos( $src, 'ver=' ) ){
 		$src = remove_query_arg( 'ver', $src );
 	}
+
 	return $src;
 }
 
 
 
-/*********************
-SCRIPTS & ENQUEUEING
-*********************/
-
-// loading modernizr and jquery, and reply script
+/**
+ * Enable Modernizr, jQuery, and the Main Stylesheet
+ *
+ * @since 1.0.0
+ *
+ * @param String $one a necessary parameter
+ * @param String optional $two an optional value
+ * @return void
+ */
 function temperance_scripts_and_styles() {
-	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
-	if ( ! is_admin() ) {
 
-		// modernizr (without media query polyfill)
-		wp_register_script( 'temperance-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+	if ( ! is_admin() ) {
+		global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+
+		// Modernizr - https://modernizr.com/ - Create and Download your own build of Modernizr
+		// wp_register_script( 'temperance-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
+		wp_register_script( 'temperance-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
 		// register main stylesheet
 		wp_register_style( 'temperance-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-
-		// ie-only style sheet
 		wp_register_style( 'temperance-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
-		// comment reply script for threaded comments
-		if ( is_singular() AND comments_open() AND ( get_option('thread_comments') == 1 ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
 
-		//adding scripts file in the footer
-		wp_register_script( 'temperance-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
-
-		// enqueue styles and scripts
-		wp_enqueue_script( 'temperance-modernizr' );
+		/*
+			I recommend NOT CHANGING the version of jQuery that comes with WordPress.
+			It has been well tested by the WordPress core team.
+		*/
+		wp_enqueue_script( 'jquery' );
+		// wp_enqueue_script( 'temperance-modernizr' );
+		wp_enqueue_script( 'temperance-js' );
 		wp_enqueue_style( 'temperance-stylesheet' );
 		wp_enqueue_style( 'temperance-ie-only' );
 
 		$wp_styles->add_data( 'temperance-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
-		/*
-		I recommend using a plugin to call jQuery
-		using the google cdn. That way it stays cached
-		and your site will load faster.
-		*/
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'temperance-js' );
-
+		// comment reply script for threaded comments
+		if ( is_singular() AND comments_open() AND ( get_option('thread_comments') == 1 ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
 	}
 }
 
-/*********************
-THEME SUPPORT
-*********************/
 
 
 /**
  * Adding Theme Support
  *
- * There are many options for theme support availale. Thumbnails, feed links, 
- * post formats, and color options are just a few options available. To add header 
+ * There are many options for theme support availale. Thumbnails, feed links,
+ * post formats, and color options are just a few options available. To add header
  * image support visit the header background image link in this comment
  *
- * @since 1.0
+ * @since 1.0.0
+ *
  * @uses add_theme_support()
  * @link http://themble.com/support/adding-header-background-image-support/
  *
@@ -282,16 +286,14 @@ function temperance_theme_support() {
 }
 
 
-//
-// MENUS & NAVIGATION
-//
 
 /**
  * Main navigation menu for Temperance
  *
  * Registers a main menu
  *
- * @since 1.0
+ * @since 1.0.0
+ *
  * @uses wp_nav_menu()
  *
  * @return voide
@@ -314,18 +316,20 @@ function temperance_main_nav() {
 }
 
 
+
 /**
  * the footer menu (should you choose to use one)
  *
  * Registers a footer menu.
  *
- * @since 1.0
+ * @since 1.0.0
+ *
  * @uses wp_nav_menu()
  *
  * @return void
  */
 function temperance_footer_links() {
- 
+
 	wp_nav_menu( array(
 		'container' => '',
 		'container_class' => 'footer-links clearfix',
@@ -342,10 +346,12 @@ function temperance_footer_links() {
 }
 
 
+
 /**
  * this is the fallback for header menu
  *
- * @since 1.0
+ * @since 1.0.0
+ *
  * @uses {wp_page_menu()}
  *
  * @return void
@@ -362,12 +368,15 @@ function temperance_main_nav_fallback() {
 	) );
 }
 
+
+
 /**
  * this is the fallback for footer menu
  *
  * This is intentionally blank. it's a placeholder. add what you like.
  *
- * @since 1.0
+ * @since 1.0.0
+ *
  * @uses {wp_page_menu()}
  *
  * @return void
@@ -376,14 +385,12 @@ function temperance_footer_links_fallback() {
 	/* you can put a default here if you like */
 }
 
-//
-// RELATED POSTS FUNCTION
-//
+
 
 /**
  * Related Posts Function (call using temperance_related_posts(); )
  *
- * @since 1.0
+ * @since 1.0.0
  *
  * @global WP_Post $post it does something
  *
@@ -409,7 +416,7 @@ function temperance_related_posts() {
 		if($related_posts) {
 			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
 				<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
-			<?php endforeach; 
+			<?php endforeach;
 		}
 		else { ?>
 			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'temperancetheme' ) . '</li>'; ?>
@@ -420,19 +427,17 @@ function temperance_related_posts() {
 	echo '</ul>';
 }
 
-//
-// PAGE NAVIGATION
-//
+
 
 /**
- * Display multi-page navigation 
+ * Display multi-page navigation
  *
  * Use the WP_Query object to determine the number of items in page results
  * and create page navigation if necessary
  *
- * @since 1.0
+ * @since 1.0.0
  *
- * @global WP_Query $query 
+ * @global WP_Query $query
  * @return void
  */
 function temperance_page_navi() {
@@ -441,9 +446,9 @@ function temperance_page_navi() {
 	if ( $wp_query->max_num_pages <= 1 ){
 		return;
 	}
-	
+
 	echo '<nav class="pagination">';
-	
+
 	echo paginate_links( array(
 		'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
 		'format' 		=> '',
@@ -459,32 +464,33 @@ function temperance_page_navi() {
 	echo '</nav>';
 }
 
-//
-// RANDOM CLEANUP ITEMS
-//
+
 
 /**
- * remove the p tag from around images
+ * Remove the 'p' tag from around images
  *
- * Content filter - examines the content for images wrapped in paragraph "p" 
- * tags and removes the p tags. 
+ * Content filter - examines the content for images wrapped in paragraph "p"
+ * tags and removes the p tags.
  *
- * @since 1.0
+ * @since 1.0.0
  * @see http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/
  *
- * @param  string $content 
+ * @param  string $content
  * @return type it does something
  */
 function temperance_filter_ptags_on_images( $content ){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
+
+
 /**
  * Changes the text of the 'Read More' link to include title of content
  *
  * Makes the link text more useful to search engines and screen readers.
  *
- * @global object $post
+ * @global WP_Post $post
+ * @since 1.0.0
  *
  * @param string $more
  * @return string
@@ -505,12 +511,15 @@ function temperance_excerpt_more( $more ) {
 	return $more;
 }
 
+
+
 /**
  * This is a modified the_author_posts_link() which just returns the link.
  *
  * This is necessary to allow usage of the usual l10n process with printf().
  *
  * @global object $authordata
+ * @since 1.0.0
  *
  * @return string $link a formatted html anchor
  */

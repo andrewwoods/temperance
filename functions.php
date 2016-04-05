@@ -6,43 +6,13 @@
  * @package Temperance
  */
 
+define( 'THEME_DIR_PATH', get_stylesheet_directory() );
+define( 'THEME_DIR_URL', get_stylesheet_directory_uri() );
 
 //~~~~~~~~~~~~ INCLUDE NEEDED FILES ~~~~~~~~~~~~~~~~
 
-// if you remove this, The theme will break
 require_once( 'library/main.php' );
 
-// if you remove this, temperance will break
-require_once( 'library/classes/class-temperance-customizer.php' );
-
-/*
- * 2. library/custom-post-type.php
- * - an example custom post type
- * - example custom taxonomy (like categories)
- * - example custom taxonomy (like tags)
- *
- * Uncommnet the line below to enable it.
- */
-// require_once( 'library/custom-post-type.php' );
-
-/*
- * 3. library/admin.php
- * - removing some default WordPress dashboard widgets
- * - an example custom dashboard widget
- * - adding custom login css
- * - changing text in footer of admin
- *
- * Uncommnet the line below to enable it.
- */
-// require_once( 'library/admin.php' );
-
-/*
- * 4. library/translation/translation.php
- * - adding support for other languages
- *
- * Uncommnet the line below to enable it.
- */
-// require_once( 'library/translation/translation.php' );
 
 
 //~~~~~~~~~~~~ THUMBNAIL SIZE OPTIONS ~~~~~~~~~~~~~~
