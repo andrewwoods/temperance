@@ -26,16 +26,20 @@ contributions. :)
 [ ] Create a theme README.md from sample.README.md
 
 
-Special Thanks to:
-* The Bones Project - http://themble.com/bones
 
-Submit Bugs & or Fixes:
-https://github.com/andrewwoods/temperance/issues
 
+
+
+## Meta
+* [Changelog](../../blob/master/CHANGELOG.md)
+* [Submit Bugs & or Fixes](https://github.com/andrewwoods/temperance/issues)
+* [Resources](resources.md)
 
 ## License
 __[GPL](http://opensource.org/licenses/GPL-3.0)__
 
 
-## Meta
-* [Changelog](../../blob/master/CHANGELOG.md)
+Special Thanks to:
+* The Bones Project - http://themble.com/bones
+
+
