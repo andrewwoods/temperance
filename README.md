@@ -18,14 +18,39 @@ contributions. :)
 
 ## Theme Development Checklist
 
-[ ] Create Favicons
-[ ] Create icons for Apple and Windows devices
-[ ] Create screenshot.png (300w x 225h)
+### During Your Theme Development
+
+**Required:**
+
+[ ] Use semantic HTML to develop your theme
+[ ] Set content width
 [ ] Design the Page Not Found (404.php)
-[ ] Check the License in style.css - Is the GPL what you want?
 [ ] Create a theme README.md from sample.README.md
+[ ] Update your readme.txt
+[ ] Create
+[ ] Test your theme with [Theme Unit Test](https://codex.wordpress.org/Theme_Unit_Test) plugin.
+[ ] Check [required accessibility](https://make.wordpress.org/themes/handbook/review/accessibility/required/) items
+[ ] check all registered menus are being used
+[ ] Internationalize - wrap your string with WordPress' I18N functions
+[ ] Use the proper
 
 
+**Optional:**
+
+[ ] Create a customizer class to manage theme options
+[ ] analyze your theme using [VIP theme scanner](https://github.com/Automattic/vip-scanner) If you're publishing it WordPress VIP theme
+[ ] Analyze your site with http://cssstats.com
+
+
+
+### After you theme development is complete
+
+[ ] Theme description - Describe your theme for WordPress.org users
+[ ] Theme tags - Update your theme tags for the WordPress.org repository
+[ ] Check the License in style.css - Is the GPL what you want?
+[ ] Create Favicons
+[ ] Create Icons for Apple and Windows devices
+[ ] Create screenshot.png (1200w x 900h)
 
 
 
