@@ -113,25 +113,46 @@ function temperance_comments( $comment, $args, $depth ) {
 			 *
 			 * echo get_avatar($comment,$size='32',$default='<path_to_url>' );
 			 */
+			$bgauthemail = get_comment_author_email();
+			$nothing_img =get_template_directory_uri() . '/library/images/nothing.gif';
+			$avatar_data = 'http://www.gravatar.com/avatar/'
+				. md5( $bgauthemail ) . '?s=32';
 			?>
-			<?php
-				$bgauthemail = get_comment_author_email();
-			?>
-			<img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=32" class="load-gravatar avatar avatar-48 photo" height="32" width="32" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
+			<img data-gravatar="<?php echo $avatar_data ?>"
+				class="load-gravatar avatar avatar-48 photo"
+				height="32"
+				width="32"
+				src="<?php echo $nothing_img ?>" />
 			<?php // end custom gravatar call ?>
-			<?php printf(__( '<cite class="fn">%s</cite>', 'temperancetheme' ), get_comment_author_link()) ?>
-			<time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'temperancetheme' )); ?> </a></time>
+			<?php
+				printf(
+					__( '<cite class="fn">%s</cite>', 'temperancetheme' ),
+					get_comment_author_link()
+				); ?>
+			<time datetime="<?php echo comment_time('Y-m-j'); ?>">
+			<a href="<?php echo htmlspecialchars(
+				get_comment_link( $comment->comment_ID )
+			) ?>"><?php comment_time(__( 'F jS, Y', 'temperancetheme' )); ?> </a></time>
 			<?php edit_comment_link(__( '(Edit)', 'temperancetheme' ),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
 				<div class="alert alert-info">
-					<p><?php _e( 'Your comment is awaiting moderation.', 'temperancetheme' ) ?></p>
+					<p><?php
+						_e( 'Your comment is awaiting moderation.', 'temperancetheme' )
+					?></p>
 				</div>
 			<?php endif; ?>
 			<section class="comment_content clearfix">
 				<?php comment_text() ?>
 			</section>
-			<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+			<?php comment_reply_link(
+				array_merge( $args,
+					array(
+						'depth' => $depth,
+						'max_depth' => $args['max_depth']
+					)
+				)
+			); ?>
 		</article>
 	<?php // </li> is added by WordPress automatically ?>
 <?php
@@ -151,11 +172,17 @@ function temperance_comments( $comment, $args, $depth ) {
  * @return string
  */
 function temperance_wpsearch( $form ) {
-	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'temperancetheme' ) . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search the Site...', 'temperancetheme' ) . '" />
-	<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />
-	</form>';
+	$label_search_for = __( 'Search for:', 'temperancetheme' );
+
+	$form = '<form role="search" method="get" '
+	. 'id="searchform" action="' . home_url( '/' ) . '" >'
+	. '<label class="screen-reader-text" for="s">' . $label_search_for . '</label>'
+	. '<input type="text"  name="s" id="s" placeholder=" '
+	.	'value="' . get_search_query() . '" '
+	. esc_attr__( 'Search the Site...', 'temperancetheme' ) . '" />'
+	. '<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />'
+	. '</form>';
+
 	return $form;
 }
 

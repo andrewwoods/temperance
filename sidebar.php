@@ -1,17 +1,16 @@
 <div class="sidebar fourcol last clearfix" role="complementary">
 
 	<?php if ( is_active_sidebar( 'sidebar1' ) ) : ?>
-
 		<?php dynamic_sidebar( 'sidebar1' ); ?>
-
 	<?php else : ?>
-
-		<?php // This content shows up if there are no widgets defined in the backend. ?>
+		<?php
+		// This content shows up if there are no widgets
+		// placed in a sidebar in the wp-admin.
+		?>
 
 		<div class="alert alert-help">
 			<p><?php _e( 'Please activate some Widgets.', 'temperancetheme' );  ?></p>
 		</div>
-
 	<?php endif; ?>
 
 </div>
