@@ -10,7 +10,7 @@ if nobody ever used it, because you didn't take the time to explain it to them.
 You don't have to write a lot - just enough to get them interested.
 
 
-## Features
+## Current Features
 
 * First feature
 * Second feature
@@ -111,6 +111,7 @@ Created and Maintained by [Firstname Lastname](http://example.com)
 
 
 ## Submit Bugs & or Fixes:
-https://github.com/your-github-id/your-project/issues
+
+[Project Issues](https://github.com/your-github-id/your-project/issues)
 
 
