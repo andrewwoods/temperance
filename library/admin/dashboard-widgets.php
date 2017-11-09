@@ -22,28 +22,17 @@ add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
  */
 function disable_default_dashboard_widgets() {
 
-	// Right Now Widget
+	// The "At A Glance" Widget
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );
 
+	// The "Activity" section.
+	// remove_meta_box( 'dashboard_activity', 'dashboard', 'core' );
+
 	// Comments Widget
-	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );
-
-	// Incoming Links Widget
-	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );
-
-	// Plugins Widget
-	remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );
+	// remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );
 
 	// Quick Press Widget
-	// remove_meta_box('dashboard_quick_press', 'dashboard', 'core' );
-
-	// Recent Drafts Widget
-	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );
-	remove_meta_box( 'dashboard_primary', 'dashboard', 'core' );
-	remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' );
-
-	// Yoast's SEO Plugin Widget
-	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );
+	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );
 
 }
 
