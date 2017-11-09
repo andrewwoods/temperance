@@ -6,18 +6,11 @@
  * @subpackage Admin
  *
  * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
- *
  */
 
+add_action( 'wp_dashboard_setup', 'disable_default_dashboard_widgets' );
 
-
-// removing the dashboard widgets
-add_action( 'admin_menu', 'disable_default_dashboard_widgets' );
-
-// adding any custom widgets
 add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
-
-
 
 /**
  * disable default dashboard widgets
@@ -29,28 +22,17 @@ add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
  */
 function disable_default_dashboard_widgets() {
 
-	// Right Now Widget
+	// The "At A Glance" Widget
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );
 
+	// The "Activity" section.
+	// remove_meta_box( 'dashboard_activity', 'dashboard', 'core' );
+
 	// Comments Widget
-	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );
-
-	// Incoming Links Widget
-	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );
-
-	// Plugins Widget
-	remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );
+	// remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );
 
 	// Quick Press Widget
-	// remove_meta_box('dashboard_quick_press', 'dashboard', 'core' );
-
-	// Recent Drafts Widget
-	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );
-	remove_meta_box( 'dashboard_primary', 'dashboard', 'core' );
-	remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' );
-
-	// Yoast's SEO Plugin Widget
-	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );
+	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );
 
 }
 
@@ -58,19 +40,75 @@ function disable_default_dashboard_widgets() {
 /**
  * add all custom dashboard widgets
  *
- * @since version
- *
- * @param  type $name it does something
- * @return type it does something
+ * @return void
  */
 function temperance_custom_dashboard_widgets() {
-	wp_add_dashboard_widget( 'temperance_rss_dashboard_widget', __( 'Recently on Themble (Customize on admin.php)', 'temperancetheme' ), 'temperance_rss_dashboard_widget' );
+	wp_add_dashboard_widget(
+		'temperance_wordpress_rss',
+		__( 'WordPress.com RSS', 'temperancetheme' ),
+		'temperance_wordpress_rss_dashboard_widget'
+    );
+
+	wp_add_dashboard_widget(
+		'temperance_planet_php_rss',
+		__( 'Planet PHP RSS', 'temperancetheme' ),
+		'temperance_planet_php_rss_dashboard_widget'
+	);
+
 	/*
 	 * Be sure to drop any other created Dashboard Widgets
 	 * in this function and they will all load.
 	 */
 }
 
+
+/**
+ * @param $url
+ *
+ * @return array|null
+ */
+function temperance_fetch_feed( $url ){
+	$limit = 7;
+	$items = array();
+
+	if ( function_exists( 'fetch_feed' ) ) {
+		// specify the source feed
+		$feed = fetch_feed( $url );
+
+		// specify number of items
+		$limit = $feed->get_item_quantity( $limit );
+
+		// create an array of items
+		$items = $feed->get_items( 0, $limit );
+	}
+
+	return $items;
+}
+
+/**
+ * @param $items
+ */
+function temperance_display_feed_items( $items ){
+
+	if ( empty( $items ) ) {
+		echo 'There are no items available';
+		return;
+	}
+
+	foreach ( $items as $item ) {
+		$content = strip_tags( $item->get_description() );
+		?>
+		<div>
+			<strong><a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
+					<?php echo $item->get_title(); ?>
+				</a></strong>
+			<p>
+				<?php echo substr( $content, 0, 200 ); ?>
+			</p>
+		</div>
+		<?php
+	}
+}
 
 /**
  * Now let's talk about adding your own custom Dashboard widget. Sometimes you
@@ -82,39 +120,26 @@ function temperance_custom_dashboard_widgets() {
  *
  * @return void
  */
-function temperance_rss_dashboard_widget() {
-	$limit = 7;
-	$items = array();
+function temperance_wordpress_rss_dashboard_widget() {
 
-	if ( function_exists( 'fetch_feed' ) ) {
-		// include the required file
-		include_once( ABSPATH . WPINC . '/feed.php' );
+    $items = temperance_fetch_feed( 'http://wordpress.com/feed/rss/' );
 
-		// specify the source feed
-		$feed = fetch_feed( 'http://wordpress.com/feed/rss/' );
-
-		// specify number of items
-		$limit = $feed->get_item_quantity(7);
-
-		// create an array of items
-		$items = $feed->get_items(0, $limit);
-	}
-
-	if ( 0 == $limit ) {
-		// fallback message
-		echo '<div>The RSS Feed is either empty or unavailable.</div>';
-	} else {
-		foreach ( $items as $item ) { ?>
-			<h4 style="margin-bottom: 0;">
-				<a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
-					<?php echo $item->get_title(); ?>
-				</a>
-			</h4>
-			<p style="margin-top: 0.5em;">
-				<?php echo substr($item->get_description(), 0, 200); ?>
-			</p>
-			<?php
-		}
-	}
+	temperance_display_feed_items( $items );
 }
 
+/**
+ * Now let's talk about adding your own custom Dashboard widget. Sometimes you
+ * want to show clients feeds relative to their site's content. For example, the
+ * NBA.com feed for a sports site. Here is an example Dashboard Widget that
+ * displays recent entries from an RSS Feed.
+ *
+ * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
+ *
+ * @return void
+ */
+function temperance_planet_php_rss_dashboard_widget() {
+
+	$items = temperance_fetch_feed( 'http://www.planet-php.org/rss/' );
+
+	temperance_display_feed_items( $items );
+}

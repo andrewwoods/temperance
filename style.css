@@ -4,9 +4,35 @@ Theme URI: http://THEME-URI.example.com/
 Description:  Write a description of your theme
 Author: AUTHOR_NAME
 Author URI: http://AUTHOR-URI.example.com/
-Version: 1.2
-Tags:  black, brown, orange, tan, white, yellow, light, one-column, two-columns, right-sidebar, flexible-width, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, translation-ready, accessibility-ready
+Version: 2.0.0
+Tags:  flexible-width, microformats, translation-ready, accessibility-ready
 Text Domain: temperance
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+MAKE SURE TO READ BELOW BEFORE GETTING STARTED FOR THE FIRST TIME!
+------------------------------------------------------------------
+
+Temperance is a starter theme. It provides you with all the common files you
+need to start building a custom WordPress theme. It's designed for you to
+modify every file. Temperance is built with Sass, but doesn't require it.
+
+Review the [Template
+Tags](https://make.wordpress.org/themes/handbook/review/required/theme-tags/)
+for the full list, and select the ones appropriate for your theme.  The [Theme
+Developers handbook](https://make.wordpress.org/themes/handbook/) is a great
+resource for developing your theme.
+
+
+Here are a couple of articles on using Sass in your Themes
+- http://bit.ly/TUQ3Fo  Preprocess THIS! @ Happy Cog
+- http://bit.ly/TUPM5q  Introduction to Sass for New WordPress Theme Designers
+
+That being said, here are a few MUST HAVE TOOLS for working with a
+pre-processor: (You really only need one of them)
+
+- CodeKit: (Highly Recommended) http://incident57.com/codekit/
+- Compass App: (Windows / Mac Users) http://compass.handlino.com/
+- Grunt: http://gruntjs.com/
+
 */

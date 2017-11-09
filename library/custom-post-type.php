@@ -1,6 +1,6 @@
 <?php
 /**
- * temperance Custom Post Type Example
+ * Custom Post Type Example
  *
  * This page walks you through creating a custom post type and taxonomies. You can
  * edit this one or copy the following code to create another one.
@@ -21,8 +21,9 @@ function temperance_flush_rewrite_rules() {
 }
 
 
+
 /**
- * let's create the function for the custom type
+ * Let's create the function for the custom type
  *
  * @since version
  * @link http://codex.wordpress.org/Function_Reference/register_post_type
@@ -71,7 +72,7 @@ function custom_post_example() {
 
 }
 
-// adding the function to the Wordpress init
+// adding the function to the WordPress init
 add_action( 'init', 'custom_post_example');
 
 
@@ -119,11 +120,5 @@ register_taxonomy( 'custom_tag',
 		'query_var' => true,
 	)
 );
-
-/*
-	looking for custom meta boxes?
-	check out this fantastic tool:
-	https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress
-*/
 
 
