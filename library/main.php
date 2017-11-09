@@ -86,7 +86,6 @@ add_filter( 'excerpt_more', 'temperance_excerpt_more' );
  */
 function temperance_wp_title( $title, $sep, $seplocation ) {
 
-
 	// The Site Title under "Settings > General"
 	$site_name = get_bloginfo( 'name' );
 

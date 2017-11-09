@@ -6,17 +6,42 @@
  * @package Temperance
  */
 
-define( 'THEME_DIR_PATH', get_stylesheet_directory() );
-define( 'THEME_DIR_URL', get_stylesheet_directory_uri() );
 
-//~~~~~~~~~~~~ INCLUDE NEEDED FILES ~~~~~~~~~~~~~~~~
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                       CONSTANTS                         *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+define( 'TEMPERANCE_DIR_PATH', get_stylesheet_directory() );
+define( 'TEMPERANCE_DIR_URL', get_stylesheet_directory_uri() );
 
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                     INCLUDE FILES                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 require_once( 'library/main.php' );
 
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                        ACTIONS                          *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 
 
-//~~~~~~~~~~~~ THUMBNAIL SIZE OPTIONS ~~~~~~~~~~~~~~
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                        FILTERS                          *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
 
+
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                  THUMBNAIL SIZE OPTIONS                 *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 add_image_size( 'temperance-thumb-600', 600, 150, true );
 add_image_size( 'temperance-thumb-300', 300, 100, true );
 
@@ -35,11 +60,15 @@ add_image_size( 'temperance-thumb-300', 300, 100, true );
  * You can change the names and dimensions to whatever you like. Enjoy!
  */
 
-add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
 
 /**
  * Add custom image sizes
  *
+ * The function above adds the ability to use the dropdown menu to select
+ * the new images sizes you have just created from within the media manager
+ * when you add media to your content blocks. If you add more image sizes,
+ * duplicate one of the lines in the array and name it according to your
+ * new image size.
  *
  * @since 1.0
  *
@@ -48,43 +77,40 @@ add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
  */
 function temperance_custom_image_sizes( $sizes ) {
 	return array_merge( $sizes, array(
-		'temperance-thumb-600' => __('600px by 150px'),
-		'temperance-thumb-300' => __('300px by 100px'),
+		'temperance-thumb-600' => __( '600px by 150px' ),
+		'temperance-thumb-300' => __( '300px by 100px' ),
 	) );
 }
 
+
 /*
- * The function above adds the ability to use the dropdown menu to select
- * the new images sizes you have just created from within the media manager
- * when you add media to your content blocks. If you add more image sizes,
- * duplicate one of the lines in the array and name it according to your
- * new image size.
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                 Sidebars                                    *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
-
-//~~~~~~~~~~~~ ACTIVE SIDEBARS ~~~~~~~~~~~~~~~~~~~~~
-
 /**
- * Sidebars & Widgetizes Areas
+ * Sidebars & Widget Areas
  *
  * @since 1.0
  *
  * @return void
  */
 function temperance_register_sidebars() {
-	register_sidebar(array(
-		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'temperancetheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'temperancetheme' ),
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widgettitle">',
-		'after_title' => '</h4>',
-	));
+	register_sidebar(
+		array(
+			'id' => 'sidebar_main',
+			'name' => __( 'Main Sidebar', 'temperancetheme' ),
+			'description' => __( 'The primary sidebar.', 'temperancetheme' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widgettitle">',
+			'after_title' => '</h4>',
+		)
+	);
 }
 
 
-//~~~~~~~~~~~~ COMMENT LAYOUT ~~~~~~~~~~~~~~~~~~~~~~
 
 /**
  * Display a single comment
@@ -103,22 +129,23 @@ function temperance_comments( $comment, $args, $depth ) {
 		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
 			<header class="comment-author vcard">
 			<?php
+
 			/*
 			 * this is the new responsive optimized comment image. It used the
 			 * new HTML5 data-attribute to display comment gravatars on larger
 			 * screens only. What this means is that on larger posts, mobile
 			 * sites don't have a ton of requests for comment images. This
 			 * makes load time incredibly fast! If you'd like to change it
-			 * back, just replace it with the regular wordpress gravatar call:
+			 * back, just replace it with the regular WordPress gravatar call:
 			 *
 			 * echo get_avatar($comment,$size='32',$default='<path_to_url>' );
 			 */
 			$bgauthemail = get_comment_author_email();
-			$nothing_img =get_template_directory_uri() . '/library/images/nothing.gif';
+			$nothing_img = get_template_directory_uri() . '/library/images/nothing.gif';
 			$avatar_data = 'http://www.gravatar.com/avatar/'
 				. md5( $bgauthemail ) . '?s=32';
 			?>
-			<img data-gravatar="<?php echo $avatar_data ?>"
+			<img data-gravatar="<?php echo $avatar_data; ?>"
 				class="load-gravatar avatar avatar-48 photo"
 				height="32"
 				width="32"
@@ -159,10 +186,9 @@ function temperance_comments( $comment, $args, $depth ) {
 }
 
 
-//~~~~~~~~~~~~ SEARCH FORM LAYOUT ~~~~~~~~~~~~~~~~~~
 
 /**
- * Search Form
+ * Search Form Layout
  *
  * Edit the HTML of the search form
  *
@@ -185,5 +211,4 @@ function temperance_wpsearch( $form ) {
 
 	return $form;
 }
-
 
