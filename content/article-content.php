@@ -3,7 +3,7 @@
 
 	<header class="article-header">
 
-		<h1><a href="<?php the_permalink() ?>" class="p-name" rel="bookmark"><?php the_title(); ?></a></h1>
+		<h1><a href="<?php the_permalink(); ?>" class="p-name" rel="bookmark"><?php the_title(); ?></a></h1>
 		<p class="byline vcard">
 		<?php
 			$time_tag = '<time class="dt-published" datetime="%1$s" pubdate>%2$s</time>';
@@ -15,7 +15,7 @@
 			printf( __( '<span class="author p-author">%1$s</span>
 				<span class="amp">&</span> filed under %2$s.', 'temperancetheme' ),
 				temperance_get_the_author_posts_link(),
-				get_the_category_list(', ')
+				get_the_category_list( ', ' )
 			);
 		?>
 		</p>
