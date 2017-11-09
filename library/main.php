@@ -57,9 +57,6 @@ add_action( 'widgets_init', 'temperance_register_sidebars' );
 // Improve browser title for the sites without theme_support
 add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
-// adding the temperance search form (created in functions.php)
-add_filter( 'get_search_form', 'temperance_wpsearch' );
-
 // cleaning up random code around images
 add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
 
@@ -245,6 +242,9 @@ function temperance_theme_support() {
 
 	// You don't need to add call to wp_title in your header.php
 	add_theme_support( "title-tag" );
+
+	// html5 feature support
+    add_theme_support( 'html5', array( 'search-form' ) );
 
 	// default thumb size
 	set_post_thumbnail_size( 125, 125, true );

@@ -186,29 +186,3 @@ function temperance_comments( $comment, $args, $depth ) {
 }
 
 
-
-/**
- * Search Form Layout
- *
- * Edit the HTML of the search form
- *
- * @since 1.0
- *
- * @param  string $form search form HTML
- * @return string
- */
-function temperance_wpsearch( $form ) {
-	$label_search_for = __( 'Search for:', 'temperancetheme' );
-
-	$form = '<form role="search" method="get" '
-	. 'id="searchform" action="' . home_url( '/' ) . '" >'
-	. '<label class="screen-reader-text" for="s">' . $label_search_for . '</label>'
-	. '<input type="text"  name="s" id="s" placeholder=" '
-	.	'value="' . get_search_query() . '" '
-	. esc_attr__( 'Search the Site...', 'temperancetheme' ) . '" />'
-	. '<input type="submit" id="searchsubmit" value="' . esc_attr__( 'Search' ) .'" />'
-	. '</form>';
-
-	return $form;
-}
-
