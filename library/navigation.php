@@ -158,5 +158,5 @@ function temperance_pagination_links() {
  * Display the website copyright statement
  */
 function temperance_copyright() {
-	echo '&copy;' . date( 'Y' ) . ' ' . get_bloginfo( 'name' );
+	echo 'Copyright &copy; ' . date( 'Y' ) . ' by ' . get_bloginfo( 'name' );
 }
