@@ -10,37 +10,43 @@
  * @author firstname lastname <user@host.com>
  */
 
-
-
-/*------------------------------------------------------------------------------
- *   WORDPRESS ADMINISTRATION
- *
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *   WORDPRESS ADMINISTRATION                                                  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-require_once "admin/admin.php";
-require_once "admin/dashboard-widgets.php";
+require_once 'admin/admin.php';
+require_once 'admin/dashboard-widgets.php';
+require_once 'navigation.php';
 
-
-/*------------------------------------------------------------------------------
- *   MULTI-LANGUAGE SUPPORT
- *
- * - add support for other languages
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *   MULTI-LANGUAGE SUPPORT                                                    *
+ *                                                                             *
+ * - add support for other languages                                           *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 // require_once( 'translation/translation.php' );
 
 
 
-/*------------------------------------------------------------------------------
- *   CUSTOMIZER
- *
- * - Provide an improved user experience for your client
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *   CUSTOMIZER                                                                *
+ *                                                                             *
+ * - Provide an improved user experience for your client                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 // require_once( 'classes/class-temperance-customizer.php' );
 
 
 
-/*------------------------------------------------------------------------------
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                                                                             *
  *   GENERAL
- *
+ *                                                                             *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 add_action( 'after_setup_theme', 'temperance_theme_support', 16 );
 add_action( 'init', 'temperance_head_cleanup' );
@@ -287,104 +293,6 @@ function temperance_theme_support() {
 
 
 
-/**
- * Main navigation menu for Temperance
- *
- * Registers a main menu
- *
- * @since 1.0.0
- *
- * @uses wp_nav_menu()
- *
- * @return voide
- */
-function temperance_main_nav() {
-
-	wp_nav_menu( array(
-		'container' => false,
-		'container_class' => 'menu clearfix',
-		'menu' => __( 'The Main Menu', 'temperancetheme' ),
-		'menu_class' => 'nav top-nav clearfix',
-		'theme_location' => 'main-nav',
-		'before' => '',
-		'after' => '',
-		'link_before' => '',
-		'link_after' => '',
-		'depth' => 0,
-		'fallback_cb' => 'temperance_main_nav_fallback'
-	) );
-}
-
-
-
-/**
- * the footer menu (should you choose to use one)
- *
- * Registers a footer menu.
- *
- * @since 1.0.0
- *
- * @uses wp_nav_menu()
- *
- * @return void
- */
-function temperance_footer_links() {
-
-	wp_nav_menu( array(
-		'container' => '',
-		'container_class' => 'footer-links clearfix',
-		'menu' => __( 'Footer Links', 'temperancetheme' ),
-		'menu_class' => 'nav footer-nav clearfix',
-		'theme_location' => 'footer-links',
-		'before' => '',
-		'after' => '',
-		'link_before' => '',
-		'link_after' => '',
-		'depth' => 0,
-		'fallback_cb' => 'temperance_footer_links_fallback'
-	) );
-}
-
-
-
-/**
- * this is the fallback for header menu
- *
- * @since 1.0.0
- *
- * @uses {wp_page_menu()}
- *
- * @return void
- */
-function temperance_main_nav_fallback() {
-	wp_page_menu( array(
-		'show_home' => true,
-		'menu_class' => 'nav top-nav clearfix',
-		'include'     => '',
-		'exclude'     => '',
-		'echo'        => true,
-		'link_before' => '',
-		'link_after' => ''
-	) );
-}
-
-
-
-/**
- * this is the fallback for footer menu
- *
- * This is intentionally blank. it's a placeholder. add what you like.
- *
- * @since 1.0.0
- *
- * @uses {wp_page_menu()}
- *
- * @return void
- */
-function temperance_footer_links_fallback() {
-	/* you can put a default here if you like */
-}
-
 
 
 /**
@@ -427,42 +335,6 @@ function temperance_related_posts() {
 	echo '</ul>';
 }
 
-
-
-/**
- * Display multi-page navigation
- *
- * Use the WP_Query object to determine the number of items in page results
- * and create page navigation if necessary
- *
- * @since 1.0.0
- *
- * @global WP_Query $query
- * @return void
- */
-function temperance_page_navi() {
-	global $wp_query;
-	$bignum = 999999999;
-	if ( $wp_query->max_num_pages <= 1 ){
-		return;
-	}
-
-	echo '<nav class="pagination">';
-
-	echo paginate_links( array(
-		'base' 			=> str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
-		'format' 		=> '',
-		'current' 		=> max( 1, get_query_var('paged') ),
-		'total' 		=> $wp_query->max_num_pages,
-		'prev_text' 	=> '&larr;',
-		'next_text' 	=> '&rarr;',
-		'type'			=> 'list',
-		'end_size'		=> 3,
-		'mid_size'		=> 3
-	) );
-
-	echo '</nav>';
-}
 
 
 

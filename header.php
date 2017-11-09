@@ -37,9 +37,7 @@
 					?>
 					<?php // bloginfo('description'); ?>
 
-					<nav role="navigation">
-						<?php temperance_main_nav(); ?>
-					</nav>
+					<?php temperance_main_nav(); ?>
 
 				</div>
 			</header>
