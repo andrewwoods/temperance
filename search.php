@@ -1,8 +1,7 @@
 <?php get_header(); ?>
 
-<div id="content">
-<div id="inner-content" class="wrap clearfix">
 <main id="main" class="main" role="main">
+	<div id="main-content" class="main-content">
 	<h1 class="archive-title">
 		<span><?php _e( 'Search Results for:', 'temperancetheme' ); ?></span>
 		<?php echo esc_attr( get_search_query() ); ?>
@@ -31,7 +30,7 @@
 				<h1><?php echo $no_results; ?></h1>
 			</header>
 			<section class="entry-content">
-				<p><?php echo $try_again;  ?></p>
+				<p><?php echo $try_again; ?></p>
 			</section>
 			<footer class="article-footer">
 				<p><?php echo $error; ?></p>
@@ -40,9 +39,8 @@
 
 	<?php endif; ?>
 
+</div>
 </main>
 <?php get_sidebar(); ?>
-</div>
-</div>
 
 <?php get_footer(); ?>

@@ -8,22 +8,20 @@
 ?>
 <?php get_header(); ?>
 
-<div id="content">
-<div id="inner-content" class="wrap clearfix">
-<div id="main" class="eightcol first clearfix" role="main">
+<main id="main" class="main" role="main">
+	<div id="main-content" class="main-content">
 
-<?php
-	if (have_posts()) :
-		while (have_posts()) : the_post();
+	<?php
+	if ( have_posts() ) :
+		while ( have_posts() ) :
+			the_post();
 			get_template_part( 'post', 'content' );
 		endwhile;
-
-	else : ?>
-	<?php
+	else :
 		$not_found = __( 'Oops, Post Not Found!', 'temperancetheme' );
 		$error     = __( 'This is the error message in single.php', 'temperancetheme' );
 		$missing   = __( 'Uh Oh. Something is missing. ', 'temperancetheme' );
-	?>
+		?>
 		<article id="post-not-found" class="hentry clearfix">
 			<header class="article-header">
 				<h1><?php echo $not_found; ?></h1>
@@ -36,11 +34,12 @@
 			</footer>
 		</article>
 
-	<?php endif; ?>
+	<?php
+	endif;
+	?>
 
-</div>
+	</div>
+</main>
+
 <?php get_sidebar(); ?>
-</div>
-</div>
-
 <?php get_footer(); ?>

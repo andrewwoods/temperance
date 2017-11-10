@@ -10,7 +10,8 @@
  */
 
 ?>
-<div class="sidebar" role="complementary">
+<section id="main-sidebar" class="sidebar" role="complementary">
+	<div id="main-sidebar-content" class="sidebar-content">
 
 	<?php if ( is_active_sidebar( 'sidebar_main' ) ) : ?>
 		<?php dynamic_sidebar( 'sidebar_main' ); ?>
@@ -29,4 +30,5 @@
 		</div>
 	<?php endif; ?>
 
-</div>
+	</div>
+</section>

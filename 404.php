@@ -1,10 +1,9 @@
 <?php get_header(); ?>
 
-<div id="content">
-<div id="inner-content" class="wrap clearfix">
-<div id="main" class="eightcol first clearfix" role="main">
+<main id="main" class="main" role="main">
+	<div id="main-content" class="main-content">
 
-	<article id="post-not-found" class="hentry clearfix">
+	<article id="post-not-found" class="hentry">
 
 		<header class="article-header">
 			<h1><?php _e( 'Epic 404 - Article Not Found', 'temperancetheme' ); ?></h1>
@@ -24,8 +23,7 @@
 
 	</article>
 
-</div>
-</div>
-</div>
+	</div>
+</main>
 
 <?php get_footer(); ?>

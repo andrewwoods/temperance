@@ -11,7 +11,7 @@
 
 ?>
 			<footer id="footer" class="footer" role="content-info">
-				<div id="inner-footer" class="wrap clearfix">
+				<div id="footer-content" class="footer-content">
 
 					<nav role="navigation">
 						<?php temperance_footer_nav(); ?>
