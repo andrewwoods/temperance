@@ -152,14 +152,15 @@ function temperance_comments( $comment, $args, $depth ) {
 				src="<?php echo $nothing_img ?>" />
 			<?php // end custom gravatar call ?>
 			<?php
+				$date_format = get_option( 'date_format' );
 				printf(
 					__( '<cite class="fn">%s</cite>', 'temperancetheme' ),
 					get_comment_author_link()
 				); ?>
-			<time datetime="<?php echo comment_time('Y-m-j'); ?>">
+			<time datetime="<?php echo comment_time('Y-m-d'); ?>">
 			<a href="<?php echo htmlspecialchars(
 				get_comment_link( $comment->comment_ID )
-			) ?>"><?php comment_time(__( 'F jS, Y', 'temperancetheme' )); ?> </a></time>
+			) ?>"><?php comment_time(__( $date_format, 'temperancetheme' )); ?> </a></time>
 			<?php edit_comment_link(__( '(Edit)', 'temperancetheme' ),'  ','') ?>
 			</header>
 			<?php if ($comment->comment_approved == '0') : ?>
