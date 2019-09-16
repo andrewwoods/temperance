@@ -1,11 +1,18 @@
 <?php
 /**
- * This is where you can drop your custom functions or just edit things like
- * thumbnail sizes, header images, sidebars, comments, etc.
+ * This is your main theme file for functionality.
+ * It's read automatically by WordPress. Because of this,
+ * It's used to pull in code from other files.
+ *
+ * It's also the place to attach your functions and/or classes to the hooks you
+ * want to use. By default, things are enabled to make it easy for you to
+ * customize. If you don't like/want something, you can comment out the hook.
+ * Before your deploy or publish your code, you might want to delete the
+ * functions you are using. That way you know what code you are actually
+ * supporting. This keeps your code clean.
  *
  * @package Temperance
  */
-
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -14,13 +21,34 @@
  */
 define( 'TEMPERANCE_DIR_PATH', get_stylesheet_directory() );
 define( 'TEMPERANCE_DIR_URL', get_stylesheet_directory_uri() );
+define( 'TEMPERANCE_SRC_PATH', TEMPERANCE_DIR_PATH . '/src' );
+define( 'TEMPERANCE_LIB_PATH', TEMPERANCE_DIR_PATH . '/library' );
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                     INCLUDE FILES                       *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-require_once( 'library/main.php' );
+require_once TEMPERANCE_LIB_PATH . '/comments.php';
+require_once TEMPERANCE_LIB_PATH . '/media.php';
+require_once TEMPERANCE_LIB_PATH . '/navigation.php';
+require_once TEMPERANCE_LIB_PATH . '/posts.php';
+require_once TEMPERANCE_LIB_PATH . '/sidebars.php';
+require_once TEMPERANCE_LIB_PATH . '/skeleton.php';
+require_once TEMPERANCE_LIB_PATH . '/translation/translation.php';
+
+/*
+ * Admin related code
+ */
+require_once TEMPERANCE_LIB_PATH . '/admin/admin.php';
+require_once TEMPERANCE_LIB_PATH . '/admin/dashboard-widgets.php';
+
+/*
+ * Classes for OOP code
+ */
+require_once TEMPERANCE_SRC_PATH . '/class-temperance-customizer.php';
+
+
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -28,162 +56,28 @@ require_once( 'library/main.php' );
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
+add_action( 'after_setup_theme', 'temperance_theme_support', 16 );
+
+add_action( 'init', 'temperance_head_cleanup' );
+
+add_action( 'wp_enqueue_scripts', 'temperance_scripts_and_styles', 999 );
+
+add_action( 'widgets_init', 'temperance_register_sidebars' );
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                        FILTERS                          *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
+
 add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
 
+add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                  THUMBNAIL SIZE OPTIONS                 *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-add_image_size( 'temperance-thumb-600', 600, 150, true );
-add_image_size( 'temperance-thumb-300', 300, 100, true );
+add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
 
-/*
- * to add more sizes, simply copy a line from above and change the dimensions &
- * name. As long as you upload a "featured image" as large as the biggest set
- * width or height, all the other sizes will be auto-cropped.
- *
- * To call a different size, simply change the text inside the thumbnail function.
- *
- * For example, to call the 300 x 300 sized image, we would use the function:
- * <?php the_post_thumbnail( 'temperance-thumb-300' ); ?>
- * for the 600 x 100 image:
- * <?php the_post_thumbnail( 'temperance-thumb-600' ); ?>
- *
- * You can change the names and dimensions to whatever you like. Enjoy!
- */
+add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
 
-/**
- * Add custom image sizes
- *
- * The function above adds the ability to use the dropdown menu to select
- * the new images sizes you have just created from within the media manager
- * when you add media to your content blocks. If you add more image sizes,
- * duplicate one of the lines in the array and name it according to your
- * new image size.
- *
- * @since 1.0
- *
- * @param  array $sizes
- * @return array
- */
-function temperance_custom_image_sizes( $sizes ) {
-	return array_merge( $sizes, array(
-		'temperance-thumb-600' => __( '600px by 150px' ),
-		'temperance-thumb-300' => __( '300px by 100px' ),
-	) );
-}
-
-
-/*
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *                                 Sidebars                                    *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- */
-
-/**
- * Sidebars & Widget Areas
- *
- * @since 1.0
- *
- * @return void
- */
-function temperance_register_sidebars() {
-	register_sidebar(
-		array(
-			'id' => 'sidebar_main',
-			'name' => __( 'Main Sidebar', 'temperancetheme' ),
-			'description' => __( 'The primary sidebar.', 'temperancetheme' ),
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widgettitle">',
-			'after_title' => '</h4>',
-		)
-	);
-}
-
-
-
-/**
- * Display a single comment
- *
- *
- * @since 1.0
- *
- * @param  string $comment
- * @param  array $args
- * @param  int $depth
- * @return void
- */
-function temperance_comments( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment; ?>
-	<li <?php comment_class(); ?>>
-		<article id="comment-<?php comment_ID(); ?>" class="clearfix">
-			<header class="comment-author vcard">
-			<?php
-
-			/*
-			 * this is the new responsive optimized comment image. It used the
-			 * new HTML5 data-attribute to display comment gravatars on larger
-			 * screens only. What this means is that on larger posts, mobile
-			 * sites don't have a ton of requests for comment images. This
-			 * makes load time incredibly fast! If you'd like to change it
-			 * back, just replace it with the regular WordPress gravatar call:
-			 *
-			 * echo get_avatar($comment,$size='32',$default='<path_to_url>' );
-			 */
-			$bgauthemail = get_comment_author_email();
-			$nothing_img = get_template_directory_uri() . '/library/images/nothing.gif';
-			$avatar_data = 'http://www.gravatar.com/avatar/'
-				. md5( $bgauthemail ) . '?s=32';
-			?>
-			<img data-gravatar="<?php echo $avatar_data; ?>"
-				class="load-gravatar avatar avatar-48 photo"
-				height="32"
-				width="32"
-				src="<?php echo $nothing_img ?>" />
-			<?php // end custom gravatar call ?>
-			<?php
-				$date_format = get_option( 'date_format' );
-				printf(
-					__( '<cite class="fn">%s</cite>', 'temperancetheme' ),
-					get_comment_author_link()
-				); ?>
-			<time datetime="<?php echo comment_time('Y-m-d'); ?>">
-			<a href="<?php echo htmlspecialchars(
-				get_comment_link( $comment->comment_ID )
-			) ?>"><?php comment_time(__( $date_format, 'temperancetheme' )); ?> </a></time>
-			<?php edit_comment_link(__( '(Edit)', 'temperancetheme' ),'  ','') ?>
-			</header>
-			<?php if ($comment->comment_approved == '0') : ?>
-				<div class="alert alert-info">
-					<p><?php
-						_e( 'Your comment is awaiting moderation.', 'temperancetheme' )
-					?></p>
-				</div>
-			<?php endif; ?>
-			<section class="comment_content clearfix">
-				<?php comment_text() ?>
-			</section>
-			<?php comment_reply_link(
-				array_merge( $args,
-					array(
-						'depth' => $depth,
-						'max_depth' => $args['max_depth']
-					)
-				)
-			); ?>
-		</article>
-	<?php // </li> is added by WordPress automatically ?>
-<?php
-}
 
 
