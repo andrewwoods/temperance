@@ -74,7 +74,7 @@ add_filter( 'image_size_names_choose', 'temperance_custom_image_sizes' );
 
 add_filter( 'wp_title', 'temperance_wp_title', 11, 3 );
 
-add_filter( 'the_content', 'temperance_filter_ptags_on_images' );
+add_filter( 'the_content', 'temperance_filter_p_tags_on_images' );
 
 add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 

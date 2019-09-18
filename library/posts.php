@@ -109,9 +109,9 @@ function temperance_related_posts() {
  * @see http://css-tricks.com/snippets/wordpress/remove-paragraph-tags-from-around-images/
  *
  * @param  string $content
- * @return type it does something
+ * @return string the filtered content
  */
-function temperance_filter_ptags_on_images( $content ){
+function temperance_filter_p_tags_on_images( $content ){
 	return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 
