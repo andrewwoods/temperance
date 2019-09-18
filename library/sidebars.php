@@ -29,5 +29,17 @@ function temperance_register_sidebars() {
 			'after_title' => '</h4>',
 		]
 	);
+
+	register_sidebar(
+		[
+			'id' => 'sidebar_alt',
+			'name' => __( 'Alternate Sidebar', 'temperancetheme' ),
+			'description' => __( 'A different sidebar.', 'temperancetheme' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widgettitle">',
+			'after_title' => '</h4>',
+		]
+	);
 }
 
