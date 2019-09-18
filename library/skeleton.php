@@ -1,11 +1,21 @@
 <?php
+/**
+ * Skeleton related functions
+ *
+ * This file is part of the Temperance starter theme by Andrew Woods.
+ * In this context, skeleton refers to the basic page parts parts of the page
+ *
+ * @license GPLv2
+ * @author Andrew Woods <andrew@andrewwoods.net>
+ * @package Plugin\Navigation
+ */
 
 
 
 /**
  * Adding Theme Support
  *
- * There are many options for theme support availale. Thumbnails, feed links,
+ * There are many options for theme support available. Thumbnails, feed links,
  * post formats, and color options are just a few options available. To add header
  * image support visit the header background image link in this comment
  *

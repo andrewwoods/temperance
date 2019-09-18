@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * Comment related functions
+ *
+ * This file is part of the Temperance starter theme by Andrew Woods
+ *
+ * @license GPLv2
+ * @author Andrew Woods <andrew@andrewwoods.net>
+ * @package Plugin\Navigation
+ *
+ */
 
 /**
  * Display a single comment
@@ -74,5 +83,4 @@ function temperance_comments( $comment, $args, $depth ) {
 	<?php // </li> is added by WordPress automatically ?>
 	<?php
 }
-
 
