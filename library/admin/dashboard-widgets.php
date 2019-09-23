@@ -8,10 +8,6 @@
  * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
  */
 
-add_action( 'wp_dashboard_setup', 'disable_default_dashboard_widgets' );
-
-add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
-
 /**
  * disable default dashboard widgets
  *
