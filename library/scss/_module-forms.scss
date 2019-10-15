@@ -19,8 +19,8 @@ input[type=number] {
 	margin: $margin-medium auto;
 
 	&:focus {
-		background-color: $form-highlight;
-		color: $black;
+		background-color: $form-highlight-color;
+		color: $white;
 	}
 }
 

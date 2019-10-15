@@ -15,13 +15,20 @@
 
 		&:link,
 		&:visited {
-			background-color: #990000;
-			color: #ffffff;
+			background-color: $grey-80;
+			color: $brand-primary-color;
 		}
 
 
-		&:hover, &:active, &:focus {
+		&:hover, &:focus {
 			left: 2em;
+			background-color: $brand-primary-color;
+			color: $white;
+		}
+		&:active {
+			left: 2em;
+			background-color: $brand-secondary-color;
+			color: $white;
 		}
 	}
 
@@ -38,26 +45,41 @@
 .nav {
 	border: 1px solid #ccc;
 	border-bottom: 0;
+	ul {
+		margin-block-start: 0;
+		margin-block-end: 0;
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+		padding: $padding-small;
+		border-bottom: 1px solid #ccc;
+
+		&:link {
+			background-color: $grey-90;
+			color: $grey-10;
+		}
+
+		&:visited {
+			background-color: $grey-90;
+			color: $grey-10;
+		}
+
+		&:hover, &:focus {
+			background-color: $brand-primary-color;
+			color: $white;
+		}
+
+		&:active {
+			background-color: $brand-secondary-color;
+			color: $white;
+		}
+
+	}
 
 	li {
 
-		a {
-			display: block;
-			text-decoration: none;
-			padding: 10px 10px;
-			background-color: #eee;
-			border-bottom: 1px solid #ccc;
-
-			//
-			// remember this is for mobile ONLY, so there's no need
-			// to even declare hover styles here, you can do it in
-			// the style.scss file where it's relevant. We want to
-			// keep this file as small as possible!
-			//
-			&:hover, &:focus {
-
-			}
-		}
 
 		&:first-child {}
 

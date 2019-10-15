@@ -29,36 +29,37 @@ body {
 // LINK STYLES
 //------------------------------------------------------------------------------
 
-a {
-	color: $link-main-color;
-	background-color: inherit;
+main a {
 
 	// mobile tap color
 	&:link {
+		color: $brand-primary-color;
+		background-color: transparent;
 		//
 		// this highlights links on iPhones/iPads.
 		// so it basically works like the :hover selector
 		// for mobile devices.
 		//
-		-webkit-tap-highlight-color : $link-main-bgcolor;
+		-webkit-tap-highlight-color : $brand-primary-color;
 	}
 
 	// show where you've been
 	&:visited {
-		color: $link-visited-color;
+		color: darken($brand-primary-color, 0.2);
+		background-color: transparent;
 	}
 
 	// on hover
 	&:hover, &:focus {
-		color: $link-hover-color;
-		background-color: $link-hover-bgcolor;
+		color: $white;
+		background-color: $brand-primary-color;
+		font-weight: bold;
 	}
 
 	// on click
 	&:active {
-		color: $link-active-color;
-		background-color: $link-active-bgcolor;
-		font-weight: bold;
+		color: $white;
+		background-color: $brand-secondary-color;
 	}
 
 }

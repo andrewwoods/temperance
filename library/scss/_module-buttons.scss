@@ -18,12 +18,12 @@ button, button:visited, .btn, .btn:visited {
 	text-decoration: none;
 
 	&:hover, &:focus {
-		background-color: $link-main-bgcolor;
-		color: $link-main-color;
+		background-color: $brand-primary-color;
+		color: $white;
 	}
 
 	&:active {
-		background-color: $link-active-bgcolor;
-		color: $link-active-color;
+		background-color: $brand-secondary-color;
+		color: $white;
 	}
 }
