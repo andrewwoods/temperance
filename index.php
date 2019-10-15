@@ -14,14 +14,8 @@
 
 	<?php else : ?>
 		<?php
-			$uh_oh_message = 'Uh Oh. Something is missing. Try double checking things.';
+            get_template_part( 'content/empty' );
 		?>
-		<article id="post-not-found" class="hentry clearfix">
-			<section class="entry-content">
-			<p><?php _e( $uh_oh_message, 'temperancetheme' ); ?></p>
-			</section>
-		</article>
-
 	<?php
 	endif;
 	?>
