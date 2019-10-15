@@ -12,6 +12,10 @@ For more info, check out the codex:
 http://codex.wordpress.org/Creating_Admin_Themes
 
 ******************************************************************/
+body.login {
+  background-color: #f7f7f7;
+}
+
 .login h1 a {
   background: url(../images/login-logo.png) no-repeat top center;
   width: 326px;
@@ -22,18 +26,20 @@ http://codex.wordpress.org/Creating_Admin_Themes
   display: block;
 }
 
-form {
+.login form {
   margin-left: 8px;
   padding: 26px 24px 46px;
   font-weight: normal;
-  background: white;
-  border: 1px solid #E5E5E5;
-  border-radius: 3px;
-  box-shadow: none;
+  background: #f7f7f7;
+  border: 1px solid #237dc1;
+  border-radius: 1em 1em;
+  -webkit-box-shadow: 2px 2px 8px #4c4c4c;
+  -moz-box-shadow: 2px 2px 8px #4c4c4c;
+  box-shadow: 2px 2px 8px #4c4c4c;
 }
 
 body form .input {
-  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", sans-serif;
   font-weight: 200;
   font-size: 24px;
   width: 97%;
@@ -43,6 +49,52 @@ body form .input {
   margin-bottom: 16px;
   border: 1px solid #E5E5E5;
   background: #FBFBFB;
-  outline: none;
-  box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.2);
+  box-shadow: inset 1px 1px 2px #4c4c4c;
 }
+
+body form .input:focus {
+  border: 2px solid #237dc1;
+  background: #FBFBFB;
+  box-shadow: inset 1px 1px 2px #237dc1;
+}
+
+body.login #nav a {
+  text-decoration: underline;
+}
+body.login #nav a:link {
+  background-color: transparent;
+  color: #1B6196;
+}
+body.login #nav a:visited {
+  background-color: transparent;
+  color: #0b2940;
+}
+body.login #nav a:hover, body.login #nav a:focus {
+  background-color: #1B6196;
+  color: #f7f7f7;
+}
+body.login #nav a:active {
+  background-color: #e8415e;
+  color: #f7f7f7;
+}
+
+.login #backtoblog a {
+  text-decoration: underline;
+}
+.login #backtoblog a:link {
+  background-color: transparent;
+  color: #1B6196;
+}
+.login #backtoblog a:visited {
+  background-color: transparent;
+  color: #1b6095;
+}
+.login #backtoblog a:hover, .login #backtoblog a:focus {
+  background-color: #1B6196;
+  color: #f7f7f7;
+}
+.login #backtoblog a:active {
+  background-color: #e8415e;
+  color: #f7f7f7;
+}
+
