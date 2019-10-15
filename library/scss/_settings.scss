@@ -19,9 +19,8 @@ $padding-large:  $spacing-large;
 
 
 
-
 //------------------------------------------------------------------------------
-//      COLORS 
+//      COLORS
 //------------------------------------------------------------------------------
 // Need help w/ choosing your colors? Try this site out:
 // http://0to255.com/
@@ -65,7 +64,22 @@ $grey-10: $gray-10;
 //
 
 
+//
+// Brand colors
+// -------------
+// @todo Put your colors here
+//
 
+$brand-red-dark: #ae1530;
+$brand-red: #db1b3c;
+$brand-red-light: #e8415e;
+$brand-blue-dark: #13456b;
+$brand-blue: #1B6196;
+$brand-blue-light: #237dc1;
+
+//
+$brand-primary-color: $brand-blue;
+$brand-secondary-color: $brand-red-light;
 
 //------------------------------------------------------------------------------
 //      FONTS
