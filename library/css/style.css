@@ -274,26 +274,26 @@ body {
   font-size: 100%;
   line-height: 1.5;
   color: #333333;
+  padding: 1em;
 }
 
-a {
-  color: #0000ff;
-  background-color: inherit;
+main a:link {
+  color: #1B6196;
+  background-color: transparent;
+  -webkit-tap-highlight-color: #1B6196;
 }
-a:link {
-  -webkit-tap-highlight-color: transparent;
+main a:visited {
+  color: #1b6095;
+  background-color: transparent;
 }
-a:visited {
-  color: #000099;
-}
-a:hover, a:focus {
+main a:hover, main a:focus {
   color: #f7f7f7;
-  background-color: #6f006f;
-}
-a:active {
-  color: #f7f7f7;
-  background-color: #ff9f00;
+  background-color: #1B6196;
   font-weight: bold;
+}
+main a:active {
+  color: #f7f7f7;
+  background-color: #e8415e;
 }
 
 a[href$=".pdf"]:after {
@@ -376,6 +376,64 @@ h5, .h5 {
   clear: both;
 }
 
+.skip-nav a {
+  display: block;
+  width: auto;
+  padding: 1em;
+  position: absolute;
+  top: 2em;
+  left: -999em;
+  text-decoration: underline;
+}
+.skip-nav a:link, .skip-nav a:visited {
+  background-color: #cccccc;
+  color: #1B6196;
+}
+.skip-nav a:hover, .skip-nav a:focus {
+  left: 2em;
+  background-color: #1B6196;
+  color: #f7f7f7;
+}
+.skip-nav a:active {
+  left: 2em;
+  background-color: #e8415e;
+  color: #f7f7f7;
+}
+
+.nav {
+  border: 1px solid #ccc;
+  border-bottom: 0;
+}
+.nav ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.nav a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+.nav a:link {
+  background-color: #e5e5e5;
+  color: #191919;
+}
+.nav a:visited {
+  background-color: #e5e5e5;
+  color: #191919;
+}
+.nav a:hover, .nav a:focus {
+  background-color: #1B6196;
+  color: #f7f7f7;
+}
+.nav a:active {
+  background-color: #e8415e;
+  color: #f7f7f7;
+}
+.nav li ul.sub-menu li a,
+.nav li ul.children li a {
+  padding-left: 30px;
+}
 button, button:visited, .btn, .btn:visited {
   border: 1px solid #999999;
   background-color: #cccccc;
@@ -390,11 +448,11 @@ button, button:visited, .btn, .btn:visited {
   text-decoration: none;
 }
 button:hover, button:focus, button:visited:hover, button:visited:focus, .btn:hover, .btn:focus, .btn:visited:hover, .btn:visited:focus {
-  background-color: transparent;
-  color: #0000ff;
+  background-color: #1B6196;
+  color: #f7f7f7;
 }
 button:active, button:visited:active, .btn:active, .btn:visited:active {
-  background-color: #ff9f00;
+  background-color: #e8415e;
   color: #f7f7f7;
 }
 
@@ -415,8 +473,8 @@ input[type=text]:focus,
 input[type=tel]:focus,
 input[type=email]:focus,
 input[type=number]:focus {
-  background-color: #e5e5e5;
-  color: #1a1a1a;
+  background-color: #237dc1;
+  color: #f7f7f7;
 }
 
 input[type=submit] {
@@ -440,7 +498,6 @@ label.align-right {
 label.align-center {
   text-align: center;
 }
-
 .field {
   border-top: 1px solid #b2b2b2;
   padding: 1em 0;
@@ -449,7 +506,7 @@ label.align-center {
   border-top: 0;
 }
 
-.alert-help, .alert-info, .alert-error, .alert-success {
+.alert-success, .alert-error, .alert-info, .alert-help {
   margin: 1em;
   padding: 0.5em 1em;
   border: 1px solid;
@@ -500,13 +557,13 @@ label.align-center {
   /******************************************************************
   Site Name: andrewwoods.net
   Author: Andrew Woods
-  
+
   Stylesheet: Print Stylesheet
-  
+
   This is the print stylesheet. There's probably not a lot
   of reasons to edit this stylesheet. If you want to
   though, go for it.
-  
+
   ******************************************************************/
   * {
     background: transparent !important;
@@ -528,8 +585,8 @@ label.align-center {
   }
 
   .ir a:after,
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
+a[href^="javascript:"]:after,
+a[href^="#"]:after {
     content: "";
   }
 
@@ -559,15 +616,15 @@ label.align-center {
   }
 
   h2,
-  h3 {
+h3 {
     page-break-after: avoid;
   }
 
   .sidebar,
-  .page-navigation,
-  .wp-prev-next,
-  .respond-form,
-  nav {
+.page-navigation,
+.wp-prev-next,
+.respond-form,
+nav {
     display: none;
   }
 }
