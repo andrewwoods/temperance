@@ -34,6 +34,7 @@ require_once TEMPERANCE_LIB_PATH . '/comments.php';
 require_once TEMPERANCE_LIB_PATH . '/media.php';
 require_once TEMPERANCE_LIB_PATH . '/navigation.php';
 require_once TEMPERANCE_LIB_PATH . '/posts.php';
+require_once TEMPERANCE_LIB_PATH . '/shortcodes.php';
 require_once TEMPERANCE_LIB_PATH . '/sidebars.php';
 require_once TEMPERANCE_LIB_PATH . '/skeleton.php';
 require_once TEMPERANCE_LIB_PATH . '/translation/translation.php';
@@ -80,5 +81,11 @@ add_filter( 'the_content', 'temperance_filter_p_tags_on_images' );
 add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
 
+/*
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *                        SHORTCODES                       *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
 
+add_shortcode( 'temperance-pull-quote', 'temperance_pull_quote_shortcode' );
 
