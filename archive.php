@@ -60,10 +60,6 @@
 					<?php the_excerpt(); ?>
 				</section>
 
-				<footer class="article-footer">
-
-				</footer>
-
 			</article>
 
 			<?php endwhile; ?>
