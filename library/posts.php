@@ -71,39 +71,54 @@ function temperance_get_the_author_posts_link() {
  *
  * @since 1.0.0
  *
- * @global WP_Post $post it does something
+ * @global WP_Post $post the current post from the loop
  *
  * @return void
  */
 function temperance_related_posts() {
 	global $post;
 
-	echo '<ul id="temperance-related-posts">';
-
 	$tags = wp_get_post_tags( $post->ID );
-	if( $tags ) {
-		foreach( $tags as $tag ) {
-			$tag_arr .= $tag->slug . ',';
-		}
-
-		$args = array(
-			'tag' => $tag_arr,
-			'numberposts' => 5, /* you can change this to show more */
-			'post__not_in' => array($post->ID)
-		);
-		$related_posts = get_posts( $args );
-		if($related_posts) {
-			foreach ( $related_posts as $post ) : setup_postdata( $post ); ?>
-				<li class="related_post"><a class="entry-unrelated" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
-			<?php endforeach;
-		}
-		else { ?>
-			<?php echo '<li class="no_related_post">' . __( 'No Related Posts Yet!', 'temperancetheme' ) . '</li>'; ?>
-		<?php }
+	if ( is_wp_error( $tags ) ) {
+	    echo '<p class="alert alert-error">A WP_Error occurred</p>';
+        return;
 	}
-	wp_reset_query();
 
-	echo '</ul>';
+	if ( empty( $tags ) ) {
+		echo '<p class="alert alert-help">No tags available</p>';
+		return;
+    }
+
+    $tag_arr = '';
+    foreach( $tags as $tag ) {
+        if ($tag_arr){
+            $tag_arr .= ',';
+        }
+        $tag_arr .= $tag->slug;
+    }
+
+    $args = array(
+        'tag' => $tag_arr,
+        'numberposts' => 5, /* you can change this to show more */
+        'post__not_in' => array( $post->ID )
+    );
+
+    $related_posts = get_posts( $args );
+    if ( $related_posts ) {
+        echo '<h2>' . __( 'Related Posts', 'temperancetheme' ) . '</h2>';
+	    echo '<ul id="temperance-related-posts">';
+        foreach ( $related_posts as $post ) {
+            setup_postdata( $post );
+            ?>
+            <li class="related_post"><a class="entry-related" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></li>
+            <?php
+        }
+	    echo '</ul>';
+    } else {
+        echo '<p class="no_related_posts">' . __( 'No Related Posts Yet!', 'temperancetheme' ) . '</p>';
+    }
+
+	wp_reset_query();
 }
 
 
