@@ -20,7 +20,7 @@ class Temperance_Customizer {
 	public static function register( $wp_customize ) {
 
 		// 1. Define a new section (if desired) to the Theme Customizer
-		$wp_customize->add_section( 'temperancetheme_options',
+		$wp_customize->add_section( 'temperance_options',
 			array(
 				'title' => __( 'Temperance Options', 'text-domain' ),
 				'priority' => 35,
@@ -46,8 +46,8 @@ class Temperance_Customizer {
 			$wp_customize,
 			'temperance_link_textcolor',
 			array(
-				'section' => 'temperancetheme_options', // 'colors'
 				'label' => __( 'Link Color', 'text-domain' ),
+				'section' => 'temperance_options', // 'colors'
 				'settings' => 'link_textcolor',
 				'priority' => 10,
 			)
