@@ -1,12 +1,15 @@
 <?php
 /**
- * This file handles the admin area dashboard functions.
+ * This file handles the admin area and functions.
+ *
+ * You can use this file to* make changes to the dashboard.
+ * Updates to this page are coming soon. It's turned off by default,
+ * but you can call it via the functions file.
  *
  * @package Temperance
  * @subpackage Admin
- *
- * @see http://digwp.com/2010/10/customize-wordpress-dashboard/
  */
+
 
 /**
  * disable default dashboard widgets
@@ -16,7 +19,7 @@
  *
  * @return void
  */
-function disable_default_dashboard_widgets() {
+function temperance_disable_default_dashboard_widgets() {
 
 	// The "At A Glance" Widget
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );
@@ -32,6 +35,50 @@ function disable_default_dashboard_widgets() {
 
 }
 
+/**
+ * enqueue your custom login page css
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
+function temperance_login_css() {
+	wp_enqueue_style( 'temperance_login_css', get_template_directory_uri() . '/library/css/login.css', false );
+}
+
+/**
+ * changing the alt text on the logo to show your site name
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
+function temperance_login_title() {
+	return get_option( 'blogname' );
+}
+
+/**
+ * changing the logo link from wordpress.org to your site
+ *
+ * @since 1.0
+ * @see http://codex.wordpress.org/Plugin_API/Action_Reference/login_enqueue_scripts
+ *
+ * @return void
+ */
+function temperance_login_url() {
+	return home_url();
+}
+
+
+
+/**
+ * Custom Backend Footer
+ */
+function temperance_custom_admin_footer() {
+	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>.', 'temperancetheme' );
+}
 
 /**
  * add all custom dashboard widgets
@@ -43,7 +90,7 @@ function temperance_custom_dashboard_widgets() {
 		'temperance_wordpress_rss',
 		__( 'WordPress.com RSS', 'temperancetheme' ),
 		'temperance_wordpress_rss_dashboard_widget'
-    );
+	);
 
 	wp_add_dashboard_widget(
 		'temperance_planet_php_rss',
@@ -56,7 +103,6 @@ function temperance_custom_dashboard_widgets() {
 	 * in this function and they will all load.
 	 */
 }
-
 
 /**
  * @param $url
@@ -94,14 +140,14 @@ function temperance_display_feed_items( $items ){
 	foreach ( $items as $item ) {
 		$content = strip_tags( $item->get_description() );
 		?>
-		<div>
-			<strong><a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
+        <div>
+            <strong><a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
 					<?php echo $item->get_title(); ?>
-				</a></strong>
-			<p>
+                </a></strong>
+            <p>
 				<?php echo substr( $content, 0, 200 ); ?>
-			</p>
-		</div>
+            </p>
+        </div>
 		<?php
 	}
 }
@@ -118,7 +164,7 @@ function temperance_display_feed_items( $items ){
  */
 function temperance_wordpress_rss_dashboard_widget() {
 
-    $items = temperance_fetch_feed( 'http://wordpress.com/feed/rss/' );
+	$items = temperance_fetch_feed( 'http://wordpress.com/feed/rss/' );
 
 	temperance_display_feed_items( $items );
 }
@@ -139,3 +185,5 @@ function temperance_planet_php_rss_dashboard_widget() {
 
 	temperance_display_feed_items( $items );
 }
+
+

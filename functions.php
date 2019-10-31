@@ -22,7 +22,7 @@
 define( 'TEMPERANCE_DIR_PATH', get_stylesheet_directory() );
 define( 'TEMPERANCE_DIR_URL', get_stylesheet_directory_uri() );
 define( 'TEMPERANCE_SRC_PATH', TEMPERANCE_DIR_PATH . '/src' );
-define( 'TEMPERANCE_LIB_PATH', TEMPERANCE_DIR_PATH . '/library' );
+define( 'TEMPERANCE_LIB_PATH', TEMPERANCE_DIR_PATH . '/resources' );
 define( 'TEMPERANCE_LIB_ADMIN_PATH', TEMPERANCE_LIB_PATH . '/admin' );
 
 /*
