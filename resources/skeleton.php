@@ -103,8 +103,6 @@ function temperance_scripts_and_styles() {
 
 	if ( ! is_admin() ) {
 
-		// Modernizr - https://modernizr.com/ - Create and Download your own build of Modernizr
-		// wp_register_script( 'temperance-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 		wp_register_script( 'temperance-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
 
 		// register main stylesheet
@@ -116,7 +114,6 @@ function temperance_scripts_and_styles() {
 			It has been well tested by the WordPress core team.
 		*/
 		wp_enqueue_script( 'jquery' );
-		// wp_enqueue_script( 'temperance-modernizr' );
 		wp_enqueue_script( 'temperance-js' );
 		wp_enqueue_style( 'temperance-stylesheet' );
 
