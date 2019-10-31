@@ -102,7 +102,6 @@ function temperance_load_translations() {
 function temperance_scripts_and_styles() {
 
 	if ( ! is_admin() ) {
-		global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 
 		// Modernizr - https://modernizr.com/ - Create and Download your own build of Modernizr
 		// wp_register_script( 'temperance-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
@@ -110,7 +109,6 @@ function temperance_scripts_and_styles() {
 
 		// register main stylesheet
 		wp_register_style( 'temperance-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
-		wp_register_style( 'temperance-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
 
 		/*
@@ -121,9 +119,7 @@ function temperance_scripts_and_styles() {
 		// wp_enqueue_script( 'temperance-modernizr' );
 		wp_enqueue_script( 'temperance-js' );
 		wp_enqueue_style( 'temperance-stylesheet' );
-		wp_enqueue_style( 'temperance-ie-only' );
 
-		$wp_styles->add_data( 'temperance-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
 		// comment reply script for threaded comments
 		if ( is_singular() AND comments_open() AND ( get_option('thread_comments') == 1 ) ) {
