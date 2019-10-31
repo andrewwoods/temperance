@@ -2,12 +2,11 @@
 /**
  * This file handles the admin area and functions.
  *
- * You can use this file to* make changes to the dashboard.
+ * You can use this file to make changes to the dashboard.
  * Updates to this page are coming soon. It's turned off by default,
  * but you can call it via the functions file.
  *
- * @package Temperance
- * @subpackage Admin
+ * @package Temperance\Admin
  */
 
 
