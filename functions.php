@@ -67,6 +67,21 @@ add_action( 'wp_enqueue_scripts', 'temperance_scripts_and_styles', 999 );
 add_action( 'widgets_init', 'temperance_register_sidebars' );
 
 /*
+ * * * * * * * * * * * * * * *
+ *       ADMIN ACTIONS       *
+ * * * * * * * * * * * * * * *
+ */
+
+add_action( 'login_enqueue_scripts', 'temperance_login_css', 10 );
+
+add_action( 'wp_dashboard_setup', 'temperance_disable_default_dashboard_widgets' );
+add_action( 'wp_dashboard_setup', 'temperance_custom_dashboard_widgets' );
+
+
+// Flush rewrite rules for custom post types.
+add_action( 'after_switch_theme', 'temperance_flush_rewrite_rules', 99 );
+
+/*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                        FILTERS                          *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -80,6 +95,16 @@ add_filter( 'the_content', 'temperance_filter_p_tags_on_images' );
 
 add_filter( 'excerpt_more', 'temperance_excerpt_more' );
 
+/*
+ * * * * * * * * * * * * * * *
+ *       ADMIN FILTERS       *
+ * * * * * * * * * * * * * * *
+ */
+
+add_filter( 'login_headerurl', 'temperance_login_url' );
+add_filter( 'login_headertitle', 'temperance_login_title' );
+
+add_filter( 'admin_footer_text', 'temperance_custom_admin_footer' );
 
 /*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
