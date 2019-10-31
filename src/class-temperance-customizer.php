@@ -25,7 +25,7 @@ class Temperance_Customizer {
 				'title' => __( 'Temperance Options', 'temperancetheme' ),
 				'priority' => 35,
 				'capability' => 'edit_theme_options',
-				'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'),
+				'description' => __('Allows you to customize some example settings for Temperance.', 'temperancetheme'),
 			)
 		);
 
@@ -40,11 +40,11 @@ class Temperance_Customizer {
 		);
 
 
-		// 3. Finally, we define the control itself (which 
+		// 3. Finally, we define the control itself (which
 		//    links a setting to a section and renders the HTML controls)...
 		$color_control = new WP_Customize_Color_Control(
 			$wp_customize,
-			'mytheme_link_textcolor',
+			'temperance_link_textcolor',
 			array(
 				'label' => __( 'Link Color', 'temperancetheme' ),
 				'section' => 'temperancetheme_options', // 'colors'
@@ -55,8 +55,8 @@ class Temperance_Customizer {
 		$wp_customize->add_control( $color_control );
 
 
-		// 4. We can also change built-in settings by 
-		// modifying properties. For instance, let's make some stuff use live 
+		// 4. We can also change built-in settings by
+		// modifying properties. For instance, let's make some stuff use live
 		// preview JS...
 		// $wp_customize->get_setting( 'blogname' )->transport = 'postMessage';
 		// $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
@@ -66,11 +66,11 @@ class Temperance_Customizer {
 	}
 
 	public static function live_preview() {
-	wp_enqueue_script( 
-		'mytheme-themecustomizer', // Give the script a unique ID
+	wp_enqueue_script(
+		'temperance-customizer', // Give the script a unique ID
 		get_template_directory_uri() . '/assets/js/theme-customizer.js', // Define the path to the JS file
 		array(  'jquery', 'customize-preview' ), // Define dependencies
-		'', // Define a version (optional) 
+		'', // Define a version (optional)
 		true // Specify whether to put in footer (leave this true)
 	);
 	}
