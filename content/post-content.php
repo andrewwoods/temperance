@@ -11,7 +11,7 @@
                     'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time>' .
                     ' by <span class="author">%3$s</span> <span class="amp">&amp;</span>' .
                     ' filed under %4$s.',
-                    'temperancetheme'
+                    'text-domain'
                 ),
                 get_the_time( 'c' ),
                 get_the_time( get_option( 'date_format' ) ),
@@ -26,7 +26,7 @@
 	</section>
 
 	<footer class="article-footer">
-		<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'temperancetheme' ) . '</span> ', ', ', '</p>' ); ?>
+		<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'text-domain' ) . '</span> ', ', ', '</p>' ); ?>
 	</footer>
 
 	<?php comments_template(); ?>

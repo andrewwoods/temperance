@@ -26,7 +26,7 @@ function temperance_excerpt_more( $more ) {
 	$url = get_permalink( $post->ID );
 	$title = get_the_title( $post->ID );
 	$span = ' <span class="visually-hidden">' . $title . '</span> ';
-	$a_text = _x( 'Read more &raquo;', ' use &laquo; for RTL languages like arabic ', 'temperancetheme' );
+	$a_text = _x( 'Read more &raquo;', ' use &laquo; for RTL languages like arabic ', 'text-domain' );
 	if ( is_rtl() ){
 		$more = ' <a class="excerpt-read-more" href="'. $url . '" title="'. $title .'">'. $span . $a_text  .'</a> ... ';
 	} else {
@@ -105,7 +105,7 @@ function temperance_related_posts() {
 
     $related_posts = get_posts( $args );
     if ( $related_posts ) {
-        echo '<h2>' . __( 'Related Posts', 'temperancetheme' ) . '</h2>';
+        echo '<h2>' . __( 'Related Posts', 'text-domain' ) . '</h2>';
 	    echo '<ul id="temperance-related-posts">';
         foreach ( $related_posts as $post ) {
             setup_postdata( $post );
@@ -115,7 +115,7 @@ function temperance_related_posts() {
         }
 	    echo '</ul>';
     } else {
-        echo '<p class="no_related_posts">' . __( 'No Related Posts Yet!', 'temperancetheme' ) . '</p>';
+        echo '<p class="no_related_posts">' . __( 'No Related Posts Yet!', 'text-domain' ) . '</p>';
     }
 
 	wp_reset_query();

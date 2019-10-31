@@ -52,19 +52,19 @@ function temperance_comments( $comment, $args, $depth ) {
 			<?php
 			$date_format = get_option( 'date_format' );
 			printf(
-				__( '<cite class="fn">%s</cite>', 'temperancetheme' ),
+				__( '<cite class="fn">%s</cite>', 'text-domain' ),
 				get_comment_author_link()
 			); ?>
 			<time datetime="<?php echo comment_time('Y-m-d'); ?>">
 				<a href="<?php echo htmlspecialchars(
 					get_comment_link( $comment->comment_ID )
-				) ?>"><?php comment_time(__( $date_format, 'temperancetheme' )); ?> </a></time>
-			<?php edit_comment_link(__( '(Edit)', 'temperancetheme' ),'  ','') ?>
+				) ?>"><?php comment_time(__( $date_format, 'text-domain' )); ?> </a></time>
+			<?php edit_comment_link(__( '(Edit)', 'text-domain' ),'  ','') ?>
 		</header>
 		<?php if ($comment->comment_approved == '0') : ?>
 			<div class="alert alert-info">
 				<p><?php
-					_e( 'Your comment is awaiting moderation.', 'temperancetheme' )
+					_e( 'Your comment is awaiting moderation.', 'text-domain' )
 					?></p>
 			</div>
 		<?php endif; ?>

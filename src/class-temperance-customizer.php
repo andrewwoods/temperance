@@ -22,10 +22,10 @@ class Temperance_Customizer {
 		// 1. Define a new section (if desired) to the Theme Customizer
 		$wp_customize->add_section( 'temperancetheme_options',
 			array(
-				'title' => __( 'Temperance Options', 'temperancetheme' ),
+				'title' => __( 'Temperance Options', 'text-domain' ),
 				'priority' => 35,
 				'capability' => 'edit_theme_options',
-				'description' => __('Allows you to customize some example settings for Temperance.', 'temperancetheme'),
+				'description' => __('Allows you to customize some example settings for Temperance.', 'text-domain'),
 			)
 		);
 
@@ -46,8 +46,8 @@ class Temperance_Customizer {
 			$wp_customize,
 			'temperance_link_textcolor',
 			array(
-				'label' => __( 'Link Color', 'temperancetheme' ),
 				'section' => 'temperancetheme_options', // 'colors'
+				'label' => __( 'Link Color', 'text-domain' ),
 				'settings' => 'link_textcolor',
 				'priority' => 10,
 			)

@@ -7,12 +7,12 @@
 		<?php
 			$time_tag = '<time class="dt-published" datetime="%1$s" pubdate>%2$s</time>';
 
-			printf( __( "Posted $time_tag", 'temperancetheme' ),
+			printf( __( "Posted $time_tag", 'text-domain' ),
 				get_the_time( 'c' ),
 				get_the_time( get_option( 'date_format' ) )
 			);
 			printf( __( '<span class="author p-author">%1$s</span>
-				<span class="amp">&</span> filed under %2$s.', 'temperancetheme' ),
+				<span class="amp">&</span> filed under %2$s.', 'text-domain' ),
 				temperance_get_the_author_posts_link(),
 				get_the_category_list( ', ' )
 			);

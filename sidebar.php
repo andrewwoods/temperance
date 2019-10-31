@@ -24,7 +24,7 @@
 		<div class="alert alert-help">
 			<p>
 			<?php
-			_e( 'Please activate some Widgets.', 'temperancetheme' );
+			_e( 'Please activate some Widgets.', 'text-domain' );
 			?>
 			</p>
 		</div>

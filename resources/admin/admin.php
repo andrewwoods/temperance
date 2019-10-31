@@ -76,7 +76,7 @@ function temperance_login_url() {
  * Custom Backend Footer
  */
 function temperance_custom_admin_footer() {
-	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>.', 'temperancetheme' );
+	_e( '<span id="footer-thankyou">Developed by <a href="http://yoursite.com" target="_blank">Your Site Name</a></span>.', 'text-domain' );
 }
 
 /**
@@ -87,13 +87,13 @@ function temperance_custom_admin_footer() {
 function temperance_custom_dashboard_widgets() {
 	wp_add_dashboard_widget(
 		'temperance_wordpress_rss',
-		__( 'WordPress.com RSS', 'temperancetheme' ),
+		__( 'WordPress.com RSS', 'text-domain' ),
 		'temperance_wordpress_rss_dashboard_widget'
 	);
 
 	wp_add_dashboard_widget(
 		'temperance_planet_php_rss',
-		__( 'Planet PHP RSS', 'temperancetheme' ),
+		__( 'Planet PHP RSS', 'text-domain' ),
 		'temperance_planet_php_rss_dashboard_widget'
 	);
 
@@ -140,7 +140,7 @@ function temperance_display_feed_items( $items ){
 		$content = strip_tags( $item->get_description() );
 		?>
         <div>
-            <strong><a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'temperancetheme' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
+            <strong><a href="<?php echo $item->get_permalink(); ?>" title="<?php echo mysql2date( __( 'j F Y @ g:i a', 'text-domain' ), $item->get_date( 'Y-m-d H:i:s' ) ); ?>" target="_blank">
 					<?php echo $item->get_title(); ?>
                 </a></strong>
             <p>

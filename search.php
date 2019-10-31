@@ -3,7 +3,7 @@
 <main id="main" class="main" role="main">
 	<div id="main-content" class="main-content">
 	<h1 class="archive-title">
-		<span><?php _e( 'Search Results for:', 'temperancetheme' ); ?></span>
+		<span><?php _e( 'Search Results for:', 'text-domain' ); ?></span>
 		<?php echo esc_attr( get_search_query() ); ?>
 	</h1>
 
@@ -21,9 +21,9 @@
 
 	<?php else : ?>
 	<?php
-	$no_results = __( 'Sorry, No Results.', 'temperancetheme' );
-	$try_again  = __( 'Try your search again.', 'temperancetheme' );
-	$error      = __( 'This is the error message in search.php', 'temperancetheme' );
+	$no_results = __( 'Sorry, No Results.', 'text-domain' );
+	$try_again  = __( 'Try your search again.', 'text-domain' );
+	$error      = __( 'This is the error message in search.php', 'text-domain' );
 	?>
 		<article id="post-not-found" class="hentry clearfix">
 			<header class="article-header">

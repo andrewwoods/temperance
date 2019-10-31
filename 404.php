@@ -6,11 +6,11 @@
 	<article id="post-not-found" class="hentry">
 
 		<header class="article-header">
-			<h1><?php _e( 'Epic 404 - Article Not Found', 'temperancetheme' ); ?></h1>
+			<h1><?php _e( 'Epic 404 - Article Not Found', 'text-domain' ); ?></h1>
 		</header>
 
 		<section class="entry-content">
-			<p><?php _e( 'The content you were looking for was not found, but maybe try looking again!', 'temperancetheme' ); ?></p>
+			<p><?php _e( 'The content you were looking for was not found, but maybe try looking again!', 'text-domain' ); ?></p>
 		</section>
 
 		<section class="search">
@@ -18,7 +18,7 @@
 		</section>
 
 		<footer class="article-footer">
-			<p><?php _e( 'This is the 404.php template.', 'temperancetheme' ); ?></p>
+			<p><?php _e( 'This is the 404.php template.', 'text-domain' ); ?></p>
 		</footer>
 
 	</article>

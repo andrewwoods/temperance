@@ -32,24 +32,24 @@ function temperance_flush_rewrite_rules() {
  * @return void
  */
 function custom_post_example() {
-	// creating (registering) the custom type 
+	// creating (registering) the custom type
 	register_post_type( 'custom_type',
 		array( 'labels' => array(
-				'name' => __( 'Custom Types', 'temperancetheme' ),
-				'singular_name' => __( 'Custom Post', 'temperancetheme' ),
-				'all_items' => __( 'All Custom Posts', 'temperancetheme' ),
-				'add_new' => __( 'Add New', 'temperancetheme' ),
-				'add_new_item' => __( 'Add New Custom Type', 'temperancetheme' ),
-				'edit' => __( 'Edit', 'temperancetheme' ),
-				'edit_item' => __( 'Edit Post Types', 'temperancetheme' ),
-				'new_item' => __( 'New Post Type', 'temperancetheme' ),
-				'view_item' => __( 'View Post Type', 'temperancetheme' ),
-				'search_items' => __( 'Search Post Type', 'temperancetheme' ),
-				'not_found' =>  __( 'Nothing found in the Database.', 'temperancetheme' ),
-				'not_found_in_trash' => __( 'Nothing found in Trash', 'temperancetheme' ),
+				'name' => __( 'Custom Types', 'text-domain' ),
+				'singular_name' => __( 'Custom Post', 'text-domain' ),
+				'all_items' => __( 'All Custom Posts', 'text-domain' ),
+				'add_new' => __( 'Add New', 'text-domain' ),
+				'add_new_item' => __( 'Add New Custom Type', 'text-domain' ),
+				'edit' => __( 'Edit', 'text-domain' ),
+				'edit_item' => __( 'Edit Post Types', 'text-domain' ),
+				'new_item' => __( 'New Post Type', 'text-domain' ),
+				'view_item' => __( 'View Post Type', 'text-domain' ),
+				'search_items' => __( 'Search Post Type', 'text-domain' ),
+				'not_found' =>  __( 'Nothing found in the Database.', 'text-domain' ),
+				'not_found_in_trash' => __( 'Nothing found in Trash', 'text-domain' ),
 				'parent_item_colon' => ''
 			),
-			'description' => __( 'This is the example custom post type', 'temperancetheme' ),
+			'description' => __( 'This is the example custom post type', 'text-domain' ),
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,
@@ -64,7 +64,7 @@ function custom_post_example() {
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
 		)
 	);
-	
+
 	/* this adds your post categories to your custom post type */
 	register_taxonomy_for_object_type( 'category', 'custom_type' );
 	/* this adds your post tags to your custom post type */
@@ -81,16 +81,16 @@ register_taxonomy( 'custom_cat',
 	array( 'custom_type' ),
 	array('hierarchical' => true,
 		'labels' => array(
-			'name' => __( 'Custom Categories', 'temperancetheme' ),
-			'singular_name' => __( 'Custom Category', 'temperancetheme' ),
-			'search_items' =>  __( 'Search Custom Categories', 'temperancetheme' ),
-			'all_items' => __( 'All Custom Categories', 'temperancetheme' ),
-			'parent_item' => __( 'Parent Custom Category', 'temperancetheme' ),
-			'parent_item_colon' => __( 'Parent Custom Category:', 'temperancetheme' ),
-			'edit_item' => __( 'Edit Custom Category', 'temperancetheme' ),
-			'update_item' => __( 'Update Custom Category', 'temperancetheme' ),
-			'add_new_item' => __( 'Add New Custom Category', 'temperancetheme' ),
-			'new_item_name' => __( 'New Custom Category Name', 'temperancetheme' )
+			'name' => __( 'Custom Categories', 'text-domain' ),
+			'singular_name' => __( 'Custom Category', 'text-domain' ),
+			'search_items' =>  __( 'Search Custom Categories', 'text-domain' ),
+			'all_items' => __( 'All Custom Categories', 'text-domain' ),
+			'parent_item' => __( 'Parent Custom Category', 'text-domain' ),
+			'parent_item_colon' => __( 'Parent Custom Category:', 'text-domain' ),
+			'edit_item' => __( 'Edit Custom Category', 'text-domain' ),
+			'update_item' => __( 'Update Custom Category', 'text-domain' ),
+			'add_new_item' => __( 'Add New Custom Category', 'text-domain' ),
+			'new_item_name' => __( 'New Custom Category Name', 'text-domain' )
 		),
 		'show_admin_column' => true,
 		'show_ui' => true,
@@ -101,19 +101,19 @@ register_taxonomy( 'custom_cat',
 
 
 register_taxonomy( 'custom_tag',
-	array('custom_type'), 
+	array('custom_type'),
 	array('hierarchical' => false,
 		'labels' => array(
-			'name' => __( 'Custom Tags', 'temperancetheme' ),
-			'singular_name' => __( 'Custom Tag', 'temperancetheme' ),
-			'search_items' =>  __( 'Search Custom Tags', 'temperancetheme' ),
-			'all_items' => __( 'All Custom Tags', 'temperancetheme' ),
-			'parent_item' => __( 'Parent Custom Tag', 'temperancetheme' ),
-			'parent_item_colon' => __( 'Parent Custom Tag:', 'temperancetheme' ),
-			'edit_item' => __( 'Edit Custom Tag', 'temperancetheme' ),
-			'update_item' => __( 'Update Custom Tag', 'temperancetheme' ),
-			'add_new_item' => __( 'Add New Custom Tag', 'temperancetheme' ),
-			'new_item_name' => __( 'New Custom Tag Name', 'temperancetheme' )
+			'name' => __( 'Custom Tags', 'text-domain' ),
+			'singular_name' => __( 'Custom Tag', 'text-domain' ),
+			'search_items' =>  __( 'Search Custom Tags', 'text-domain' ),
+			'all_items' => __( 'All Custom Tags', 'text-domain' ),
+			'parent_item' => __( 'Parent Custom Tag', 'text-domain' ),
+			'parent_item_colon' => __( 'Parent Custom Tag:', 'text-domain' ),
+			'edit_item' => __( 'Edit Custom Tag', 'text-domain' ),
+			'update_item' => __( 'Update Custom Tag', 'text-domain' ),
+			'add_new_item' => __( 'Add New Custom Tag', 'text-domain' ),
+			'new_item_name' => __( 'New Custom Tag Name', 'text-domain' )
 		),
 		'show_admin_column' => true,
 		'show_ui' => true,

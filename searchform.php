@@ -1,6 +1,6 @@
 <!-- Search form -->
 <h1>
-<?php echo _ex( 'Search Form', 'search form heading', 'temperancetheme' ); ?>
+<?php echo _ex( 'Search Form', 'search form heading', 'text-domain' ); ?>
 </h1>
 <form
 	role="search"
@@ -10,7 +10,7 @@
 
 	<label for="search-query" class="label">
 	<?php
-		_ex( 'Search for:', 'label for search field', 'temperancetheme' );
+		_ex( 'Search for:', 'label for search field', 'text-domain' );
 	?>
 	</label>
 
@@ -19,7 +19,7 @@
 		_ex(
 			'e.g. a11y',
 			'instructional text',
-			'temperancetheme'
+			'text-domain'
 		);
 		?>">
 
@@ -31,7 +31,7 @@
 		_ex(
 			'Search',
 			'the act of submitting a search form',
-			'temperancetheme'
+			'text-domain'
 		);
 		?>">
 </form>

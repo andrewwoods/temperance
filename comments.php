@@ -15,7 +15,7 @@ if ( post_password_required() ) { ?>
 			$is_protected = 'This post is password protected. '
 			. 'Enter the password to view comments.';
 
-			_e( $is_protected, 'temperancetheme' );
+			_e( $is_protected, 'text-domain' );
 		?></p>
 	</div>
 	<?php
@@ -28,13 +28,13 @@ if ( post_password_required() ) { ?>
 <?php if ( have_comments() ) : ?>
 	<h3 id="comments"><?php
 		comments_number(
-			__( '<span>No</span> Responses', 'temperancetheme' ),
-			__( '<span>One</span> Response', 'temperancetheme' ),
+			__( '<span>No</span> Responses', 'text-domain' ),
+			__( '<span>One</span> Response', 'text-domain' ),
 			_n(
 				'<span>%</span> Response',
 				'<span>%</span> Responses',
 				get_comments_number(),
-				'temperancetheme'
+				'text-domain'
 			)
 		);
 	?> to &#8220;<?php the_title(); ?>&#8221;</h3>
@@ -63,7 +63,7 @@ if ( post_password_required() ) { ?>
 		<?php // If comments are open, but there are no comments. ?>
 	<?php else : // comments are closed ?>
 		<p class="nocomments"><?php
-			_e( 'Comments are closed.', 'temperancetheme' );
+			_e( 'Comments are closed.', 'text-domain' );
 		?></p>
 	<?php endif; ?>
 
@@ -75,8 +75,8 @@ if ( post_password_required() ) { ?>
 
 		<h3 id="comment-form-title"><?php
 			comment_form_title(
-				__( 'Leave a Reply', 'temperancetheme' ),
-				__( 'Leave a Reply to %s', 'temperancetheme' )
+				__( 'Leave a Reply', 'text-domain' ),
+				__( 'Leave a Reply to %s', 'text-domain' )
 			);
 		?></h3>
 
@@ -88,7 +88,7 @@ if ( post_password_required() ) { ?>
 		?>
 		<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
 			<div class="alert alert-help">
-				<p><?php printf( __( $must_be_logged_in, 'temperancetheme' ),
+				<p><?php printf( __( $must_be_logged_in, 'text-domain' ),
 			'<a href="<?php echo wp_login_url( get_permalink() ); ?>">', '</a>'
 				); ?></p>
 			</div>
@@ -100,9 +100,9 @@ if ( post_password_required() ) { ?>
 
 			<?php if ( is_user_logged_in() ) : ?>
 				<?php
-					$logged_in     = __( 'Logged in as', 'temperancetheme' );
-					$log_out_title = __( 'Log out of this account', 'temperancetheme' );
-					$log_out       = __( 'Log out', 'temperancetheme' );
+					$logged_in     = __( 'Logged in as', 'text-domain' );
+					$log_out_title = __( 'Log out of this account', 'text-domain' );
+					$log_out       = __( 'Log out', 'text-domain' );
 				?>
 				<p class="comments-logged-in-as"><?php
 					echo $logged_in;
@@ -113,7 +113,7 @@ if ( post_password_required() ) { ?>
 					title="<?php
 					echo $log_out_title;
 				?>"><?php echo $log_out ?> <?php
-					_e( '&raquo;', 'temperancetheme' );
+					_e( '&raquo;', 'text-domain' );
 				?></a></p>
 
 			<?php else : ?>
@@ -121,40 +121,40 @@ if ( post_password_required() ) { ?>
 				<ul id="comment-form-elements" class="clearfix">
 				<li>
 				<label for="author"><?php
-					_e( 'Name', 'temperancetheme' );
+					_e( 'Name', 'text-domain' );
 					if ($req) _e( '(required)'); ?></label>
 					<input type="text"
 						name="author"
 						id="author"
 						value="<?php echo esc_attr($comment_author); ?>"
-						placeholder="<?php _e( 'Your Name*', 'temperancetheme' ); ?>"
+						placeholder="<?php _e( 'Your Name*', 'text-domain' ); ?>"
 						tabindex="1"
 						<?php if ($req) echo "aria-required='true'"; ?> />
 				</li>
 
 				<li>
 					<label for="email"><?php
-						_e( 'Mail', 'temperancetheme' );
+						_e( 'Mail', 'text-domain' );
 						if ($req) _e( '(required)');
 					?></label>
 					<input type="email"
 						name="email"
 						id="email"
 						value="<?php echo esc_attr($comment_author_email); ?>"
-						placeholder="<?php _e( 'Your E-Mail*', 'temperancetheme' ); ?>"
+						placeholder="<?php _e( 'Your E-Mail*', 'text-domain' ); ?>"
 						tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
 					<small><?php
-						_e("(will not be published)", 'temperancetheme' );
+						_e("(will not be published)", 'text-domain' );
 					?></small>
 				</li>
 
 				<li>
 					<label for="url"><?php
-						_e( 'Website', 'temperancetheme' );
+						_e( 'Website', 'text-domain' );
 					?></label>
 					<input type="url" name="url" id="url"
 						value="<?php echo esc_attr($comment_author_url); ?>"
-						placeholder="<?php _e( 'Got a website?', 'temperancetheme' ); ?>"
+						placeholder="<?php _e( 'Got a website?', 'text-domain' ); ?>"
 						tabindex="3" />
 				</li>
 				</ul>
@@ -163,7 +163,7 @@ if ( post_password_required() ) { ?>
 
 			<p>
 				<?php
-					$your_comment_here = __( 'Your Comment here...', 'temperancetheme' );
+					$your_comment_here = __( 'Your Comment here...', 'text-domain' );
 				?>
 				<textarea name="comment"
 					id="comment"
@@ -176,13 +176,13 @@ if ( post_password_required() ) { ?>
 					id="submit"
 					class="button"
 					tabindex="5"
-					value="<?php _e( 'Submit', 'temperancetheme' ); ?>" />
+					value="<?php _e( 'Submit', 'text-domain' ); ?>" />
 				<?php comment_id_fields(); ?>
 			</p>
 
 			<div class="alert alert-info">
 				<p id="allowed_tags" class="small"><strong>XHTML:</strong><?php
-				_e( 'You can use these tags', 'temperancetheme' );
+				_e( 'You can use these tags', 'text-domain' );
 				?>: <code><?php echo allowed_tags(); ?></code>
 				</p>
 			</div>

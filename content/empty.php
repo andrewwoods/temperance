@@ -8,7 +8,7 @@
 		<h1><?php
             _e(
 				'Oops, Post Not Found!',
-				'temperancetheme'
+				'text-domain'
 			);
 		?></h1>
     </header>
@@ -17,7 +17,7 @@
 		<p><?php
             _e(
 				'Sorry. There is not content available',
-				'temperancetheme'
+				'text-domain'
 			);
         ?></p>
     </section>
@@ -26,7 +26,7 @@
 		<p><?php
             _e(
 				'This is the error message in the page.php template.',
-				'temperancetheme'
+				'text-domain'
 			);
         ?></p>
     </footer>

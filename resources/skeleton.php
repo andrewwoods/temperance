@@ -75,8 +75,8 @@ function temperance_theme_support() {
 	// registering menu locations
 	register_nav_menus(
 		array(
-			'main-nav' => __( 'The Main Menu', 'temperancetheme' ),
-			'footer-links' => __( 'Footer Links', 'temperancetheme' )
+			'main-nav' => __( 'The Main Menu', 'text-domain' ),
+			'footer-links' => __( 'Footer Links', 'text-domain' )
 		)
 	);
 }
@@ -85,7 +85,7 @@ function temperance_theme_support() {
  * Load translation files
  */
 function temperance_load_translations() {
-	load_theme_textdomain( 'temperancetheme', get_template_directory() . '/library/translation' );
+	load_theme_textdomain( 'text-domain', get_template_directory() . '/library/translation' );
 }
 
 
