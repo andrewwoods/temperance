@@ -58,6 +58,7 @@ require_once TEMPERANCE_SRC_PATH . '/class-temperance-customizer.php';
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
 
+add_action( 'after_setup_theme', 'temperance_load_translations' );
 add_action( 'after_setup_theme', 'temperance_theme_support', 16 );
 
 add_action( 'init', 'temperance_head_cleanup' );

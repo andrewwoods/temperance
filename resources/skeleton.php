@@ -81,6 +81,13 @@ function temperance_theme_support() {
 	);
 }
 
+/**
+ * Load translation files
+ */
+function temperance_load_translations() {
+	load_theme_textdomain( 'temperancetheme', get_template_directory() . '/library/translation' );
+}
+
 
 
 /**
