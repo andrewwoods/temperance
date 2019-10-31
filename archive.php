@@ -21,14 +21,15 @@
 				<?php the_author_meta( 'display_name', $author_id ); ?>
 		<?php elseif ( is_day() ) : ?>
 				<span><?php _e( 'Daily Archives:', 'temperancetheme' ); ?></span>
-				<?php the_time( 'Y F d - l' ); ?>
+				<?php the_time( 'Y M d - l' ); ?>
 
 		<?php elseif ( is_month() ) : ?>
 				<span><?php _e( 'Monthly Archives:', 'temperancetheme' ); ?></span>
-				<?php the_time( 'Y F' ); ?>
+				<?php the_time( 'Y M' ); ?>
 
 		<?php elseif ( is_year() ) : ?>
-			<span><?php _e( 'Yearly Archives:', 'temperancetheme' ); ?></span> <?php the_time('Y'); ?>
+			<span><?php _e( 'Yearly Archives:', 'temperancetheme' ); ?></span>
+            <?php the_time('Y'); ?>
 		<?php endif; ?>
 		</h1>
 
