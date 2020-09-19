@@ -16,7 +16,7 @@
     <section class="entry-content">
 		<p><?php
             _e(
-				'Sorry. There is not content available',
+				'Sorry. There is no content available',
 				'text-domain'
 			);
         ?></p>
