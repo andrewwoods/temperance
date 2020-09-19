@@ -37,13 +37,11 @@ require_once TEMPERANCE_LIB_PATH . '/posts.php';
 require_once TEMPERANCE_LIB_PATH . '/shortcodes.php';
 require_once TEMPERANCE_LIB_PATH . '/sidebars.php';
 require_once TEMPERANCE_LIB_PATH . '/skeleton.php';
-require_once TEMPERANCE_LIB_PATH . '/translation/translation.php';
 
 /*
  * Admin related code
  */
 require_once TEMPERANCE_LIB_ADMIN_PATH . '/admin.php';
-require_once TEMPERANCE_LIB_ADMIN_PATH . '/dashboard-widgets.php';
 
 /*
  * Classes for OOP code
