@@ -31,6 +31,7 @@ do.
 * [Changelog](CHANGELOG.md)
 * [Submit Bugs & or Fixes](https://github.com/andrewwoods/temperance/issues)
 * [Resources](docs/resources.md)
+* [WP Hierarchy](https://www.wphierarchy.com/)
 
 ## License
 
